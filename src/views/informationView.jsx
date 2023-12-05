@@ -9,7 +9,7 @@ function InformationView(props){
     function cancelACB(){/*console.log(window.location.hash="#/search")*/}
     
     return (
-        <div>
+        <div className="mainContainer">
             <span>
                 <h1>Stockholm</h1>
                 <div>

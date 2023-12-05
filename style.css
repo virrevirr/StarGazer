@@ -1,5 +1,10 @@
 /* css */
 
+.debug {
+    border-style: solid;
+}
+
+
 .mainContainer {
     flex-direction: column;
     text-align: center;
