@@ -1,40 +1,62 @@
 /* code snippets taken from https://clerk.com/blog/building-a-react-login-page-template */
+import { ref } from 'vue';
 
-function LogInView(){
-    /*function loginACB(event) {
-        props.onLogin();
+function LogInView(props){
+    const emailError = ref("");
+    const passwordError = ref("");
+    const email = ref("");
+    const password = ref("");
+
+    function loginACB(event) {
+        //props.onLogin();
+        console.log("Button clicked");
     }
     function signupACB(event) { 
         console.log("Button clicked");
     }
     function emailConfirmACB(event) {
+        const email = event.target.value;
+        emailError.value = "";
+        if ("" === email) {
+            emailError.value = "Please enter your email";
+            return;
+        }
+        if (!email.includes("@")) {
+            emailError.value = "Please enter a valid email address";
+            return;
+        }
+        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+            emailError.value = "Please enter a valid email";
+            return;
+        }
         console.log("Email confirmed");
-        props.validEmail(event.email);
+        //props.validEmail(event.email);
     
     }
     function passwordConfirmACB(event) {
+        const password = event.target.value;
+        passwordError.value = "";
+        if ("" === password) {
+            passwordError.value = "Please enter your password";
+            return
+        }
         console.log("Password confirmed");
-        props.validPassword(event.password);  
-    }*/
+        //props.validPassword(event.password);  
+    }
 
     return(
         <div className={"mainContainer"}> 
             <div>Log in or sign up</div>
             <br/>
             <div className={"loginContainer"}> 
-                <input placeholder="Enter email here" 
-                    //onChange={emailConfirmACB} 
-                  
-                    className={"input"}/>
-                <label className="errorLable"></label>
-                <input placeholder="Enter password here" 
-                    //onChange={passwordConfirmACB} 
-                    className={"input"}/>
-                <label className="errorLable"></label>
-                <button //onClick={loginACB} 
-                value={"Log in"}className={"loginButton"}>Log in</button>
-                <button //onClick={signupACB} 
-                value={"Sign up "}className={"singupButton"}>Sign up</button>
+                <input placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} class={"input"}/>
+                <label className="errorLable">{emailError.value}</label>
+                <br/>
+                <input placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} class={"input"}/>
+                <label className="errorLable">{passwordError.value}</label>
+                <br/>
+                <button onClick={loginACB} value={"Log in"} class={"loginButton"}>Log in</button>
+                <button onClick={signupACB} value={"Sign up "} class={"singupButton"}>Sign up</button>
             </div>
         </div>
     )
