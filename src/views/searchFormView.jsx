@@ -6,19 +6,22 @@ function SearchFormView(props){
         return props.userInputACB(event.target.value);
     }
 
-    function clickProfileACB(){
-        return clickProfileACB();
-    }
-
     function clickSearchACB(){
         return clickSearchACB();
     }
 
+    function navigateToProfileACB(){
+        return window.location.hash
+    }
+
     return(
     <div>
+        {/*Title of the page*/}
+        <h2>Search Bar</h2>
+        <div className="moveButtonRight"><button className="align_right" onClick={navigateToProfileACB}>Profile</button></div>
         <input>value={props.text} onChange={userInputACB} </input>
         <button onClick={clickSearchACB}>Search</button>
-        <button onClick={clickProfileACB}>Profile</button>
+        
     </div>
     )
     

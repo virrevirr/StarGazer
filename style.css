@@ -1,1 +1,15 @@
 /* css */
+
+.mainContainer {
+    flex-direction: column;
+    text-align: center;
+}
+
+.moveButtonRight {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.align_right {
+    text-align: right;
+}
