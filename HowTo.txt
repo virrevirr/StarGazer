@@ -1,0 +1,4 @@
+En liten how to guide om någon glömmer bort hur man kan se appen i realtid
+I terminalen när man öppnar VS code pånytt:
+--> npm run dev
+--> öppna local host länken m. ctrl + click. (eller command + click för apple)
