@@ -19,6 +19,7 @@ function SearchFormView(props){
         {/*Title of the page*/}
         <h2>Search Bar</h2>
         <div className="moveButtonRight"><button className="align_right" onClick={navigateToProfileACB}>Profile</button></div>
+        <input placeholder="Please type in min three characters"></input>
         <input>value={props.text} onChange={userInputACB} </input>
         <button onClick={clickSearchACB}>Search</button>
         
@@ -26,3 +27,5 @@ function SearchFormView(props){
     )
     
 };
+
+export default SearchFormView;

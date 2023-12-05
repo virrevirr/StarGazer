@@ -37,4 +37,10 @@ export default{
         //resolvePromise(getDishDetails(id), this.currentDishPromiseState);
     },
 
+    searchParams: {},
+
+    setSearch(queryText){
+        this.searchParams.text = queryText;
+    }
+
 }
