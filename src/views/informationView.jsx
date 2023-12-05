@@ -1,17 +1,17 @@
 
 function InformationView(props){
     function WantToGoACB(event){
-        return props.addToWantToGo(props.locationData.location);}
+        return props.addToWantToGo(props.model.location);}
     
     function VisitedACB(event){
-        return props.addToVisited(props.locationData.location);}
+        return props.addToVisited(props.model.location);}
 
     function cancelACB(){/*console.log(window.location.hash="#/search")*/}
     
     return (
-        <div>
+        <div className="mainContainer">
             <span>
-                <h1>{props.locationData.location}</h1>
+                <h1>Stockholm</h1>
                 <div>
                     <button onClick={WantToGoACB} disabled={props.isLocVisited}>I want to go here</button>
                     <button onClick={VisitedACB}>I have been here</button>

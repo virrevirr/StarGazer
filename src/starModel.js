@@ -1,10 +1,9 @@
-//Skapad av Sara
-
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
     ready: false, // set till true när promise from firebase is resolved (model.ready)
+    currentLocationPromiseState: {},
 
     addToWantToGo(locToAdd){
         this.wantToGo = [...this.wantToGo, locToAdd];

@@ -2,7 +2,7 @@
 import LogInView from "../views/loginView.jsx";
 
 function Login(){
-    /*function onLog() {
+   /* function onLogin() {
     console.log("Button clicked");
     }
     function validEmail(email) {
