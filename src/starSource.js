@@ -5,7 +5,7 @@ import {BASE_URL, API_KEY} from "./apiConfig.js";
 //API search for places
 export function searchPlaces(searchParams){
     const queryPlace = new URLSearchParams(searchParams).toString();
-    const source = BASE_URL +"recipes/complexSearch?"+ queryPlace;
+    const source = BASE_URL +"/andruxnet/api/world-cities/"+ queryPlace;
     
     return fetch(source, {
         method:"GET", 
