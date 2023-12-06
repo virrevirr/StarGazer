@@ -1,6 +1,6 @@
 /* code snippets taken from https://clerk.com/blog/building-a-react-login-page-template */
 import { ref } from 'vue';
-
+import "../style.css";
 function LogInView(props){
     const emailError = ref("");
     const passwordError = ref("");
