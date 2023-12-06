@@ -9,4 +9,43 @@ export default function Search(props){
         props.model.setSearch(newInput);
     }
 
+    function searchNowACB(){
+        props.model.startSearch(props.model.searchParams)
+    }
+
+    function handleCurrentLocationACB(input){
+        props.model.setCurrentLocation(input.query)
+    }
+
+
+    function searchResult(searchResultPromiseState){
+        if (searchResultPromiseState){
+            return(
+                <SearchResultsView
+                searchResult = {searchResultPromiseState.data}
+                onLocationClickACB = {handleCurrentLocationACB}
+                />
+            );
+        }
+        
+
+        
+    }
+
+    return(
+        <div>
+            <SearchFormView
+            text = {props.model.searchParams}
+
+            userInputACB= {setSearchInputACB}
+            clickSearchACB= {searchNowACB}
+            />
+        {
+        searchResult(props.model.searchResultsPromiseState)
+        } 
+        </div>
+
+        
+    )
+
 }

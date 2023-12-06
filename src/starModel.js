@@ -1,3 +1,6 @@
+import { searchPlaces } from "./starSource";
+import { resolvePromise } from "./resolvePromise"
+
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
@@ -37,9 +40,13 @@ export default{
     },
 
     searchParams: {},
+    searchResultsPromiseState: {},
 
     setSearch(queryText){
         this.searchParams.text = queryText;
-    }
+    },
 
+    startSearch(searchParams){
+        resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState)
+    }
 }
