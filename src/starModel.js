@@ -28,11 +28,11 @@ export default{
         this.haveVisited = this.haveVisited.filter(shouldWeKeepLocCB);
     },
 
-    setCurrentLocation(id){
-        if (id === this.currentLocation || !id){
+    setCurrentLocation(location){
+        if (location === this.currentLocation || !location){
             return;
         }
-        this.currentLocation = id;
+        this.currentLocation = location;
         //resolvePromise(getDishDetails(id), this.currentDishPromiseState);
     },
 

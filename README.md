@@ -1,2 +1,2 @@
-# StarGaze
+# StarGazer
 Iprog project
