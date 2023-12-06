@@ -9,5 +9,4 @@ export default function Search(props){
         props.model.setSearch(newInput);
     }
 
-    return
 }
