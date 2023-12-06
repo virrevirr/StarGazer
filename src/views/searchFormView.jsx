@@ -11,8 +11,8 @@ function SearchFormView(props){
     }
 
     function navigateToProfileACB(){
-        return window.location.hash
-    }
+        window.location.hash = '#/profile';
+    };
 
     return(
     <div>
