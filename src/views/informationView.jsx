@@ -1,10 +1,10 @@
 
 function InformationView(props){
     function WantToGoACB(event){
-        return props.addToWantToGo(props.model.location);}
+        return props.addToWantToGo(props.model.currentLocation);}
     
     function VisitedACB(event){
-        return props.addToVisited(props.model.location);}
+        return props.addToVisited(props.model.currentLocation);}
 
     function cancelACB(){/*console.log(window.location.hash="#/search")*/}
     
