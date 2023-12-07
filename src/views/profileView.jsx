@@ -2,14 +2,13 @@
 //och en knapp för gå tillbaka till föregående sida (fråga TA hur man kan göra detta)
 //går säkert att titta på sidebarView koden för inspo för listan av stjärnbilder då de kommer funka lite likadant.
 
-function Profile(props){
+function ProfileView(props){
     function cancelACB(event){/*console.log(window.location.hash="#/search")*/}
     function renderArrayACB(city){
         return (
             <li href="#">{city}</li>
         );
-    }
-
+    }   
     return (
         <div className="mainContainer">
             <span>
@@ -34,4 +33,4 @@ function Profile(props){
 }
 
 
-export default Profile;
+export default ProfileView;

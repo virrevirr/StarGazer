@@ -3,3 +3,8 @@
 // man kan göra en model som använder flera api:er? funderar då vi måste "koppla ihop" den med platskoordinater
 // och koordinater för stjärnbilderna)
 
+import ProfileView from "../views/informationView.jsx";
+
+export default function Profile(props){
+    return (<ProfileView/>); 
+}
