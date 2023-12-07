@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "/src/teacherFirebase.js";
 import firebaseConfig from "/src/firebaseConfig.js"; // config from previous step in 3.5
-import { getMenuDetails } from "./dishSource";
+import { searchPlaces } from "./starSource.js";
 import { searchPlaces } from "./starSource";
 
 // Initialise firebase app, database, ref
@@ -10,7 +10,7 @@ const app= initializeApp(firebaseConfig)
 const db= getDatabase(app)
 
 //  PATH is the “root” Firebase path
-const PATH="dinnerModel60";
+const PATH="dinnerModel60"; // what is this???
 
 
 function modelToPersistence(model){
