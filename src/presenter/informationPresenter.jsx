@@ -7,8 +7,8 @@ export default function Information(props){
     function addVisitedACB(){props.model.removeFromWantToGo(props.model.currentLocation);}
 
     return (<InformationView 
-        isLocVisited={props.model.haveVisited.find(visitedCB)} //isLocVisited expected to be falsy with empty menu
-        WantToGoACB={addToWantToGoACB}
-        VisitedACB={addVisitedACB}/>
+        isLocVisited ={props.model.haveVisited.find(visitedCB)} //isLocVisited expected to be falsy with empty menu
+        WantToGoACB ={addToWantToGoACB}
+        VisitedACB ={addVisitedACB}/>
         ); //add astroEvents, moonphase 
 }

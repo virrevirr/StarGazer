@@ -2,3 +2,6 @@
 //och en knapp för gå tillbaka till föregående sida (fråga TA hur man kan göra detta)
 //går säkert att titta på sidebarView koden för inspo för listan av stjärnbilder då de kommer funka lite likadant.
 
+function Profile(props){
+    
+}
