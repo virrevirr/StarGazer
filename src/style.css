@@ -4,41 +4,81 @@
     border-style: solid;
 }
 
+/*url for the background image later*/
+.body{
+    background-image: url();
+}
+
+.flexParent {
+    display: flex; /* Makes the element a flex container, enabling FlexBox layout */
+    flex-direction: row; /* Items will be laid out in a row */
+    height: 100%; /*Set the height to 100% to cover the parent container*/
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust the minimum width as needed */
+    gap: 10px; /* Space between rows and columns */
+    text-align: center; /* Center align the text */
+  }
+
+/* Applies styles to <span> elements */
+.grid span {
+    display: inline-block;
+    width: 100%; 
+    vertical-align: top; /* Aligns at the top */
+  }
 
 .mainContainer {
     flex-direction: column;
     text-align: center;
+    
 }
 
-.moveButtonRight {
-    display: flex;
-    justify-content: flex-end; 
-}
-
-.align_right {
-    text-align: right;
-}
-
-
-.profileButton {
+.buttonDesign {
     transition-duration: 0.4s;
-    padding: 15px 25px;
+    padding: 10px 15px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     background-color: pink;
-
+    border-radius: 12 px;
 }
 
-.profileButton:hover {
+.buttonDesign:hover {
     background-color: palevioletred;
     color:white;
     border: 2 px solid pink;
+    border-radius: 12 px;
 }
 
-.profileButton:active {
+.buttonDesign:active {
     background-color: palevioletred;
     box-shadow: 0 5px;
     transform: translateY(4px);
-
+    border-radius: 12 px;
 }
+
+.profileButton {
+    display:flex;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+
+/* Media query for narrow screens */
+@media (max-width: 500px) { /* Adjust the max-width value based on our design */
+
+    .debug {
+        border-style: solid;
+    }
+    
+    .flexParent {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+      }
+  }

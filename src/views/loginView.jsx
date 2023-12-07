@@ -55,8 +55,8 @@ function LogInView(props){
                 <input class="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
                 <label class="errorLable">{passwordError.value}</label>
                 <br/>
-                <button class = "profileButton" onClick={loginACB} value={"Log in"} >Log in</button>
-                <button class = "profileButton" onClick={signupACB} value={"Sign up "} >Sign up</button>
+                <button class = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
+                <button class = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
             </div>
         </div>
     )

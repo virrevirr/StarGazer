@@ -52,7 +52,7 @@ export default function Search(props){
             />
         {
         searchResult(props.model.searchResultsPromiseState)
-        } 
+    } 
         </div>
 
         
