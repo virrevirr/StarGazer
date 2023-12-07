@@ -9,7 +9,9 @@ function SearchResultsView(props){
 
     return(
        /*<div>{props.searchResults.map(showResultCB)}</div>*/
-       <span onClick={onLocationClickACB}>Stockholm</span>
+       <div>
+            <span onClick={onLocationClickACB}>Stockholm</span> {/*temporär för layout*/}
+       </div> 
     );
 
     function showResultCB(result){

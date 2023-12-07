@@ -6,7 +6,7 @@ function InformationView(props){
     function VisitedACB(event){
         return props.addToVisited(props.model.currentLocation);}
 
-    function cancelACB(){/*console.log(window.location.hash="#/search")*/}
+    function cancelACB(){console.log(window.location.hash="#/search")}
     
     return (
         <div className="mainContainer">
