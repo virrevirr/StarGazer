@@ -10,9 +10,9 @@ function SearchFormView(props){
         return clickSearchACB();
     }
 
-    function navigateToProfileACB(){
-        window.location.hash = '#/profile';
-    };
+    // function navigateToProfileACB(){
+        // window.location.hash = '#/profile';
+    // };
 
     return(
     <div>

@@ -27,8 +27,18 @@ export default function Search(props){
                 />
             );
         }
-        
 
+        if (searchResultPromiseState.promise && !searchResultPromiseState.error && !searchResultPromiseState.data) {
+            // if a promise has been made we show a loading image before the data is loaded and if there are no errors
+            return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
+        
+        if (searchResultPromiseState.error) {
+            // if there was an error we return it as a string
+            return <div>{String(searchResultPromiseState.error)}</div>;}
+    
+        if (!searchResultPromiseState.promise)
+            // if no search has been made, i.e. no promise has been made, we show no data
+            {return "No data";} 
         
     }
 
