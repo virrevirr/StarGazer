@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "/src/teacherFirebase.js";
 import firebaseConfig from "/src/firebaseConfig.js"; // config from previous step in 3.5
 import { getMenuDetails } from "./dishSource";
+import { searchPlaces } from "./starSource";
 
 // Initialise firebase app, database, ref
 const app= initializeApp(firebaseConfig)
@@ -13,22 +14,19 @@ const PATH="dinnerModel60";
 
 
 function modelToPersistence(model){
-    function dishToIdCB(dish){
-        return dish.id;
-    }
-
-    return {guests: model.numberOfGuests, dishIds: model.dishes.map(dishToIdCB).sort(),
-            dish: model.currentDish};
+    //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
+    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, place: model.currentLocation}
 }
 
 function persistenceToModel(data, model){
-    function dishToModelACB(dish){model.dishes=dish;}
+    function placeToGoToModelACB(place){model.wantToGo=place;}
+    function placeVisitedToModelACB(place){model.haveVisited=place;}
 
-    model.numberOfGuests = data?.guests || 2;
-    model.setCurrentDish(data?.dish);
-    const idArray = data?.dishIds || [];
+    model.setCurrentLocation(data?.place);
+    const placeToGoArray = data?.placesToGo || [];
+    const PlaceVisitedArray = data?.placesHaveGone || [];
 
-    return getMenuDetails(idArray).then(dishToModelACB);
+    return searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(PlaceVisitedArray).then(placeVisitedToModelACB);
 }
 
 function saveToFirebase(model){
@@ -46,7 +44,7 @@ function readFromFirebase(model){
 
 function connectToFirebase(model, watchFunction){
     readFromFirebase(model);
-    function checkACB(){return [model.numberOfGuests, model.currentDish, model.dishes];}
+    function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
 }
