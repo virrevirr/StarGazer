@@ -49,14 +49,14 @@ function LogInView(props){
             <div>Log in or sign up</div>
             <br/>
             <div className={"loginContainer"}> 
-                <input placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} class={"input"}/>
-                <label className="errorLable">{emailError.value}</label>
+                <input class="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
+                <label class="errorLable">{emailError.value}</label>
                 <br/>
-                <input placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} class={"input"}/>
-                <label className="errorLable">{passwordError.value}</label>
+                <input class="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
+                <label class="errorLable">{passwordError.value}</label>
                 <br/>
-                <button onClick={loginACB} value={"Log in"} class={"loginButton"}>Log in</button>
-                <button onClick={signupACB} value={"Sign up "} class={"singupButton"}>Sign up</button>
+                <button class = "profileButton" onClick={loginACB} value={"Log in"} >Log in</button>
+                <button class = "profileButton" onClick={signupACB} value={"Sign up "} >Sign up</button>
             </div>
         </div>
     )
