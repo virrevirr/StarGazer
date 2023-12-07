@@ -10,6 +10,7 @@ function LogInView(props){
     function loginACB(event) {
         //props.onLogin();
         console.log("Button clicked");
+        console.log(window.location.hash="#/search")
     }
     function signupACB(event) { 
         console.log("Button clicked");

@@ -2,13 +2,14 @@
 
 function SearchResultsView(props){
     function onLocationClickACB(location){
-        console.log("clicked on location", location);
+        //console.log("clicked on location", location);
         //return props.onLocationClickACB(location);
+        console.log(window.location.hash="#/information");
     }
 
     return(
        /*<div>{props.searchResults.map(showResultCB)}</div>*/
-       "City 1, City 2, City 3"
+       <span onClick={onLocationClickACB}>Stockholm</span>
     );
 
     function showResultCB(result){
