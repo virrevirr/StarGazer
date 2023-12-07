@@ -4,6 +4,7 @@
 
 function ProfileView(props){
     function cancelACB(event){console.log(window.location.hash="#/search")}
+    function logOutACB(event){console.log(window.location.hash="#/")}
     function renderArrayACB(city){
         return (
             <li href="#">{city}</li>
@@ -13,7 +14,7 @@ function ProfileView(props){
         <div className="mainContainer">
             <span>
                 <p>Profile Name</p>
-                <button onClick={cancelACB}>Back to search</button>
+                <button onClick={logOutACB}>Log out</button>
             </span>
             <div>
                 <h>Places I want to go</h>
@@ -29,6 +30,7 @@ function ProfileView(props){
                         <li href="#">Singapore</li>
                     </ul>
             </div>
+            <button onClick={cancelACB}>Back to search</button>
         </div>
 
     );
