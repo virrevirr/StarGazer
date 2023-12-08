@@ -1,6 +1,7 @@
 // ACBer som krävs för sökningen på plats namn, samt promiseState funktion för ladd gif etc. Ska vi displaya alla
 // relevanta stjärnbilder också (psv i labben med dishes för att göra det enklare?)
 
+import { searchPlaces } from "../starSource";
 import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
 
@@ -18,7 +19,8 @@ export default function Search(props){
     }
 
 
-    function searchResult(searchResultPromiseState){
+    /*function searchResult(searchResultPromiseState){
+        console.log("searchResultPromiseState",searchResultPromiseState);
         if (searchResultPromiseState){
             return(
                 <SearchResultsView
@@ -39,11 +41,17 @@ export default function Search(props){
         if (!searchResultPromiseState.promise)
             // if no search has been made, i.e. no promise has been made, we show no data
             {return "No data";} 
-        
-    }
+
+    }*/
 
     return(
         <div>
+            <SearchResultsView
+            //searchResult = {searchResultPromiseState.data}
+            searchResult = {searchPlaces(searchParams)}
+            onLocationClickACB = {handleCurrentLocationACB}
+            />
+
             <SearchFormView
             text = {props.model.searchParams}
 
