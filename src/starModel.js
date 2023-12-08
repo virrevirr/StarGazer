@@ -1,4 +1,4 @@
-import { searchPlaces, getPlaceDetails } from "./starSource";
+import { searchPlaces } from "./starSource";
 import resolvePromise from "./resolvePromise"
 
 export default{
