@@ -1,21 +1,21 @@
 //funkar som dishSource.js
 
-import {BASE_URL, API_KEY} from "./apiConfig.js";
+import {API_KEY} from "./apiConfig.js";
 
 //API search for places
 export function searchPlaces(searchParams){
-    const queryPlace = new URLSearchParams(searchParams).toString();
-    const source = BASE_URL +"/andruxnet/api/world-cities/"+ queryPlace;
+    const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString(); //blir rätt format nu
+    const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
     
     return fetch(source, {
         method:"GET", 
-        headers: {'X-Mashape-Key': API_KEY},
-        params: {searchby: "city"}, //då vi bara vill titta på städer.
+        headers: {'X-Mashape-Key': API_KEY}
     }).then(getJsonACB).then(keepArrayACB);
 }
 
 function getJsonACB(resp){
     if(!resp.ok){
+        console.log(resp);
         throw new Error("Something went wrong with the fetch"+ resp.status);
     }
     return resp.json();
@@ -24,3 +24,5 @@ function getJsonACB(resp){
 function keepArrayACB(searchInput){ 
     return searchInput.results;
 }
+
+
