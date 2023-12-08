@@ -1,12 +1,14 @@
-import { searchPlaces } from "./starSource";
+import { getWeatherDetails, searchPlaces } from "./starSource";
 import resolvePromise from "./resolvePromise"
 
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
+    weatherData: null,
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
+    currentWeatherPromiseState: {},
 
     addToWantToGo(locToAdd){
         this.wantToGo = [...this.wantToGo, locToAdd];
@@ -36,7 +38,18 @@ export default{
             return;
         }
         this.currentLocation = location;
+
+        // är osäker på om weather bör kopplas här
+        //const city = location.city;
+        //this.getWeatherInfo(city);
+    },  
+
+    getWeatherInfo(city){
+        // är osäker på om det här görs rätt
+        this.weatherData = getWeatherDetails(city);
+        console.log(this.weatherData)
     },
+
 
     searchParams: {},
     searchResultsPromiseState: {},

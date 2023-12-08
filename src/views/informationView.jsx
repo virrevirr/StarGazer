@@ -1,5 +1,8 @@
 
 function InformationView(props){
+    
+    //console.log("we made it here", props.getWeatherInfo(props.locationData.city))
+
     function WantToGoACB(event){
         return props.addToGo(props.locationData);}
     
@@ -22,6 +25,7 @@ function InformationView(props){
                 <p>Wow astronomical events, northern light, falling star wooow</p> {/*Astronomical events info*/}
                 <a href="#">More information</a> {/*Link to Astronomical events info*/}
             </div>
+            <div><p>Weather</p></div>
             <div><p>Sunrise</p></div>
             <div><p>Sunset</p></div>
             <span>
