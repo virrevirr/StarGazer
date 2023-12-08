@@ -10,7 +10,13 @@ function InformationView(props){
         return props.addToVisited(props.locationData);}
 
     function cancelACB(){console.log(window.location.hash="#/search");}
+
+    // Extract the forecast data for today
+    //const todaysWeather = props.weatherData.value
     
+    // Displaying the daily chance of rain for today
+    //const dailyChanceOfRain = todaysWeather.daily_chance_of_rain;
+   //console.log("todays weather", todaysWeather)
     return (
         <div className="mainContainer">
             <span>
@@ -25,7 +31,7 @@ function InformationView(props){
                 <p>Wow astronomical events, northern light, falling star wooow</p> {/*Astronomical events info*/}
                 <a href="#">More information</a> {/*Link to Astronomical events info*/}
             </div>
-            <div><p>Weather</p></div>
+            <div><p>Weather: % chance of rain</p></div>
             <div><p>Sunrise</p></div>
             <div><p>Sunset</p></div>
             <span>
