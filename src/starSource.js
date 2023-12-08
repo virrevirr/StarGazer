@@ -19,7 +19,8 @@ function getJsonACB(resp){
     }
     return resp.json();
 }
-function keepArrayACB(searchInput){ 
-    console.log("keep array", searchInput);
+function keepArrayACB(searchInput){ // kanske måste göra så att resultatet kommer på ett format som
+    //console.log("keepArrayACB", searchInput);
     return searchInput;
+    //return searchInput.results;
 }

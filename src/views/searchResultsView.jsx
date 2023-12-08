@@ -3,7 +3,7 @@
 function SearchResultsView(props){
     function onLocationClickACB(location){
         //console.log("clicked on location", location);
-        console.log(window.location.hash="#/information");
+        console.log(window.location.hash= "#/information");
 
         return props.onLocationClickACB(location);
     };
@@ -12,15 +12,15 @@ function SearchResultsView(props){
     return(
        <div>
             {props.searchResult.map(showResultCB)}
-            <span onClick={onLocationClickACB}>Stockholm</span> {/*temporär för layout*/}
+            {/*<span onClick={onLocationClickACB}>Stockholm</span> {/*temporär för layout*/}
        </div> 
     );
 
     function showResultCB(result){
-        return <span key={result.query} onClick={() => {onLocationClickACB(result)}} >
+        return <span key={result} onClick={() => {onLocationClickACB(result)}} >
             {/*render each city with an image and its title*/}
             {/* result.query ska vara samma som result.id, query = namnet som staden enligt API?*/}
-            <div>{result.query}</div>
+            <div>{result}</div>
         </span>
     };
 }

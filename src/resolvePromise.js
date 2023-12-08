@@ -1,6 +1,8 @@
 // tagen från labben - it works so why change it. 
 
 function resolvePromise(prms, promiseState){
+    console.log("promise :)");
+
     promiseState.promise= prms;
     promiseState.data= null;
     promiseState.error= null;

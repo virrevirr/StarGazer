@@ -5,7 +5,7 @@ export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
-    ready: false, // set till true när promise from firebase is resolved (model.ready)
+    //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
 
     addToWantToGo(locToAdd){
@@ -42,8 +42,8 @@ export default{
     searchParams: {},
     searchResultsPromiseState: {},
 
-    setSearch(queryText){
-        this.searchParams.text = queryText;
+    setSearch(queryText){ // används i searchPresenter för att koppla till 
+        this.searchParams = queryText;
     },
 
     startSearch(searchParams){
