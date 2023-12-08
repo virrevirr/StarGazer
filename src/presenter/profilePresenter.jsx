@@ -6,5 +6,11 @@
 import ProfileView from "../views/profileView.jsx";
 
 export default function Profile(props){
-    return (<ProfileView/>); 
+    function clickedLocationACB(input){
+        props.model.setCurrentLocation(input);
+    }
+    return (<ProfileView 
+        onLocationClick={clickedLocationACB}
+        wantToGoPlaces={props.model.wantToGo || []}
+        haveVisitedPlaces={props.model.haveVisited || []}/>); 
 }

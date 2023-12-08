@@ -5,10 +5,16 @@
 function ProfileView(props){
     function cancelACB(event){console.log(window.location.hash="#/search")}
     function logOutACB(event){console.log(window.location.hash="#/")}
-    function renderArrayACB(city){
-        return (
-            <li href="#">{city}</li>
-        );
+    
+    function renderArrayACB(place){
+        function onLocationClickACB(event){
+            console.log(window.location.hash= "#/information");
+            props.onLocationClick(place);
+        };
+        
+        return (<div>
+                    <span onClick={onLocationClickACB} key={place}>{place.city +", "+ place.state +", "+ place.country}</span>
+                </div>);
     }   
     return (
         <div className="mainContainer">
@@ -19,15 +25,13 @@ function ProfileView(props){
             <div>
                 <h>Places I want to go</h>
                 <ul>
-                    {/*props.model.wantToGo.map(renderArrayACB)*/}
-                    <li href="#">Stockholm</li>
+                    {props.wantToGoPlaces.map(renderArrayACB)}
                 </ul>
             </div>
             <div>
                 <h>Places I have been</h>
                     <ul>
-                        {/*props.model.haveVisited.map(renderArrayACB)*/}
-                        <li href="#">Singapore</li>
+                        {props.haveVisitedPlaces.map(renderArrayACB)}
                     </ul>
             </div>
             <button onClick={cancelACB}>Back to search</button>

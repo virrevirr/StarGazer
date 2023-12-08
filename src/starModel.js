@@ -1,4 +1,4 @@
-import { searchPlaces } from "./starSource";
+import { searchPlaces, getPlaceDetails } from "./starSource";
 import resolvePromise from "./resolvePromise"
 
 export default{
@@ -36,7 +36,6 @@ export default{
             return;
         }
         this.currentLocation = location;
-        //resolvePromise(getDishDetails(id), this.currentDishPromiseState);
     },
 
     searchParams: {},
@@ -47,6 +46,6 @@ export default{
     },
 
     startSearch(searchParams){
-        resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState)
+        resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     }
 }

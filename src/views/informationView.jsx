@@ -1,17 +1,17 @@
 
 function InformationView(props){
     function WantToGoACB(event){
-        return props.addToWantToGo(props.model.currentLocation);}
+        return props.addToGo(props.locationData);}
     
     function VisitedACB(event){
-        return props.addToVisited(props.model.currentLocation);}
+        return props.addToVisited(props.locationData);}
 
-    function cancelACB(){console.log(window.location.hash="#/search")}
+    function cancelACB(){console.log(window.location.hash="#/search");}
     
     return (
         <div className="mainContainer">
             <span>
-                <h1>Stockholm</h1>
+                <h1>{props.locationData.city +", "+ props.locationData.state +", "+ props.locationData.country}</h1> 
                 <div>
                     <button onClick={WantToGoACB} disabled={props.isLocVisited}>I want to go here</button>
                     <button onClick={VisitedACB}>I have been here</button>
@@ -29,7 +29,6 @@ function InformationView(props){
             </span>
         </div>
     );
-
 }
 
 export default InformationView;

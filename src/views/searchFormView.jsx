@@ -4,12 +4,12 @@ function SearchFormView(props){
     
     function userInputACB(event){
         console.log("search for ",event.target.value);
-        return props.userInputACB(event.target.value);
+        return props.userInput(event.target.value);
     }
 
     function clickSearchACB(){
         console.log("click search");
-        return props.clickSearchACB();
+        return props.clickSearch();
     }
 
     function navigateToProfileACB(){

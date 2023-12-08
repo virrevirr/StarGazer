@@ -27,7 +27,7 @@ export default function Search(props){
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
             return <SearchResultsView searchResult = {props.model.searchResultsPromiseState.data}
-            onLocationClickACB = {handleCurrentLocationACB}/>;
+            onLocationClick = {handleCurrentLocationACB}/>;
         }
     }
 
@@ -35,8 +35,8 @@ export default function Search(props){
         <div>
             <SearchFormView
             text = {props.model.searchParams}
-            userInputACB= {setSearchInputACB} //setSearch from model
-            clickSearchACB= {searchNowACB} // startSearch from model (makes a promise) 
+            userInput= {setSearchInputACB} //setSearch from model
+            clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
             /> 
             {promiseData(props.model.searchResultsPromiseState)}
         </div>

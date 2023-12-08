@@ -4,11 +4,12 @@ import InformationView from "../views/informationView.jsx";
 export default function Information(props){
     function visitedCB(location){return location === props.model.currentLocation;}
     function addToWantToGoACB(){props.model.addToWantToGo(props.model.currentLocation);}
-    function addVisitedACB(){props.model.removeFromWantToGo(props.model.currentLocation);}
+    function addVisitedACB(){props.model.addToVisited(props.model.currentLocation);}
+
 
     return (<InformationView 
+        locationData={props.model.currentLocation} //current location är objekt
         isLocVisited ={props.model.haveVisited.find(visitedCB)} //isLocVisited expected to be falsy with empty menu
-        WantToGoACB ={addToWantToGoACB}
-        VisitedACB ={addVisitedACB}/>
-        ); //add astroEvents, moonphase 
+        addToGo ={addToWantToGoACB}
+        addToVisited={addVisitedACB}/>); //add astroEvents, moonphase 
 }
