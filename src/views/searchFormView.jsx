@@ -3,7 +3,7 @@
 function SearchFormView(props){
     
     function userInputACB(event){
-        console.log("search for ",event.target.value);
+        console.log("search for ", event.target.value);
         return props.userInput(event.target.value);
     }
 

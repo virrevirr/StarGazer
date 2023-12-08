@@ -40,8 +40,8 @@ export default{
         this.currentLocation = location;
 
         // är osäker på om weather bör kopplas här
-        //const city = location.city;
-        //this.getWeatherInfo(city);
+        const city = location.city;
+        this.getWeatherInfo(city);
     },  
 
     getWeatherInfo(city){

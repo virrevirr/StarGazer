@@ -1,7 +1,7 @@
 
 function InformationView(props){
     
-    //console.log("we made it here", props.getWeatherInfo(props.locationData.city))
+    console.log("!!", props)
 
     function WantToGoACB(event){
         return props.addToGo(props.locationData);}
