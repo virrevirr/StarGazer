@@ -1,10 +1,3 @@
-Iprog project
-
-
-
-
-Your project file structure 
-
 
 # StarGazer our project
 Short description of our project
@@ -15,13 +8,10 @@ If it is that you lOOOVE the place you can also add it to your profile and save 
 
 
 # What we have done!
-We have done the basic structure of each page for our website so it shows what the user will see when they go to it.
-Deployed the app as well as done some css to make it prettier
-Connected the sites to each other so that there is some kind of interaction.
-Connected one of the APIs we are going
+We have done the basic structure of each page for our website so it shows what the user will see when they go to it. Deployed the app as well as done some css to make it prettier. Connected the presenters to each other through root so that there is some kind of interaction. Connected one of the APIs, made the data searchable and displayed the data. 
 
 
-# What we still have left to do! );
+# What we still have left to do!
 We still need to style the website and make it more user-friendly. We would like to connect the rest of the APIs, so we are able to show news regarding moon phases, sunrise and sunset. In profileView, we would like to add hyperlinks to the place that we have saved as "places I have been" and "places I would like to go", that would lead to more information about each place. 
 
 
@@ -31,8 +21,7 @@ Withshort description/purpose of each file
 STARGAZER [main repository file]
 |
 |---src---Presenter         [Where we keep the different presenters for the website]
-|    |       |-----Information      [Information about the weather, sunrise, sunset, astronomical events will be displayed here]
-          
+|    |       |-----Information      [Information about the place/location]         
 |    |       |-----Login            [We present the log in page here]
 |    |       |-----Profile          [Presenting the profile page, where we save different locations]
 |    |       |-----Search           [Presenting the search bar and the results of the search input]
