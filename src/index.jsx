@@ -18,7 +18,7 @@ const app= createApp(<VueRoot model={reactiveModel}/>);
 app.use(makeRouter(reactiveModel));
 app.mount('#root'); 
 
-//console.log(searchPlaces("Sto"));  //för att köra fetchen i consollen 
+console.log(searchPlaces("Sto"));  //för att köra fetchen i consollen 
 //reactiveModel.doSearch({});
 //connectToFirebase(reactiveModel, watch);
 window.myModel= reactiveModel; 
