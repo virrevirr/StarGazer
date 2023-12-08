@@ -3,7 +3,8 @@
 //går säkert att titta på sidebarView koden för inspo för listan av stjärnbilder då de kommer funka lite likadant.
 
 function ProfileView(props){
-    function cancelACB(event){/*console.log(window.location.hash="#/search")*/}
+    function cancelACB(event){console.log(window.location.hash="#/search")}
+    function logOutACB(event){console.log(window.location.hash="#/")}
     function renderArrayACB(city){
         return (
             <li href="#">{city}</li>
@@ -13,20 +14,23 @@ function ProfileView(props){
         <div className="mainContainer">
             <span>
                 <p>Profile Name</p>
-                <button onClick={cancelACB}>Back to search</button>
+                <button onClick={logOutACB}>Log out</button>
             </span>
             <div>
                 <h>Places I want to go</h>
                 <ul>
-                    {props.model.wantToGo.map(renderArrayACB)}
+                    {/*props.model.wantToGo.map(renderArrayACB)*/}
+                    <li href="#">Stockholm</li>
                 </ul>
             </div>
             <div>
                 <h>Places I have been</h>
                     <ul>
-                        {props.model.haveVisited.map(renderArrayACB)}
+                        {/*props.model.haveVisited.map(renderArrayACB)*/}
+                        <li href="#">Singapore</li>
                     </ul>
             </div>
+            <button onClick={cancelACB}>Back to search</button>
         </div>
 
     );

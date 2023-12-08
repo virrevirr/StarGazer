@@ -1,5 +1,5 @@
 import { searchPlaces } from "./starSource";
-import { resolvePromise } from "./resolvePromise"
+import resolvePromise from "./resolvePromise"
 
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
