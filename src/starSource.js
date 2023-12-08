@@ -17,10 +17,9 @@ function getJsonACB(resp){
     if(!resp.ok){
         throw new Error("Something went wrong with the fetch"+ resp.status);
     }
-    console.log(resp);
-    return resp.text();
+    return resp.json();
 }
 function keepArrayACB(searchInput){ 
-    console.log(searchInput);
-    return searchInput.results;
+    console.log("keep array", searchInput);
+    return searchInput;
 }
