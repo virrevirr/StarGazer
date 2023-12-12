@@ -16,9 +16,11 @@ function StarView(props){
             <div>
                 <img src = {"https://en.wikipedia.org/wiki/"+props.starData[0].constellation+
                 "_(constellation)#/media/File:"+props.starData.constellation[0]+"_IAU.svg"} height = {"200"} />
-                
+            </div>
+            
+            <div>
                 <h3>Stars included</h3> 
-                <h4>{starsInConstellation}</h4> 
+                <p>{starsInConstellation}</p> 
             </div>
         
         </div>
