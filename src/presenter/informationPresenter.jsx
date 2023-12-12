@@ -74,12 +74,12 @@ export default function Information(props){
         /> 
 
         {promiseWeatherData(props.model.weatherPromiseState)}
+        
         {promiseMoonData(props.model.moonPromiseState)}
 
         {promiseNewsData(props.model.newsPromiseState)}
 
-        {/*Ett försök på att rendera stjärnbilder som inte funkat så bra
-        promiseStarData(props.model.starPromiseState)*/}
+        {promiseStarData(props.model.starPromiseState)}
 
         </div>
         );

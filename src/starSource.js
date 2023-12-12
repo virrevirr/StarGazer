@@ -2,6 +2,18 @@
 
 import {API_KEY} from "./apiConfig.js";
 
+
+function getJsonACB(resp){
+    if(!resp.ok){
+        throw new Error("Something went wrong with the fetch"+ resp.status);
+    }
+    return resp.json();
+}
+function keepArrayACB(searchInput){ 
+    return searchInput;
+}
+
+
 //API search for places
 export function searchPlaces(searchParams){
 
@@ -14,17 +26,6 @@ export function searchPlaces(searchParams){
         headers: {'X-Mashape-Key': API_KEY}
     }).then(getJsonACB).then(keepArrayACB);
 }
-
-function getJsonACB(resp){
-    if(!resp.ok){
-        throw new Error("Something went wrong with the fetch"+ resp.status);
-    }
-    return resp.json();
-}
-function keepArrayACB(searchInput){ // kanske måste göra så att resultatet kommer på ett format som
-    return searchInput;
-}
-
 
 
 //API weather
@@ -64,18 +65,11 @@ export function getMoonDetails(){
 
 //API constellation
 export function getConstellationDetails(){
-    /*
-    Försök på stjärnbilder som inte gick så bra
-
-    const source = 'https://astronomy.p.rapidapi.com/api/v2/studio/star-chart'
+    const queryPlace = new URLSearchParams({constellation:"orion"}).toString();
+    const source = 'https://stars-by-api-ninjas.p.rapidapi.com/v1/stars?' + queryPlace;
     
     return fetch(source, {
-        method:"POST", 
+        method:"GET", 
         headers: {'X-Mashape-Key': API_KEY},
-        body: {
-        observer: {date: '2019-12-20', latitude: 33.775867, longitude: -84.39733},
-        style: 'inverted',
-        view: {parameters: {constellation: 'ori'}, type: 'constellation'}
-            }
-    }).then(getJsonACB).then(keepArrayACB);*/
+    }).then(getJsonACB).then(keepArrayACB);
 }
