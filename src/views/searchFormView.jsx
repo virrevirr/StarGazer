@@ -18,14 +18,15 @@ function SearchFormView(props){
     };
 
     return(
-    <div>
+    
+    <div className="searchContainer">
         {/*Title of the page*/}
-        <h2>Search Bar</h2>
-        <div className="moveButtonRight">
-            <button className="align_right" onClick={navigateToProfileACB}>Profile</button></div>
+        <h1>Search Bar</h1>
+        <div className="profileButton">
+            <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button></div>
         
-        <input placeholder={"Please type in min three characters"} onChange={userInputACB}/>
-        <button onClick={clickSearchACB}>Search</button>
+        <input className="input" placeholder={"Please type in min three characters"} onChange={userInputACB}/>
+        <button className="buttonDesign" onClick={clickSearchACB}>Search</button>
         
     </div>
     )

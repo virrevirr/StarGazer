@@ -1,6 +1,6 @@
 //funkar som dishSource.js
 
-import {API_KEY} from "./apiConfig.js";
+import {API_KEY} from "../apiConfig.js";
 
 
 function getJsonACB(resp){
