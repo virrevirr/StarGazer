@@ -1,14 +1,12 @@
-import { getWeatherDetails, searchPlaces } from "./starSource";
+import { getConstellationDetails, getMoonDetails, getNewsDetails, getWeatherDetails, searchPlaces } from "./starSource";
 import resolvePromise from "./resolvePromise"
 
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
-    weatherData: null,
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
-    currentWeatherPromiseState: {},
 
     addToWantToGo(locToAdd){
         this.wantToGo = [...this.wantToGo, locToAdd];
@@ -34,20 +32,50 @@ export default{
     },
 
     setCurrentLocation(location){
+
+        {/* KOMMENTERA TILLBAKA */}
         if (location === this.currentLocation || !location){
             return;
         }
-        this.currentLocation = location;
+        this.currentLocation = location
 
-        // är osäker på om weather bör kopplas här
-        const city = location.city;
-        this.getWeatherInfo(city);
+
+        {/* KOMMENTERA UT */}
+        /*this.currentLocation = {
+            city: "Paris",
+            state: "Sample State",
+            country: "United States",
+          };*/
     },  
 
-    getWeatherInfo(city){
-        // är osäker på om det här görs rätt
-        this.weatherData = getWeatherDetails(city);
-        console.log(this.weatherData)
+
+    weatherPromiseState: {},
+
+    searchWeatherByCity(city){
+        // liknande startSearch
+        resolvePromise(getWeatherDetails(city), this.weatherPromiseState);
+    },
+
+    
+    moonPromiseState: {},
+
+    searchMoonByCity(){
+        // liknande startSearch
+        resolvePromise(getMoonDetails(), this.moonPromiseState);
+    },
+
+    newsPromiseState: {},
+
+    searchNewsByCountry(countryCode){
+        // liknande startSearch
+        resolvePromise(getNewsDetails(countryCode), this.newsPromiseState);
+    },
+
+    starPromiseState: {},
+
+    searchConstellation(){
+        // liknande startSearch
+        resolvePromise(getConstellationDetails(), this.starPromiseState);
     },
 
 
@@ -55,10 +83,12 @@ export default{
     searchResultsPromiseState: {},
 
     setSearch(queryText){ // används i searchPresenter för att koppla till 
-        this.searchParams = queryText;
+        this.searchParams = queryText
     },
 
     startSearch(searchParams){
+
+        {/* KOMMENTERA TILLBAKA */}
         resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     }
 }
