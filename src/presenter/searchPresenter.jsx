@@ -3,6 +3,7 @@
 
 import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
+import countries from "/src/countries.jsx"
 
 export default function Search(props){
     function setSearchInputACB(newInput){
@@ -13,11 +14,24 @@ export default function Search(props){
         props.model.startSearch(props.model.searchParams);
     }
 
-    function handleCurrentLocationACB(input){
+    function onLocationClickACB(input){
         props.model.setCurrentLocation(input);
+
+        // gör även i profile on location click
+        props.model.searchWeatherByCity(input.city);
+        props.model.getMoon();
+
+        const countryToCode = countries[input.country].alpha2;
+        const languageToCode = countries[input.country].iso6391;
+        console.log("Country code", countryToCode);
+        console.log("Language code", languageToCode);
+        props.model.searchNewsByCountry(languageToCode, countryToCode);
+        props.model.searchConstellation();
     }
 
     function promiseData(promiseState){
+
+        {/* Code with api fetch */}
         if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
@@ -27,8 +41,13 @@ export default function Search(props){
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
             return <SearchResultsView searchResult = {props.model.searchResultsPromiseState.data}
-            onLocationClick = {handleCurrentLocationACB}/>;
+            onLocationClick = {onLocationClickACB}/>;
         }
+
+        {/* Test code without api fetch */}
+        /*return <SearchResultsView
+            onLocationClick = {onLocationClickACB}
+             />;*/
     }
 
     return (

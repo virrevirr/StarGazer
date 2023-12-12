@@ -1,17 +1,7 @@
 //funkar som dishSource.js
 
-import {API_LOCATION_KEY, API_WEATHER_KEY} from "./apiConfig.js";
+import {API_KEY} from "./apiConfig.js";
 
-//API search for places
-export function searchPlaces(searchParams){
-    const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString(); //blir rätt format nu
-    const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
-    
-    return fetch(source, {
-        method:"GET", 
-        headers: {'X-Mashape-Key': API_LOCATION_KEY}
-    }).then(getJsonACB).then(keepArrayACB);
-}
 
 function getJsonACB(resp){
     if(!resp.ok){
@@ -19,16 +9,23 @@ function getJsonACB(resp){
     }
     return resp.json();
 }
-function keepArrayACB(searchInput){ // kanske måste göra så att resultatet kommer på ett format som
+function keepArrayACB(searchInput){ 
     return searchInput;
 }
 
-export function getPlaceDetails(location){
-    return location;
+
+//API search for places
+export function searchPlaces(searchParams){
+
+    /* Code with api fetch */
+    const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString(); //blir rätt format nu
+    const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
+    
+    return fetch(source, {
+        method:"GET", 
+        headers: {'X-Mashape-Key': API_KEY}
+    }).then(getJsonACB).then(keepArrayACB);
 }
-
-console.log()
-
 
 
 //API weather
@@ -38,9 +35,41 @@ export function getWeatherDetails(location){
     
     return fetch(source, {
         method:"GET", 
-        headers: {'X-Mashape-Key': API_WEATHER_KEY}
+        headers: {'X-Mashape-Key': API_KEY}
     }).then(getJsonACB).then(keepArrayACB);
 }
 
 
-console.log()
+//API news
+export function getNewsDetails(languageCode, countryCode){
+    const queryPlace = new URLSearchParams({keyword: 'astronomy', lr: languageCode+'-'+countryCode}).toString();
+    const source = 'https://google-news13.p.rapidapi.com/search?' + queryPlace;
+    
+    return fetch(source, {
+        method:"GET", 
+        headers: {'X-Mashape-Key': API_KEY}
+    }).then(getJsonACB).then(keepArrayACB);
+}
+
+//API moon
+export function getMoonDetails(){
+    // using budapest as a default because the moon phase is the same all over the world
+    const queryPlace = new URLSearchParams({city:"budapest"}).toString();
+    const source = 'https://moon-phase1.p.rapidapi.com/?' + queryPlace;
+    
+    return fetch(source, {
+        method:"GET", 
+        headers: {'X-Mashape-Key': API_KEY}
+    }).then(getJsonACB).then(keepArrayACB);
+}
+
+//API constellation
+export function getConstellationDetails(){
+    const queryPlace = new URLSearchParams({constellation:"orion"}).toString();
+    const source = 'https://stars-by-api-ninjas.p.rapidapi.com/v1/stars?' + queryPlace;
+    
+    return fetch(source, {
+        method:"GET", 
+        headers: {'X-Mashape-Key': API_KEY},
+    }).then(getJsonACB).then(keepArrayACB);
+}
