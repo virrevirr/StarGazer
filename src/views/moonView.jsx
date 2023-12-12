@@ -3,7 +3,7 @@ function MoonView(props){
     console.log(props.moonData)
     return (
         <div className="mainContainer">
-            <h1>Moon</h1> 
+            <h2>Moon</h2> 
 
             <h3>Moon phase</h3> 
             <p>{props.moonData.moon.phase}</p>

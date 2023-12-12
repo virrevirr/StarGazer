@@ -33,18 +33,18 @@ export default{
 
     setCurrentLocation(location){
 
-        {/* KOMMENTERA TILLBAKA */}
+        {/* Code with api fetch */}
         if (location === this.currentLocation || !location){
             return;
         }
         this.currentLocation = location
 
 
-        {/* KOMMENTERA UT */}
+        {/* Test code without api fetch */}
         /*this.currentLocation = {
             city: "Paris",
             state: "Sample State",
-            country: "United States",
+            country: "France",
           };*/
     },  
 
@@ -59,16 +59,16 @@ export default{
     
     moonPromiseState: {},
 
-    searchMoonByCity(){
+    getMoon(){
         // liknande startSearch
         resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
     newsPromiseState: {},
 
-    searchNewsByCountry(countryCode){
+    searchNewsByCountry(languageCode, countryCode){
         // liknande startSearch
-        resolvePromise(getNewsDetails(countryCode), this.newsPromiseState);
+        resolvePromise(getNewsDetails(languageCode, countryCode), this.newsPromiseState);
     },
 
     starPromiseState: {},
@@ -88,7 +88,7 @@ export default{
 
     startSearch(searchParams){
 
-        {/* KOMMENTERA TILLBAKA */}
+        {/* Code with api fetch */}
         resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     }
 }

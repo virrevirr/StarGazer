@@ -19,17 +19,19 @@ export default function Search(props){
 
         // gör även i profile on location click
         props.model.searchWeatherByCity(input.city);
-        props.model.searchMoonByCity();
+        props.model.getMoon();
 
-        const countryToCode = countries[input.country];
+        const countryToCode = countries[input.country].alpha2;
+        const languageToCode = countries[input.country].iso6391;
         console.log("Country code", countryToCode);
-        props.model.searchNewsByCountry(countryToCode);
+        console.log("Language code", languageToCode);
+        props.model.searchNewsByCountry(languageToCode, countryToCode);
         //props.model.searchConstellation();
     }
 
     function promiseData(promiseState){
 
-        {/* KOMMENTERA TILLBAKA */}
+        {/* Code with api fetch */}
         if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
@@ -42,7 +44,7 @@ export default function Search(props){
             onLocationClick = {onLocationClickACB}/>;
         }
 
-        {/* KOMMENTERA UT */}
+        {/* Test code without api fetch */}
         /*return <SearchResultsView
             onLocationClick = {onLocationClickACB}
              />;*/

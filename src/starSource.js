@@ -5,7 +5,7 @@ import {API_KEY} from "./apiConfig.js";
 //API search for places
 export function searchPlaces(searchParams){
 
-    {/* KOMMENTERA TILLBAKA */}
+    /* Code with api fetch */
     const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString(); //blir rätt format nu
     const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
     
@@ -40,8 +40,8 @@ export function getWeatherDetails(location){
 
 
 //API news
-export function getNewsDetails(countryCode){
-    const queryPlace = new URLSearchParams({keyword: 'astronomy', lr: 'sv-'+countryCode}).toString();
+export function getNewsDetails(languageCode, countryCode){
+    const queryPlace = new URLSearchParams({keyword: 'astronomy', lr: languageCode+'-'+countryCode}).toString();
     const source = 'https://google-news13.p.rapidapi.com/search?' + queryPlace;
     
     return fetch(source, {
@@ -52,6 +52,7 @@ export function getNewsDetails(countryCode){
 
 //API moon
 export function getMoonDetails(){
+    // using budapest as a default because the moon phase is the same all over the world
     const queryPlace = new URLSearchParams({city:"budapest"}).toString();
     const source = 'https://moon-phase1.p.rapidapi.com/?' + queryPlace;
     

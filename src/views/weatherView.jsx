@@ -5,7 +5,6 @@ function WeatherView(props){
         for (let i = 0; i < 3; i++) {
             weatherDays.push(
                 <div key={i}>
-                    <h2> Weather </h2>
                     <h3>{props.weatherData.forecast.forecastday[i].date}</h3>
                     <p>{props.weatherData.forecast.forecastday[i].day.condition.text}</p>
                     <img src={props.weatherData.forecast.forecastday[i].day.condition.icon} alt={`Weather icon for ${props.weatherData.forecast.forecastday[i].date}`} />
@@ -29,6 +28,7 @@ function WeatherView(props){
 
     return (
         <div className="mainContainer">
+            <h2> Weather </h2>
             {weatherByDay()}
         </div>
     );

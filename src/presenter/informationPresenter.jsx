@@ -78,8 +78,7 @@ export default function Information(props){
 
         {promiseNewsData(props.model.newsPromiseState)}
 
-        {/*
-        Ett försök på att rendera stjärnbilder som inte funkat så bra
+        {/*Ett försök på att rendera stjärnbilder som inte funkat så bra
         promiseStarData(props.model.starPromiseState)*/}
 
         </div>

@@ -21,7 +21,7 @@ function NewsView(props){
 
     return (
         <div className="mainContainer">
-            <h1> Local astronomical news </h1>
+            <h2> Local astronomical news </h2>
             {news()}
         </div>
     );

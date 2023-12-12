@@ -2,31 +2,31 @@
 
 function SearchResultsView(props){
 
-    {/* KOMMENTERA UT */}
-    const searchResult = {
+    {/* Test code without api fetch */}
+    /*const searchResult = {
         city: "Paris",
         state: "Sample State",
-        country: "United States"
-    }
+        country: "France"
+    }*/
 
-    {/* KOMMENTERA UT 
-    function onLocationClickACB(event){
+    {/* Test code without api fetch */}
+    /*function onLocationClickACB(event){
         console.log(window.location.hash= "#/information");
         props.onLocationClick(searchResult);
-    };*/}
+    };*/
 
 
     return(
        <div>
-            {/* KOMMENTERA TILLBAKA */}
+            {/* Code with api fetch */}
             {props.searchResult.map(renderResultCB)}
             
-            {/* KOMMENTERA UT */}
+            {/* Test code without api fetch */}
             {/*<span key={searchResult} onClick={onLocationClickACB}>
                 {/*render each city with an image and its title*/}
                 {/* result.query ska vara samma som result.id, query = namnet som staden enligt API?*/}
                 {/*<div>
-                    <p>{searchResult.city + ", " + searchResult.country}</p>
+                    <p>{searchResult.city + ", " + searchResult.state +", "+ searchResult.country}</p>
                 </div>
             </span>*/}
 
