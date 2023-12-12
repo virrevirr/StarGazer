@@ -26,7 +26,7 @@ export default function Search(props){
         console.log("Country code", countryToCode);
         console.log("Language code", languageToCode);
         props.model.searchNewsByCountry(languageToCode, countryToCode);
-        props.model.searchConstellation();
+        //props.model.searchConstellation();
     }
 
     function promiseData(promiseState){
