@@ -1,3 +1,6 @@
+
+// similar to detailsPresenter but for information for a city
+
 import InformationView from "../views/informationView.jsx";
 import WeatherView from "../views/weatherView.jsx";
 import MoonView from "../views/moonView.jsx";
