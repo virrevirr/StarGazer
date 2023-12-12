@@ -47,17 +47,19 @@ function LogInView(props){
 
     return(
         <div className={"mainContainer"}> 
-            <div>Log in or sign up</div>
             <br/>
             <div className={"loginContainer"}> 
+                <h2>Log in or sign up</h2>
                 <input class="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
                 <label class="errorLable">{emailError.value}</label>
                 <br/>
                 <input class="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
                 <label class="errorLable">{passwordError.value}</label>
                 <br/>
-                <button class = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
-                <button class = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
+                <div className="centerButton"> {/*eller flexParent*/}
+                    <button class = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
+                    <button class = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
+                </div>
             </div>
         </div>
     )
