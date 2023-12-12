@@ -51,6 +51,7 @@ export default function Information(props){
     }
 
     function promiseStarData(promiseState){
+        {/* Gör om */}
         if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
@@ -79,7 +80,7 @@ export default function Information(props){
 
         {promiseNewsData(props.model.newsPromiseState)}
 
-        {promiseStarData(props.model.starPromiseState)}
+        {/*promiseStarData(props.model.starPromiseState)*/}
 
         </div>
         );
