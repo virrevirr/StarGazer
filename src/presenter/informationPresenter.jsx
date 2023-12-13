@@ -5,7 +5,6 @@ import InformationView from "../views/informationView.jsx";
 import WeatherView from "../views/weatherView.jsx";
 import MoonView from "../views/moonView.jsx";
 import NewsView from "../views/newsView.jsx";
-//import StarView from "../views/starView.jsx";
 
 //model is starModel
 export default function Information(props){
