@@ -1,16 +1,18 @@
 /* css */
 
+
 .debug {
     border-style: solid;
 }
 
 /*url for the background image later*/
 .body{
-    background-image: url('images/space_background.png');
+    background-image: url('space_background.png');
     background-size: cover;
     background-position: center;
     margin:0;
 }
+
 
 .flexParent {
     display: flex; /* Makes the element a flex container, enabling FlexBox layout */
