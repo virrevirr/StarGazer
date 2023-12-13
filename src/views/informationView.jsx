@@ -21,7 +21,6 @@ function InformationView(props){
                     <button onClick={wantToGoACB} disabled={props.isLocVisited}>I want to go here</button>
                     <button onClick={visitedACB}>I have been here</button>
                 </div>
-                {/*MoonPhase - figure out how to do this*/} 
             </span>
 
             <span>

@@ -1,4 +1,4 @@
-function SearchConstellationView(props){
+function FindConstellationView(props){
     
     function userInputACB(event){
         console.log("search for ", event.target.value);
@@ -26,31 +26,27 @@ function SearchConstellationView(props){
         <button onClick={clickSearchACB}>Search</button>
     </div>
     )
-};
 
-export default SearchConstellationView;
-
-
-
-function ResultsConstellationView(props){
-    console.log("props", props);
-
-    return(
-       <div className="searchResultsContainer">
-            {props.searchResult.map(renderResultCB)}
-       </div> 
-    );
-
-    function renderResultCB(result){
-        function onConstellationClickACB(event){
-            window.location.hash= "#/constellation";
-            props.onConstellationClick(result);
-        };
-
-        return (
-            <span key={result} onClick={onConstellationClickACB}>
-                    <p>{result.constellation}</p>
-            </span>
+    function ResultsConstellationView(props){
+        console.log("props", props);
+    
+        return(
+           <div className="searchResultsContainer">
+                {props.searchResult.map(renderResultCB)}
+           </div> 
         );
-    };
-}
+    
+        function renderResultCB(result){
+            function onConstellationClickACB(event){
+                window.location.hash= "#/constellation";
+                props.onConstellationClick(result);
+            };
+    
+            return (
+                <span key={result} onClick={onConstellationClickACB}>
+                        <p>{result.constellation}</p>
+                </span>
+            );
+        };
+    }
+};

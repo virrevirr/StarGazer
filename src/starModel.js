@@ -96,14 +96,9 @@ export default{
         this.currentConstellation = constellation
     },
 
-    searchConstellationParams: {},
-    searchConstellationPromiseState: {},
+    constellationPromiseState: {},
 
-    setSearchConstellation(queryText){ // används i searchPresenter för att koppla till 
-        this.searchConstellationParams = queryText
-    },
-
-    startSearchConstellation(searchConstellationParams){
-        resolvePromise(getConstellationDetails(searchConstellationParams), this.searchConstellationPromiseState);
+    startSearchConstellation(constellation){
+        resolvePromise(getConstellationDetails(constellation), this.searchConstellationPromiseState);
     }
 }
