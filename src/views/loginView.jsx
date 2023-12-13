@@ -1,64 +1,30 @@
 /* code snippets taken from https://clerk.com/blog/building-a-react-login-page-template */
-import { ref } from 'vue';
 import "../style.css";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 function LogInView(props){
-    const emailError = ref("");
-    const passwordError = ref("");
-    const email = ref("");
-    const password = ref("");
+  
+    function authGoogleACB() {
+        const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
 
-    function loginACB(event) {
-        props.email= email.value
-        props.password= password.value     
-        console.log("Button clicked for login");
-    }
-    function signupACB(event) { 
-        console.log("Button clicked for signup");
-    }
-    function emailConfirmACB(event) {
-        email.value = event.target.value;
-        emailError.value = "";
-        if ("" === email.value) {
-            emailError.value = "Please enter your email";
-            return;
-        }
-        if (!email.includes("@")) {
-            emailError.value = "Please enter a valid email address";
-            return;
-        }
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            emailError.value = "Please enter a valid email";
-            return;
-        }
-        console.log("Email confirmed");
-    
-    
-    }
-    function passwordConfirmACB(event) {
-        password.value = event.target.value;
-        passwordError.value = "";
-        if ("" === password.value) {
-            passwordError.value = "Please enter your password";
-            return
-        }
-        console.log("Password confirmed");
-     
-    }
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("User signed in with Google:", user);
+          // You can redirect or perform additional actions here
+        })
+        .catch((error) => {
+          console.error("Google authentication failed:", error.message);
+        });
+      }
 
     return(
         <div className="mainContainer"> 
-            <div>Log in or sign up</div>
+            <img className= "logo" src= {'src/logga.png'} height = {"200"}></img>
             <br/>
             <div className="loginContainer"> 
-                <input className="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
-                <label className="errorLable">{emailError.value}</label>
-                <br/>
-                <input className="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
-                <label className="errorLable">{passwordError.value}</label>
-                <br/>
-                <button className = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
-                <button className = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
+                <button className = "buttonDesign" onClick= {authGoogleACB} >Sign in</button>
             </div>
         </div>
     )
