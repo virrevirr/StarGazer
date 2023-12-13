@@ -5,7 +5,6 @@ import InformationView from "../views/informationView.jsx";
 import WeatherView from "../views/weatherView.jsx";
 import MoonView from "../views/moonView.jsx";
 import NewsView from "../views/newsView.jsx";
-import ConstellationView from "../views/constellationView.jsx";
 
 //model is starModel
 export default function Information(props){
@@ -49,23 +48,8 @@ export default function Information(props){
                 if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
-            console.log()
+            console.log("stars", promiseState.data);
             return (<NewsView newsData = {promiseState.data}/> );
-        }
-    }
-
-    function promiseConstellationData(promiseState){
-        {/* Gör om */}
-        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
-            return "no data";
-        }  
-        else{ // if promise is true, check data and error. 
-            if(!promiseState.data){
-                if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
-                return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
-            }
-            else{
-            return (<ConstellationView constellationData = {promiseState.data}/> );}
         }
     }
 
@@ -84,8 +68,6 @@ export default function Information(props){
         {promiseMoonData(props.model.moonPromiseState)}
 
         {promiseNewsData(props.model.newsPromiseState)}
-
-        {promiseConstellationData(props.model.constellationPromiseState)}
 
         </div>
         );
