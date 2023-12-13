@@ -18,8 +18,7 @@ export default function Constellation(props){
 
     function onLocationClickACB(input){
         props.model.setCurrentConstellation(input);
-        props.model.searchNewsByCountry(languageToCode, countryToCode);
-        //props.model.searchConstellation();
+        props.model.searchConstellation();
     }
 
     function promiseData(promiseState){
@@ -36,11 +35,6 @@ export default function Constellation(props){
             return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
             onLocationClick = {onLocationClickACB}/>;
         }
-
-        {/* Test code without api fetch */}
-        /*return <SearchResultsView
-            onLocationClick = {onLocationClickACB}
-             />;*/
     }
 
     return (
@@ -49,7 +43,7 @@ export default function Constellation(props){
             text = {props.model.searchParams}
             userInput= {setSearchInputACB} //setSearch from model
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
-/> {promiseData(props.model.searchResultsPromiseState)}
+            /> {promiseData(props.model.searchResultsPromiseState)}
             
         </div>
         );
