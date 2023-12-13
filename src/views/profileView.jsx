@@ -17,7 +17,7 @@ function ProfileView(props){
                 </div>);
     }   
     return (
-        <div className="mainContainer">
+        <div>
             <span>
                 <p>Profile Name</p>
                 <button onClick={logOutACB}>Log out</button>
