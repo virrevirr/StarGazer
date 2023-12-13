@@ -18,7 +18,7 @@ export default function Profile(props){
         props.model.searchNewsByCountry(languageToCode, countryToCode);
         //props.model.searchConstellation();
     }
-    return (<ProfileView 
+    return (<ProfileView
         onLocationClick={clickedLocationACB}
         wantToGoPlaces={props.model.wantToGo || []}
         haveVisitedPlaces={props.model.haveVisited || []}/>); 

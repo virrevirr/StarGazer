@@ -11,12 +11,15 @@ body{
     background-size: cover;
     background-position: center;
     margin:0;
+    
+    
 }
 
 
 .flexParent {
     display: flex; /* Makes the element a flex container, enabling FlexBox layout */
-    flex-direction: row; /* Items will be laid out in a row */
+    /*flex-direction: row;  Items will be laid out in a row */
+    justify-content: center;
     height: 100%; /*Set the height to 100% to cover the parent container*/
 }
 
@@ -33,7 +36,10 @@ body{
     width: 100%; 
     vertical-align: top; /* Aligns at the top */
   }
+.mainContent{
 
+
+}
 .mainContainer {
     display: flex;
     position: absolute;
@@ -101,14 +107,9 @@ body{
 }
 
 .searchContainer {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    height: 100%; 
-    width: 100%;
-    top: 0; /*50%*/
-    left: 0; /*50%*/
-    margin: 0; /* 50 0 -50 px*/
+    height: 30%; 
     text-align: center;
     align-items: center;
     justify-content:center;
@@ -119,11 +120,22 @@ h1{
     position: relative;
     margin-top: -100px;
     color: white;
-
 }
 
 h2{
     color: white;
+}
+
+.searchResultsContainer {
+  
+    display: flex;
+    flex-basis: 40%;
+    border: 2px solid;
+    flex-direction: column;
+    justify-content: center;
+    column-gap: 20px;
+    color: aliceblue;
+    z-index: 1;
 }
 
 /* Media query for narrow screens */

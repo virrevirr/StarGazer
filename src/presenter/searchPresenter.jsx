@@ -40,7 +40,7 @@ export default function Search(props){
                 if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
-            return <SearchResultsView searchResult = {props.model.searchResultsPromiseState.data}
+            return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
             onLocationClick = {onLocationClickACB}/>;
         }
 
@@ -56,8 +56,8 @@ export default function Search(props){
             text = {props.model.searchParams}
             userInput= {setSearchInputACB} //setSearch from model
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
-            /> 
-            {promiseData(props.model.searchResultsPromiseState)}
+/> {promiseData(props.model.searchResultsPromiseState)}
+            
         </div>
         );
 }
