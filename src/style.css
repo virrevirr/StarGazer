@@ -130,6 +130,10 @@ h2{
     color: white;
 }
 
+p{
+    color: white;
+}
+
 .searchResultsContainer {
   
     display: flex;

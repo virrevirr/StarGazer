@@ -6,7 +6,7 @@ function ConstellationView(props){
         console.log("star", star)
         return (
             <span key={star.name}>
-                    <h1>{star.name}</h1>
+                    <p>{star.name}</p>
             </span>
         );}
 
