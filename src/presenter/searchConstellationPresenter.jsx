@@ -4,29 +4,20 @@
 
 import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
-import countries from "/src/countries.jsx"
+import starConstellations from "/src/starConstellations.jsx"
 
 export default function Constellation(props){
 
     function setSearchInputACB(newInput){
-        props.model.setSearch(newInput);
+        props.model.setSearchConstellations(newInput);
     }
 
     function searchNowACB(){
-        props.model.startSearch(props.model.searchParams);
+        props.model.startSearchConstellation(props.model.searchParams);
     }
 
     function onLocationClickACB(input){
-        props.model.setCurrentLocation(input);
-
-        // gör även i profile on location click
-        props.model.searchWeatherByCity(input.city);
-        props.model.getMoon();
-
-        const countryToCode = countries[input.country].alpha2;
-        const languageToCode = countries[input.country].iso6391;
-        console.log("Country code", countryToCode);
-        console.log("Language code", languageToCode);
+        props.model.setCurrentConstellation(input);
         props.model.searchNewsByCountry(languageToCode, countryToCode);
         //props.model.searchConstellation();
     }
