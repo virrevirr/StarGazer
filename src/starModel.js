@@ -71,11 +71,11 @@ export default{
         resolvePromise(getNewsDetails(languageCode, countryCode), this.newsPromiseState);
     },
 
-    starPromiseState: {},
+    constellationPromiseState: {},
 
     searchConstellation(){
         // liknande startSearch
-        resolvePromise(getConstellationDetails(), this.starPromiseState);
+        resolvePromise(getConstellationDetails(), this.constellationPromiseState);
     },
 
 

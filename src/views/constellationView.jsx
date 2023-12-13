@@ -1,23 +1,23 @@
 // försök på stjärnbilder som inte funkat så bra
 
-function StarView(props){
-    console.log("stars",props.starData[0].constellation)
+function ConstellationView(props){
+    console.log("stars",props.constellationData[0].constellation)
 
     function starsInConstellation(){
-        for (let i = 0; i < props.starData.length; i++) {
-            return props.starData.constellation[i]
+        for (let i = 0; i < props.constellationData.length; i++) {
+            return props.constellationData.constellation[i]
         }
     }
 
     return (
         <div className="mainContainer">
-            <h1>{props.starData.constellation}</h1> 
+            <h1>{props.constellationData.constellation}</h1> 
 
             <div>
-                <img src = {"https://en.wikipedia.org/wiki/"+props.starData[0].constellation+
-                "_(constellation)#/media/File:"+props.starData.constellation[0]+"_IAU.svg"} height = {"200"} />
+                <img src = {"https://en.wikipedia.org/wiki/"+props.constellationData[0].constellation+
+                "_(constellation)#/media/File:"+props.constellationData.constellation[0]+"_IAU.svg"} height = {"200"} />
             </div>
-            
+
             <div>
                 <h3>Stars included</h3> 
                 <p>{starsInConstellation}</p> 
@@ -27,4 +27,4 @@ function StarView(props){
     );
 }
 
-export default StarView;
+export default ConstellationView;
