@@ -6,8 +6,9 @@
 }
 
 /*url for the background image later*/
-.body{
-    background-image: url('space_background.png');
+body{
+    background-image: url('src/space_background.png');
+    /*background-color: aqua;*/
     background-size: cover;
     background-position: center;
     margin:0;
