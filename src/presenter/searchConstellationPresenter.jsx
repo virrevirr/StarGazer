@@ -13,7 +13,7 @@ export default function SearchConstellation(props){
     }
 
     function searchNowACB(){
-        props.model.startSearchConstellation(props.model.searchParams);
+        props.model.startSearchConstellation(props.model.searchConstellationParams);
     }
 
     function onConstellationClickACB(input){
@@ -28,8 +28,7 @@ export default function SearchConstellation(props){
                 if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
-            return <ResultsConstellationView className="in promise state" 
-            searchResult = {props.model.searchConstellationPromiseState.data}
+            return <ResultsConstellationView className="in promise state" searchResult = {props.model.searchConstellationPromiseState.data}
             onConstellationClick = {onConstellationClickACB}/>;
         }
     }

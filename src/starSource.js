@@ -65,7 +65,7 @@ export function getMoonDetails(){
 
 //API constellation
 export function getConstellationDetails(inputConstellation){
-    const queryPlace = new URLSearchParams({constellation:"orion"}).toString();
+    const queryPlace = new URLSearchParams({constellation:inputConstellation}).toString();
     const source = 'https://stars-by-api-ninjas.p.rapidapi.com/v1/stars?' + queryPlace;
     
     return fetch(source, {
