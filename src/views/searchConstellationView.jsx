@@ -1,6 +1,6 @@
 // "home sidan" där man ska söka på en constellation. knapp för profilen och "sök".
 
-function SearchFormView(props){
+function SearchConstellationView(props){
     
     function userInputACB(event){
         console.log("search for ", event.target.value);
@@ -20,20 +20,14 @@ function SearchFormView(props){
     return(
     <div>
         <div className="moveButtonRight">
-            <button className="align_right" onClick={navigateToProfileACB}>Profile</button></div>
+            <button className="align_right" onClick={navigateToProfileACB}>Profile</button>
+        </div>
         
         <input placeholder={"Search for constellation"} onChange={userInputACB}/>
-        
-        <button onClick={clickSearchACB}>
 
-            {/* Lägg till ett förstoringsglas istället? */}
-            Search
-            
-            </button>
-        
+        <button onClick={clickSearchACB}>Search</button>
     </div>
     )
-    
 };
 
-export default SearchFormView;
+export default SearchConstellationView;

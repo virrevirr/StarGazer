@@ -1,7 +1,7 @@
 // försök på stjärnbilder som inte funkat så bra
 
 function ConstellationView(props){
-    console.log("stars",props.constellationData[0].constellation)
+    console.log("stars",props.constellationData)
 
     function starsInConstellation(){
         for (let i = 0; i < props.constellationData.length; i++) {

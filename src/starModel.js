@@ -71,13 +71,6 @@ export default{
         resolvePromise(getNewsDetails(languageCode, countryCode), this.newsPromiseState);
     },
 
-    constellationPromiseState: {},
-
-    searchConstellation(){
-        // liknande startSearch
-        resolvePromise(getConstellationDetails(), this.constellationPromiseState);
-    },
-
 
     searchParams: {},
     searchResultsPromiseState: {},
@@ -90,5 +83,28 @@ export default{
 
         {/* Code with api fetch */}
         resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+    },
+
+
+
+    currentConstellation: null,
+    currentConstellationPromiseState: {},
+
+    setCurrentConstellation(constellation){
+        if (constellation === this.currentConstellation || !constellation){
+            return;
+        }
+        this.currentConstellation = constellation
+    },
+
+    searchConstellationParams: {},
+    searchConstellationPromiseState: {},
+
+    setSearchConstellation(queryText){ // används i searchPresenter för att koppla till 
+        this.searchConstellationParams = queryText
+    },
+
+    startSearchConstellation(searchConstellationParams){
+        resolvePromise(getConstellationDetails(searchConstellationParams), this.searchConstellationPromiseState);
     }
 }
