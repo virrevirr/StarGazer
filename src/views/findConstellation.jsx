@@ -54,5 +54,3 @@ function ResultsConstellationView(props){
         );
     };
 }
-
-export default ResultsConstellationView;
