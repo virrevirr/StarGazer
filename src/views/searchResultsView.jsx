@@ -45,7 +45,7 @@ function SearchResultsView(props){
                 {/*render each city with an image and its title*/}
                 {/* result.query ska vara samma som result.id, query = namnet som staden enligt API?*/}
                 <div>
-                    <p>{result.city + ", " + result.state +", " + result.country}</p>
+                    <p>{result.city + ", " + result.state +", " + result.country}</p> {/* lägg till debug text vit */}
                 </div>
             </span>
         );
