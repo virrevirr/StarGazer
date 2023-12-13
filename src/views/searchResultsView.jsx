@@ -1,16 +1,15 @@
 // search results
 
 function SearchResultsView(props){
+    console.log("props", props);
 
     {/* Test code without api fetch */}
     /*const searchResult = {
         city: "Paris",
         state: "Sample State",
         country: "France"
-    }*/
-
-    {/* Test code without api fetch */}
-    /*function onLocationClickACB(event){
+    
+    function onLocationClickACB(event){
         console.log(window.location.hash= "#/information");
         props.onLocationClick(searchResult);
     };*/
@@ -37,7 +36,7 @@ function SearchResultsView(props){
 
     function renderResultCB(result){
         function onLocationClickACB(event){
-            console.log(window.location.hash= "#/information");
+            window.location.hash= "#/information";
             props.onLocationClick(result);
         };
 
