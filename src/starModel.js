@@ -87,18 +87,9 @@ export default{
 
 
 
-    currentConstellation: null,
-
-    setCurrentConstellation(constellation){
-        if (constellation === this.currentConstellation || !constellation){
-            return;
-        }
-        this.currentConstellation = constellation
-    },
-
     constellationPromiseState: {},
 
-    startSearchConstellation(constellation){
-        resolvePromise(getConstellationDetails(constellation), this.searchConstellationPromiseState);
-    }
+    fetchConstellation(constellation){
+        resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
+    },
 }

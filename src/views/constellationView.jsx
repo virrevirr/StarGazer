@@ -1,26 +1,29 @@
 // försök på stjärnbilder som inte funkat så bra
 
 function ConstellationView(props){
-    console.log("stars",props.constellationData)
+    console.log("constellation",props.constellationData)
+    function starsInConstellationCB(star){
+        console.log("star", star)
+        return (
+            <span key={star.name}>
+                    <h1>{star.name}</h1>
+            </span>
+        );}
 
-    function starsInConstellation(data){
-        for (let i = 0; i < data.length; i++) {
-            return data[i].name;
-        }
-    }
+        console.log("url", props.constellationUrl)
 
     return (
         <div className="mainContainer">
             <h1>{props.constellationData[0].constellation}</h1> 
 
             <div>
-                <img src = {"https://en.wikipedia.org/wiki/"+props.constellationData[0].constellation+
-                "_(constellation)#/media/File:"+props.constellationData[0].constellation+"_IAU.svg"} height = {"200"} />
+                <img src = {props.constellationUrl}
+                height = {"500"} />
             </div>
 
             <div>
-                <h3>Stars included</h3> 
-                <p>{starsInConstellation(props.constellationData)}</p> 
+                <h1>Stars included</h1> 
+                {props.constellationData.map(starsInConstellationCB)}
             </div>
         
         </div>

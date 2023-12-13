@@ -47,7 +47,7 @@ export function makeRouter(model){
             component:  <Constellation model={model}/>, 
         },
         {
-            path: "/searchConstellation", 
+            path: "/allConstellation", 
             component:  <AllConstellations model={model}/>, 
         }
     ]});

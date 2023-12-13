@@ -12,7 +12,7 @@ function AllConstellationsView(props){
         </div>
         
         <div className="searchResultsContainer">
-                {props.searchResult.map(renderResultCB)}
+                {Object.keys(props.allConstellations).map(renderResultCB)}
         </div> 
 
     </div>
@@ -20,15 +20,13 @@ function AllConstellationsView(props){
 
     function renderResultCB(constellation){
         function onConstellationClickACB(event){
-            
+            props.onConstellationClick(constellation);
             window.location.hash= "#/constellation";
-            props.onClick(constellation);
         };
-
         return (
             <span key={constellation} onClick={onConstellationClickACB}>
                     <p>{constellation}</p>
             </span>
-        );
+        );}
     }
-    }
+    export default AllConstellationsView;
