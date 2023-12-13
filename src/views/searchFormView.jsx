@@ -15,19 +15,26 @@ function SearchFormView(props){
     function navigateToProfileACB(){
         console.log("navigate to profile");
         window.location.hash = '#/profile';
+    }
+    
+    function navigateToLoginACB(){
+        console.log("navigate to login")
+        window.location.hash = '#/'
     };
 
     return(
     
     <div className="searchContainer">
         {/*Title of the page*/}
-        <h1>Search Bar</h1>
+        <h1>Find Cities for Your Stargazing Memories or Dream Destinations</h1>
         <div className="profileButton">
-            <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button></div>
-        
-        <input className="input" placeholder={"Please type in min three characters"} onChange={userInputACB}/>
+            <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
+        </div>
+        <input className="input" placeholder={"Search city"} onChange={userInputACB}/>
         <button className="buttonDesign" onClick={clickSearchACB}>Search</button>
-        
+        <div className="logOutButton">
+            <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
+        </div>
     </div>
     )
     
