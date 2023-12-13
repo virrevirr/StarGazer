@@ -65,11 +65,11 @@ export function getMoonDetails(){
 
 //API constellation
 export function getConstellationDetails(){
-    /*const queryPlace = new URLSearchParams({constellation:"orion"}).toString();
+    const queryPlace = new URLSearchParams({constellation:"orion"}).toString();
     const source = 'https://stars-by-api-ninjas.p.rapidapi.com/v1/stars?' + queryPlace;
     
     return fetch(source, {
         method:"GET", 
         headers: {'X-Mashape-Key': API_KEY},
-    }).then(getJsonACB).then(keepArrayACB);*/
+    }).then(getJsonACB).then(keepArrayACB);
 }
