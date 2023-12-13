@@ -11,10 +11,10 @@ function LogInView(props){
     function loginACB(event) {
         props.email= email.value
         props.password= password.value     
-        console.log(window.location.hash="#/search")
+        console.log("Button clicked for login");
     }
     function signupACB(event) { 
-        console.log("Button clicked");
+        console.log("Button clicked for signup");
     }
     function emailConfirmACB(event) {
         email.value = event.target.value;
@@ -47,26 +47,20 @@ function LogInView(props){
     }
 
     return(
-    <div>
-        <div className='body'>
-            <div className="mainContainer"> 
+        <div className="mainContainer"> 
+            <div>Log in or sign up</div>
+            <br/>
+            <div className="loginContainer"> 
+                <input className="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
+                <label className="errorLable">{emailError.value}</label>
                 <br/>
-                <div className="loginContainer"> 
-                    <h2>Log in or sign up</h2>
-                    <input class="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
-                    <label class="errorLable">{emailError.value}</label>
-                    <br/>
-                    <input class="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
-                    <label class="errorLable">{passwordError.value}</label>
-                    <br/>
-                    <div className="centerButton"> {/*eller flexParent*/}
-                        <button class = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
-                        <button class = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
-                    </div>
-                </div>
+                <input className="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
+                <label className="errorLable">{passwordError.value}</label>
+                <br/>
+                <button className = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
+                <button className = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
             </div>
         </div>
-    </div>
     )
 }
 
