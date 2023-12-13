@@ -1,12 +1,12 @@
-// Search presenter för stjärnbilderna, ska likna searchPresenter.jsx
-// importera listan från constellations.jsx
-// skicka listan till searchConstellationView.jsx
 
 import ResultsConstellationView from "../views/resultsConstellationView";
 import SearchConstellationView from "../views/searchConstellationView";
 import starConstellations from "/src/starConstellations.jsx"
 
-export default function SearchConstellation(props){
+export default function AllConstellations(props){
+// Search presenter för stjärnbilderna, ska likna searchPresenter.jsx
+// importera listan från constellations.jsx
+// skicka listan till searchConstellationView.jsx
 
     function setSearchInputACB(newInput){
         props.model.setSearchConstellation(newInput);

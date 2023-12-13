@@ -8,7 +8,7 @@ export default function Constellation(props){
 
     return (
         <ConstellationView
-            constellationData={props.model.currentConstellation}
+            constellationData={props.model}
         /> 
         );
 }

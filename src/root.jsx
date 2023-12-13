@@ -3,7 +3,7 @@ import Profile from "./presenter/profilePresenter.jsx";
 import Search from "./presenter/searchPresenter.jsx";
 import Information from "./presenter/informationPresenter.jsx";
 import Constellation from "./presenter/constellationPresenter.jsx";
-import SearchConstellation from "./presenter/searchConstellationPresenter.jsx";
+import AllConstellations from "./presenter/allConstellationsPresenter.jsx";
 import { createRouter, createWebHashHistory, RouterView} from "vue-router";
 
 
@@ -48,7 +48,7 @@ export function makeRouter(model){
         },
         {
             path: "/searchConstellation", 
-            component:  <SearchConstellation model={model}/>, 
+            component:  <AllConstellations model={model}/>, 
         }
     ]});
 }

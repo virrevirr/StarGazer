@@ -88,7 +88,6 @@ export default{
 
 
     currentConstellation: null,
-    currentConstellationPromiseState: {},
 
     setCurrentConstellation(constellation){
         if (constellation === this.currentConstellation || !constellation){
