@@ -1,6 +1,7 @@
 /* code snippets taken from https://clerk.com/blog/building-a-react-login-page-template */
 import { ref } from 'vue';
 import "../style.css";
+
 function LogInView(props){
     const emailError = ref("");
     const passwordError = ref("");
@@ -8,17 +9,17 @@ function LogInView(props){
     const password = ref("");
 
     function loginACB(event) {
-        //props.onLogin();
-        console.log("Button clicked");
-        console.log(window.location.hash="#/search")
+        props.email= email.value
+        props.password= password.value     
+        console.log("Button clicked for login");
     }
     function signupACB(event) { 
-        console.log("Button clicked");
+        console.log("Button clicked for signup");
     }
     function emailConfirmACB(event) {
-        const email = event.target.value;
+        email.value = event.target.value;
         emailError.value = "";
-        if ("" === email) {
+        if ("" === email.value) {
             emailError.value = "Please enter your email";
             return;
         }
@@ -31,41 +32,35 @@ function LogInView(props){
             return;
         }
         console.log("Email confirmed");
-        //props.validEmail(event.email);
+    
     
     }
     function passwordConfirmACB(event) {
-        const password = event.target.value;
+        password.value = event.target.value;
         passwordError.value = "";
-        if ("" === password) {
+        if ("" === password.value) {
             passwordError.value = "Please enter your password";
             return
         }
         console.log("Password confirmed");
-        //props.validPassword(event.password);  
+     
     }
 
     return(
-    <div>
-        <div className='body'>
-            <div className={"mainContainer"}> 
+        <div className="mainContainer"> 
+            <div>Log in or sign up</div>
+            <br/>
+            <div className="loginContainer"> 
+                <input className="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
+                <label className="errorLable">{emailError.value}</label>
                 <br/>
-                <div className={"loginContainer"}> 
-                    <h2>Log in or sign up</h2>
-                    <input class="input" placeholder="Enter email here" onChange={emailConfirmACB} value={email.value} />
-                    <label class="errorLable">{emailError.value}</label>
-                    <br/>
-                    <input class="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
-                    <label class="errorLable">{passwordError.value}</label>
-                    <br/>
-                    <div className="centerButton"> {/*eller flexParent*/}
-                        <button class = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
-                        <button class = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
-                    </div>
-                </div>
+                <input className="input" placeholder="Enter password here" onChange={passwordConfirmACB} value={password.value} />
+                <label className="errorLable">{passwordError.value}</label>
+                <br/>
+                <button className = "buttonDesign" onClick={loginACB} value={"Log in"} >Log in</button>
+                <button className = "buttonDesign" onClick={signupACB} value={"Sign up "} >Sign up</button>
             </div>
         </div>
-    </div>
     )
 }
 
