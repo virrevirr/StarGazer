@@ -27,7 +27,7 @@ function WeatherView(props){
 }
 
     return (
-        <div className="mainContainer">
+        <div>
             <h2> Weather </h2>
             {weatherByDay()}
         </div>

@@ -14,7 +14,7 @@ function InformationView(props){
 
 
     return (
-        <div className="mainContainer">
+        <div>
             <span>
                 <h1>{props.locationData.city +", "+ props.locationData.country}</h1> 
                 <div>
