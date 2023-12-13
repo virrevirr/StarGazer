@@ -8,7 +8,6 @@
 /*url for the background image later*/
 body{
     background-image: url('src/space_background.png');
-    /*background-color: aqua;*/
     background-size: cover;
     background-position: center;
     margin:0;
@@ -119,7 +118,12 @@ h1{
     margin-bottom: 100px;
     position: relative;
     margin-top: -100px;
+    color: white;
 
+}
+
+h2{
+    color: white;
 }
 
 /* Media query for narrow screens */
