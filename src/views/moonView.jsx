@@ -2,7 +2,7 @@
 function MoonView(props){
     console.log(props.moonData)
     return (
-        <div> {/* Lägg till class för att rendera moon som prototypen ELLER kanske i högra hörnet högst upp utan vit div-ram)*/}
+        <div> {/* Lägg till class för att rendera moon som prototypen */}
             <h2>Moon phase</h2> 
             <h3>{props.moonData.moon.phase}</h3>
             <img src={props.moonData.moon.img_flat} height={"100"}/>

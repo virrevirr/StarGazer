@@ -21,6 +21,9 @@ function InformationView(props){
         window.location.hash = '#/search'
     };
 
+    function navigateToAllConstellationsACB(){
+        window.location.hash = '#/allConstellations'
+    };
 
     return (
         <div>
@@ -39,10 +42,9 @@ function InformationView(props){
 
             <h1> {props.locationData.city +", "+ props.locationData.country} </h1> 
             
-            <div>  {/* Lägg till class för att rendera moon som prototypen ELLER kanske någon annans position där det ser bra ut)*/}
-                <h2>Constellations</h2>
-                <h3>Do you want to find constellations you have seen here?</h3>
-                <a href="#/allConstellation">Link to constellations</a> {/*Link to constellations*/}
+            <div>  {/* Lägg till class för att rendera constellation-länken som prototypen */}
+                <h2>Find constellations you have seen here</h2>
+                <button className="buttonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>
 
             <div className="logOutButton">

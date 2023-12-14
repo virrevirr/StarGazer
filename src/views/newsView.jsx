@@ -17,7 +17,7 @@ function NewsView(props){
 }
 
     return (
-        <div> {/* Lägg till class för att rendera news som prototypen ELLER utplacerad där det ser bra ut på skärmen */}
+        <div> {/* Lägg till class för att rendera news som prototypen*/}
             <h2> Local astronomical news </h2>
             <div>  {/* Lägg till class för att rendera dom 3 nyheterna bredvid varandra i kolumner (typ som grid) */}
                 {news()}
