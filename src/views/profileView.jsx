@@ -33,12 +33,12 @@ function ProfileView(props){
                 <h1>Profile Name</h1> {/* Funktionalitet: Lägg till den faktiska användarens namn här */}
             </div>
             
-            <table> {/* Lägg till class för att rendera kolumnerna bredvid varandra (som grid) */}
+            <table> {/* Lägg till class för att snygga till kolumnerna (alt. kom på en lösning som är bättre än att ha en table) */}
                 <tbody>
-                    <td>
+                    <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
                         <h1>Places I want to go</h1>
                         <ul>
-                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
+                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
                             {props.wantToGoPlaces.map(renderArrayACB)}
                         </ul>
                     </td>
