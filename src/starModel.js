@@ -6,17 +6,13 @@ export default{
 
     /* Funktionalitet: Gör om till en dictionary */
 
-    haveVisited: [], 
+    haveVisited: {}, 
     currentLocation: null, //Som currentDish, för att lägga till locations
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
 
     addToWantToGo(locToAdd){
         this.wantToGo = [...this.wantToGo, locToAdd];
-    },
-
-    addToSeen(constellation){
-        this.wantToGo = [...this.wantToGo, constellation];
     },
 
     removeFromWantToGo(locToRemove){
@@ -28,7 +24,11 @@ export default{
 
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
-        this.haveVisited = [...this.haveVisited, locToAdd]; /* Funktionalitet: Gör om till en dictionary */
+        this.haveVisited = { ...this.haveVisited, [locToAdd]: null }; /* Funktionalitet: Gör om till en dictionary */
+    },
+
+    addToSeen(constellationToAdd){
+        this.haveVisited = { ...this.haveVisited, [this.currentLocation]: constellationToAdd };
     },
 
     removeFromVisited(locToRemove){

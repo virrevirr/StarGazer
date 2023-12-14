@@ -12,6 +12,30 @@ function ProfileView(props){
         window.location.hash = '#/search'
     };
 
+    function renderDictACB(object){ 
+        /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
+        place = object[0]
+        constellations = [1]
+
+        function onLocationClickACB(event){
+            props.onLocationClick(place);
+            window.location.hash = '#/information'
+        };
+
+        function renderArrACB(constellation){
+            return(<span key={constellation}>
+                        {constellation}
+                    </span>);
+        };
+
+        return (<div>
+                    <span onClick={onLocationClickACB} key={place}>
+                        {place.city +", "+ place.state +", "+ place.country}
+                        {constellations.map(renderArrACB)}
+                    </span>
+                </div>);
+    }   
+
     function renderArrayACB(place){ 
         /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
         function onLocationClickACB(event){
@@ -19,9 +43,11 @@ function ProfileView(props){
             window.location.hash = '#/information'
         };
         return (<div>
-                    <span onClick={onLocationClickACB} key={place}>{place.city +", "+ place.state +", "+ place.country}</span>
+                    <span onClick={onLocationClickACB} key={place}>
+                        {place.city +", "+ place.state +", "+ place.country}
+                    </span>
                 </div>);
-    }   
+    } 
 
     return (
         <div>
@@ -49,7 +75,7 @@ function ProfileView(props){
                         <h1>Places I have been</h1>
                         <ul>
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
-                            {props.haveVisitedPlaces.map(renderArrayACB)}
+                            {Object.entries(props.haveVisitedPlaces).map(renderDictACB)}
                         </ul>
                     </td>
                 </tbody>
