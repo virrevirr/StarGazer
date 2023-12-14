@@ -11,23 +11,18 @@ function ProfileView(props){
     function navigateToSearchACB(){
         window.location.hash = '#/search'
     };
-    
+
     function renderArrayACB(place){ 
-        console.log("want",props.model.wantToGo)
-        if (props.wantToGo.length !== 0){
-            
-            /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
-            function onLocationClickACB(event){
-                props.onLocationClick(place);
-            };
-            return (<div>
-                        <span onClick={onLocationClickACB} key={place}>{place.city +", "+ place.state +", "+ place.country}</span>
-                    </div>);
-        }
-        else{
-            return (<div> Search for locations to add </div>);
-        }
+        /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
+        function onLocationClickACB(event){
+            props.onLocationClick(place);
+            window.location.hash = '#/information'
+        };
+        return (<div>
+                    <span onClick={onLocationClickACB} key={place}>{place.city +", "+ place.state +", "+ place.country}</span>
+                </div>);
     }   
+
     return (
         <div>
             <div> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
