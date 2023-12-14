@@ -55,7 +55,7 @@ body{
 
 .input{
     height: 30px;
-    width: 250px;
+    width: 400px;
     font-size: 16px;
     border-style: solid;
     border-color: white;
@@ -76,7 +76,7 @@ body{
     text-align: center;
     text-decoration: none;
     background-color: transparent;
-    border-radius: 5 px;
+    border-radius: 15px;
     height: 30px;
     width: 100px;
     font-size:14px;
@@ -87,15 +87,15 @@ body{
 .buttonDesign:hover {
     background-color: transparent;
     color: grey;
-    border: 2 px solid pink;
-    border-radius: 5 px;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .buttonDesign:active {
     background-color: transparent;
     box-shadow: 0 2px;
     transform: translateY(4px);
-    border-radius: 5 px;
+    border-radius: 5px;
 }
 
 .profileButton {
@@ -118,6 +118,34 @@ body{
     align-items: center;
     justify-content:center;
 } 
+
+.searchButton {
+    position: absolute;
+    right: 10px; /* Adjust the right position as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    transition-duration: 0.4s;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    height: 30px;
+    width: 100px;
+    font-size:14px;
+    color: white;
+}
+
+.searchButton:hover {
+    background-color: transparent;
+    color: grey;
+}
+
+.searchButton:active {
+    background-color: transparent;
+    box-shadow: 0 2px;
+    transform: translateY(4px);
+}
 
 h1{
     margin-bottom: 100px;
@@ -143,17 +171,21 @@ ul{
 }
 
 .searchResultsContainer {
-  
     display: flex;
-    flex-basis: 40%;
     border: 2px solid;
+    border-radius: 10px;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     column-gap: 20px;
     color: aliceblue;
     z-index: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 500px;
+    width: 45%;
+    margin: 0 auto;
 }
+
 
 /* Media query for narrow screens */
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */

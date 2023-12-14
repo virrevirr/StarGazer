@@ -31,7 +31,7 @@ function SearchFormView(props){
             <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
         </div>
         <input className="input" placeholder={"Search city"} onChange={userInputACB}/>
-        <button className="buttonDesign" onClick={clickSearchACB}>Search</button>
+        <button className="buttonDesign" onClick={clickSearchACB}>&#128269;</button>
         <div className="logOutButton">
             <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
         </div>
