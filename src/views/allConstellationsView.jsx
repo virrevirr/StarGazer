@@ -39,7 +39,6 @@ function AllConstellationsView(props){
 
     function renderResultCB(constellation){
         // Renderar bild och text på varje constellation
-        
         function onConstellationClickACB(event){
             props.onConstellationClick(constellation[0]);
             window.location.hash= "#/constellation";

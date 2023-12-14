@@ -1,3 +1,4 @@
+import starConstellations from "../starConstellations.jsx"
 
 function ConstellationView(props){
     console.log("constellation",props.constellationData)
@@ -10,14 +11,14 @@ function ConstellationView(props){
         window.location.hash = '#/'
     };
 
-    function navigateToSearchACB(){
-        window.location.hash = '#/search'
+    function navigateToAllConstellationsACB(){
+        window.location.hash = '#/allConstellations'
     };
 
     return (
         <div className="searchContainer"> {/* Lägg till class som är specifik för den här? */}
             <div> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
-                <button className="buttonDesign" onClick={navigateToSearchACB}>Search city</button>
+                <button className="buttonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>
 
             <div className="profileButton">
@@ -29,7 +30,7 @@ function ConstellationView(props){
             </div>
 
             <div> {/* Lägg till class för att rendera bilden till vänster om stjärnnamnen */}
-                <img src = {props.constellationUrl} height = {"400"} />
+                <img src = {starConstellations[props.constellationData[0].constellation]} height = {"400"} />
             </div>
 
             <div > {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
@@ -47,7 +48,7 @@ function ConstellationView(props){
     function starsInConstellationCB(star){
         return (
             <span key={star.name}> {/* Lägg till class för att rendera stjärnorna i en grid (som bilderna i labben) alt. på en row */}
-                    <p>{star.name}</p>
+                    <h3>{star.name}</h3>
             </span>
         );}
 }
