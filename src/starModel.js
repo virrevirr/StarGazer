@@ -15,6 +15,10 @@ export default{
         this.wantToGo = [...this.wantToGo, locToAdd];
     },
 
+    addToSeen(constellation){
+        this.wantToGo = [...this.wantToGo, constellation];
+    },
+
     removeFromWantToGo(locToRemove){
         function shouldWeKeepConstCB(location){
             return location !== locToRemove;

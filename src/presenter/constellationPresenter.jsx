@@ -4,6 +4,10 @@ import ConstellationView from "../views/constellationView.jsx";
 
 //model is starModel
 export default function Constellation(props){
+    
+    function haveSeenACB(constellation){
+        props.model.addToSeen(constellation);
+    }
 
     function promiseData(promiseState){
         if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
@@ -14,7 +18,8 @@ export default function Constellation(props){
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
             return <ConstellationView className="in promise state" 
-            constellationData = {promiseState.data}/>;
+            constellationData = {promiseState.data}
+            haveSeen = {haveSeenACB} />;
         }
     }
 

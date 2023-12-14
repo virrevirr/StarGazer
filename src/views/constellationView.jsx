@@ -15,8 +15,13 @@ function ConstellationView(props){
         window.location.hash = '#/allConstellations'
     };
 
+    function haveSeenACB(event){
+        return props.haveSeen(props.constellationData[0].constellation);
+    }
+
     return (
         <div className="searchContainer"> {/* Lägg till class som är specifik för den här? */}
+        
             <div> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att all text får plats */}
                 <button className="buttonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>
@@ -25,7 +30,11 @@ function ConstellationView(props){
                 <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
             </div>
 
-            <div> {/* Lägg till class för att rendera rubriken högre upp */}
+            <div> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
+                <button className="buttonDesign" onClick={haveSeenACB}>I have seen this in {props.currentLocation}</button>
+            </div>
+
+            <div>
                 <h1>{props.constellationData[0].constellation}</h1> 
             </div>
 
@@ -36,10 +45,6 @@ function ConstellationView(props){
             <div > {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
                 <h1>Stars included</h1> 
                 {props.constellationData.map(starsInConstellationCB)}
-            </div>
-
-            <div> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
-                <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
             </div>
 
             <div className="logOutButton">
