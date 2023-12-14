@@ -2,8 +2,7 @@
 
 function SearchResultsView(props){
     console.log("props", props);
-
-    {/* Test code without api fetch */}
+    /* Test code without api fetch */
     /*const searchResult = {
         city: "Paris",
         state: "Sample State",
@@ -14,12 +13,11 @@ function SearchResultsView(props){
         props.onLocationClick(searchResult);
     };*/
 
-
     return(
-       <div className="searchResultsContainer">
+       <div className="searchResultsContainer"> {/* Gör resultaten skrollbara istället */}
             {/* Code with api fetch */}
             {props.searchResult.map(renderResultCB)}
-            
+
             {/* Test code without api fetch */}
             {/*<span key={searchResult} onClick={onLocationClickACB}>
                 {/*render each city with an image and its title*/}
@@ -28,9 +26,6 @@ function SearchResultsView(props){
                     <p>{searchResult.city + ", " + searchResult.state +", "+ searchResult.country}</p>
                 </div>
             </span>*/}
-
-
-
        </div> 
     );
 
@@ -42,10 +37,8 @@ function SearchResultsView(props){
 
         return (
             <span key={result} onClick={onLocationClickACB}>
-                {/*render each city with an image and its title*/}
-                {/* result.query ska vara samma som result.id, query = namnet som staden enligt API?*/}
-               
-                    <p>{result.city + ", " + result.state +", " + result.country}</p> {/* lägg till debug text vit */}
+                {/*render each city with its title*/}
+                <p>{result.city + ", " + result.state +", " + result.country}</p>
                 
             </span>
         );

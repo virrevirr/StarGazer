@@ -7,12 +7,9 @@ function NewsView(props){
             news.push(
                 <div key={i}>
                     <h3>{props.newsData.items[i].title}</h3>
-
-                    <img src={props.newsData.items[i].images.thumbnail} height={"200"}/>
-
+                    <img src={props.newsData.items[i].images.thumbnail} height={"100"}/>
                     <p>{props.newsData.items[i].snippet}</p>
-
-                    <a href={props.newsData.items[i].newsUrl}>More information</a> {/*Link to Astronomical events info*/}
+                    <a href={props.newsData.items[i].newsUrl}>More information</a> {/*Link to astronomical news source*/}
                 </div>
             );
         }
@@ -20,9 +17,11 @@ function NewsView(props){
 }
 
     return (
-        <div>
+        <div> {/* Lägg till class för att rendera news som prototypen ELLER utplacerad där det ser bra ut på skärmen */}
             <h2> Local astronomical news </h2>
-            {news()}
+            <div>  {/* Lägg till class för att rendera dom 3 nyheterna bredvid varandra i kolumner (typ som grid) */}
+                {news()}
+            </div>
         </div>
     );
 }

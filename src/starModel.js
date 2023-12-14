@@ -3,7 +3,10 @@ import resolvePromise from "./resolvePromise"
 
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
-    haveVisited: [],
+
+    /* Funktionalitet: Gör om till en dictionary */
+
+    haveVisited: [], 
     currentLocation: null, //Som currentDish, för att lägga till locations
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
@@ -21,7 +24,7 @@ export default{
 
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
-        this.haveVisited = [...this.haveVisited, locToAdd];
+        this.haveVisited = [...this.haveVisited, locToAdd]; /* Funktionalitet: Gör om till en dictionary */
     },
 
     removeFromVisited(locToRemove){

@@ -1,33 +1,55 @@
-// försök på stjärnbilder som inte funkat så bra
 
 function ConstellationView(props){
     console.log("constellation",props.constellationData)
-    function starsInConstellationCB(star){
-        console.log("star", star)
-        return (
-            <span key={star.name}>
-                    <p>{star.name}</p>
-            </span>
-        );}
 
-        console.log("url", props.constellationUrl)
+    function navigateToProfileACB(){
+        window.location.hash = '#/profile';
+    }
+    
+    function navigateToLoginACB(){
+        window.location.hash = '#/'
+    };
+
+    function navigateToSearchACB(){
+        window.location.hash = '#/search'
+    };
 
     return (
-        <div className="mainContainer">
-            <h1>{props.constellationData[0].constellation}</h1> 
-
-            <div>
-                <img src = {props.constellationUrl}
-                height = {"500"} />
+        <div className="searchContainer"> {/* Lägg till class som är specifik för den här? */}
+            <div> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
+                <button className="buttonDesign" onClick={navigateToSearchACB}>Search city</button>
             </div>
 
-            <div>
+            <div className="profileButton">
+                <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
+            </div>
+
+            <div> {/* Lägg till class för att rendera rubriken högre upp */}
+                <h1>{props.constellationData[0].constellation}</h1> 
+            </div>
+
+            <div> {/* Lägg till class för att rendera bilden till vänster om stjärnnamnen */}
+                <img src = {props.constellationUrl} height = {"400"} />
+            </div>
+
+            <div > {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
                 <h1>Stars included</h1> 
                 {props.constellationData.map(starsInConstellationCB)}
+            </div>
+
+            <div className="logOutButton">
+                <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
             </div>
         
         </div>
     );
+    
+    function starsInConstellationCB(star){
+        return (
+            <span key={star.name}> {/* Lägg till class för att rendera stjärnorna i en grid (som bilderna i labben) alt. på en row */}
+                    <p>{star.name}</p>
+            </span>
+        );}
 }
 
 export default ConstellationView;

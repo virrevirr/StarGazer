@@ -2,16 +2,11 @@
 function MoonView(props){
     console.log(props.moonData)
     return (
-        <div>
-            <h2>Moon</h2> 
-
-            <h3>Moon phase</h3> 
-            <p>{props.moonData.moon.phase}</p>
-
+        <div> {/* Lägg till class för att rendera moon som prototypen ELLER kanske i högra hörnet högst upp utan vit div-ram)*/}
+            <h2>Moon phase</h2> 
+            <h3>{props.moonData.moon.phase}</h3>
             <img src={props.moonData.moon.img_flat} height={"100"}/>
-
-            <p>{props.moonData.moon.info} </p>
-            
+            <p>{props.moonData.moon.info}</p>   {/* Fixa så att infon inte tar upp så mycket plats */}
         </div>
     );
 }

@@ -1,6 +1,5 @@
 
 // similar to detailsPresenter but for information for a city
-
 import InformationView from "../views/informationView.jsx";
 import WeatherView from "../views/weatherView.jsx";
 import MoonView from "../views/moonView.jsx";
@@ -8,26 +7,18 @@ import NewsView from "../views/newsView.jsx";
 
 //model is starModel
 export default function Information(props){
-    function visitedCB(location){return location === props.model.currentLocation;}
-    function addToWantToGoACB(){props.model.addToWantToGo(props.model.currentLocation);}
-    function addVisitedACB(){props.model.addToVisited(props.model.currentLocation);}
-
-
-    function promiseWeatherData(promiseState){
-        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
-            return "no data";
-        }  
-        else{ // if promise is true, check data and error. 
-            if(!promiseState.data){
-                if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
-                return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
-            }
-            return  (<WeatherView weatherData = {promiseState.data}/>);
-        }
+    function visitedCB(location){
+        return location === props.model.currentLocation;
+    }
+    function addToWantToGoACB(){
+        props.model.addToWantToGo(props.model.currentLocation);
+    }
+    function addVisitedACB(){
+        props.model.addToVisited(props.model.currentLocation);
     }
 
-    function promiseMoonData(promiseState){
-        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
+    function promiseData(promiseState){
+        if(!promiseState.promise) {//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
         else{ // if promise is true, check data and error. 
@@ -35,21 +26,18 @@ export default function Information(props){
                 if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
                 return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
             }
-            return (<MoonView moonData = {promiseState.data}/> );
-        }
-    }
-
-    function promiseNewsData(promiseState){
-        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
-            return "no data";
-        }  
-        else{ // if promise is true, check data and error. 
-            if(!promiseState.data){
-                if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
-                return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
+            if (promiseState.data.moon){
+                console.log("moon", promiseState.data);
+                return (<MoonView moonData = {promiseState.data}/> );
             }
-            console.log("stars", promiseState.data);
-            return (<NewsView newsData = {promiseState.data}/> );
+            if (promiseState.data.forecast){
+                console.log("weather", promiseState.data);
+                return  (<WeatherView weatherData = {promiseState.data}/>);
+            }
+            else{
+                console.log("news", promiseState.data);
+                return (<NewsView newsData = {promiseState.data}/> );
+            }
         }
     }
 
@@ -60,14 +48,11 @@ export default function Information(props){
         isLocVisited ={props.model.haveVisited.find(visitedCB)} //isLocVisited expected to be falsy with empty menu
         addToGo ={addToWantToGoACB}
         addToVisited={addVisitedACB} 
-        //add astroEvents, moonphase 
         /> 
 
-        {promiseWeatherData(props.model.weatherPromiseState)}
-        
-        {promiseMoonData(props.model.moonPromiseState)}
-
-        {promiseNewsData(props.model.newsPromiseState)}
+        {promiseData(props.model.weatherPromiseState)}
+        {promiseData(props.model.moonPromiseState)}
+        {promiseData(props.model.newsPromiseState)}
 
         </div>
         );

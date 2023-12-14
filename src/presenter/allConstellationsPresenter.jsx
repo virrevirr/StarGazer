@@ -1,4 +1,3 @@
-
 import AllConstellationsView from "../views/allConstellationsView.jsx";
 import starConstellations from "../starConstellations.jsx"
 

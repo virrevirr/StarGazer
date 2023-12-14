@@ -16,8 +16,6 @@ export default function Search(props){
 
     function onLocationClickACB(input){
         props.model.setCurrentLocation(input);
-
-        // gör även i profile on location click
         props.model.searchWeatherByCity(input.city);
         props.model.getMoon();
 
@@ -26,7 +24,6 @@ export default function Search(props){
         console.log("Country code", countryToCode);
         console.log("Language code", languageToCode);
         props.model.searchNewsByCountry(languageToCode, countryToCode);
-        //props.model.searchConstellation();
     }
 
     function promiseData(promiseState){
@@ -56,7 +53,7 @@ export default function Search(props){
             text = {props.model.searchParams}
             userInput= {setSearchInputACB} //setSearch from model
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
-/> {promiseData(props.model.searchResultsPromiseState)}
+            /> {promiseData(props.model.searchResultsPromiseState)}
             
         </div>
         );

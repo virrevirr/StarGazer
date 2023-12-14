@@ -1,9 +1,5 @@
-// måste ge profile view props, starModel baserad på api för stjärnbilderna. 
-//(Fråga till TA: kan man använda flera models och skicka in props?, följdfråga är annars om 
-// man kan göra en model som använder flera api:er? funderar då vi måste "koppla ihop" den med platskoordinater
-// och koordinater för stjärnbilderna)
-
 import ProfileView from "../views/profileView.jsx";
+import countries from "../countries.jsx";
 
 export default function Profile(props){
     function clickedLocationACB(input){
@@ -16,10 +12,17 @@ export default function Profile(props){
         console.log("Country code", countryToCode);
         console.log("Language code", languageToCode);
         props.model.searchNewsByCountry(languageToCode, countryToCode);
-        //props.model.searchConstellation();
     }
+
+    function clickedConstellationACB(input){
+        props.model.fetchConstellation(constellation);
+    }
+
     return (<ProfileView
         onLocationClick={clickedLocationACB}
+        onConstellationClick = {clickedConstellationACB}
         wantToGoPlaces={props.model.wantToGo || []}
-        haveVisitedPlaces={props.model.haveVisited || []}/>); 
+        haveVisitedPlaces={props.model.haveVisited || []}
+        />); 
+        /* Funktionalitet: exportera användarens namn/användarnamn till viewn */
 }
