@@ -14,8 +14,10 @@ function ProfileView(props){
 
     function renderDictACB(object){ 
         /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
-        place = object[0]
-        constellations = [1]
+        console.log("object in profileView",object)
+        const place = object[0][0]
+        const constellations = object[1]
+        console.log("constellations in profileView", place.city, constellations)
 
         function onLocationClickACB(event){
             props.onLocationClick(place);
@@ -28,12 +30,12 @@ function ProfileView(props){
                     </span>);
         };
 
-        return (<div>
+        /*return (<div>
                     <span onClick={onLocationClickACB} key={place}>
                         {place.city +", "+ place.state +", "+ place.country}
                         {constellations.map(renderArrACB)}
                     </span>
-                </div>);
+                </div>);*/
     }   
 
     function renderArrayACB(place){ 

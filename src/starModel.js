@@ -29,6 +29,7 @@ export default{
 
     addToSeen(constellationToAdd){
         this.haveVisited = { ...this.haveVisited, [this.currentLocation]: constellationToAdd };
+        console.log("this.haveVisited", this.haveVisited)
     },
 
     removeFromVisited(locToRemove){
