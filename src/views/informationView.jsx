@@ -26,20 +26,21 @@ function InformationView(props){
                 <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
             </div>
 
-            <div> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
+            <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
                 <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Search city</button>
             </div>
             
-            <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
-                <button className="biggerButtonDesign" onClick={visitedACB}>
-                    I have been here</button>
-                <button className="biggerButtonDesign" onClick={wantToGoACB}>
-                    I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
-            </span>
+            <div className="beenAndWantButtons">
+                <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
+                    <button className="biggerButtonDesign" onClick={visitedACB}>I have been here</button>
+                    <button className="biggerButtonDesign" onClick={wantToGoACB}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
+                </span>
+            </div>
+            
 
             <h1> {props.locationData.city +", "+ props.locationData.country} </h1> 
             
-            <div>  {/* Lägg till class för att rendera constellation-länken som prototypen */}
+            <div className="constellationsPosition">  {/* Lägg till class för att rendera constellation-länken som prototypen */}
                 <h2>Find constellations you have seen here</h2>
                 <button className="biggerButtonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>

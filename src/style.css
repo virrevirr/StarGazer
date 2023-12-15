@@ -148,7 +148,7 @@ body{
 }
 
 h1{
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     position: relative;
     margin-top: 100px; /*höj om man vill centrera search bar mer*/
     color: white;
@@ -252,6 +252,7 @@ ul{
 
 .bigWeatherContainer{
     display: flex;
+    flex: 1;
     text-align: center;
     align-items: center;
     justify-content: flex-end;
@@ -268,12 +269,30 @@ ul{
     margin: 0 auto;
 }
 
-.constellationsLocation{
+.constellationsPosition{
     display: flex;
-    justify-content: flex-start;
-    text-align: center;
+    flex-direction: column;
+    margin-top: 20px;
     align-items: center;
 }
+
+.localNews{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.backToSearchButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.beenAndWantButtons{
+    margin-top: 70px;
+    margin-bottom: -50px;
+}
+
 
 /* Media query for narrow screens */
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
