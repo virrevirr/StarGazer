@@ -9,48 +9,61 @@ export default{
     currentLocationPromiseState: {},
 
     addToWantToGo(locToAdd){
-    this.wantToGo = [...this.wantToGo, locToAdd];
+        // Add city to haveVisited
+        function doesObjectMatch(obj, targetLocation) {
+            return obj["city"] === targetLocation.city && obj["state"] === targetLocation.state
+                     && obj["country"] === targetLocation.country;
+        }
+
+        // Checking if the city is already in the haveVisited list
+        const foundObject = this.wantToGo.find(obj => doesObjectMatch(obj, locToAdd));
+    
+        if (!foundObject) {
+            // Adding the city to the list if it is not already there
+            this.wantToGo = [...this.wantToGo, locToAdd];
+            console.log("location to visit added", locToAdd)
+        }
     },
 
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
         // Add city to haveVisited
-        function doesObjectMatch(obj, city, targetCity) {
-            return obj[city] === targetCity;
+        function doesObjectMatch(obj, targetLocation) {
+            return obj["city"] === targetLocation.city && obj["state"] === targetLocation.state
+                     && obj["country"] === targetLocation.country;
         }
 
-        function doesObjectExist(haveVisited, city, targetCity, locToAdd) {
-            // Checking if the city is already in the haveVisited list
-            const foundObject = haveVisited.find(obj => doesObjectMatch(obj, city, targetCity));
-            
-            if (!foundObject) {
-                // Adding the city to the list if it is not already there
-                haveVisited = [...haveVisited, locToAdd];
-            }
+        // Checking if the city is already in the haveVisited list
+        const foundObject = this.haveVisited.find(obj => doesObjectMatch(obj, locToAdd));
+    
+        if (!foundObject) {
+            // Adding the city to the list if it is not already there
+            locToAdd["constellations"] = ["No constellations"]
+            this.haveVisited = [...this.haveVisited, locToAdd];
+            console.log("location have visited added", locToAdd)
         }
-        doesObjectExist(this.haveVisited, "city", this.currentLocation.city, locToAdd)
     },
 
     addToSeen(constellationToAdd){
         // Add constellation to a specific city in haveVisited
-        function isObjectMatch(obj, city, targetCity) {
-            return obj[city] === targetCity;
+        function isObjectMatch(obj, targetCity) {
+            return obj["city"] === targetCity;
         }
 
-        function isObjectInList(list, city, targetCity, newParameter, newValue) {
+        function isObjectInList(list, targetCity, newValue) {
             // Checking if the city is in the haveVisited list
-            const foundObject = list.find(obj => isObjectMatch(obj, city, targetCity));
+            const foundObject = list.find(obj => isObjectMatch(obj, targetCity));
             
             if (foundObject) {
                 // Adding the constellation to the city object
-                if (foundObject[newParameter]){
-                    foundObject[newParameter].push(newValue);
+                if (foundObject["constellations"].includes("No constellations")) {
+                    foundObject["constellations"].filter(item => item === "No constellations");
+                    console.log('Array after removing value:', foundObject);
                 }
-                else{
-                foundObject[newParameter] = [newValue]}
+                foundObject["constellations"].push(newValue);
             }
         }
-        isObjectInList(this.haveVisited, "city", this.currentLocation.city, "constellations", constellationToAdd)
+        isObjectInList(this.haveVisited, this.currentLocation.city, constellationToAdd)
         console.log("this.haveVisited", this.haveVisited)
     },
 
@@ -84,14 +97,12 @@ export default{
           };
     },  
 
-
     weatherPromiseState: {},
 
     searchWeatherByCity(city){
         // liknande startSearch
         resolvePromise(getWeatherDetails(city), this.weatherPromiseState);
     },
-
     
     moonPromiseState: {},
 
@@ -107,7 +118,6 @@ export default{
         resolvePromise(getNewsDetails(languageCode, countryCode), this.newsPromiseState);
     },
 
-
     searchParams: {},
     searchResultsPromiseState: {},
 
@@ -120,8 +130,6 @@ export default{
         {/* Code with api fetch */}
         //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
-
-
 
     constellationPromiseState: {},
 

@@ -29,13 +29,15 @@ function ProfileView(props){
 
     function renderHaveVisitedACB(place){
         function renderConstellationsACB(constellation){
-            return constellation
+            return constellation+" "
         }
 
         return (<div>
             <span onClick={onLocationClickACB} key={place}>
-                {place.city +", "+ place.state +", "+ place.country+": "}
-                {place.constellations.map(renderConstellationsACB)}
+                {place.city +", "+ place.state +", "+ place.country}
+                <td></td>
+                <td></td>
+                Constellations I saw here: {place.constellations.map(renderConstellationsACB)}
             </span>
         </div>);
     }
