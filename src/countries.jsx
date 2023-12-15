@@ -1,5 +1,6 @@
 // alpha2 codes taken from: https://www.iban.com/country-codes
 // ISO 639-1 codes taken from: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+// astronomy has been translated to the local language
 
   const countries = {
     'Afghanistan': { alpha2: 'AF', iso6391: 'af', astronomy: 'ستاره‌شناسی' },
