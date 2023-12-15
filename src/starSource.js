@@ -41,8 +41,8 @@ export function getWeatherDetails(location){
 
 
 //API news
-export function getNewsDetails(languageCode, countryCode){
-    const queryPlace = new URLSearchParams({keyword: 'astronomy', lr: languageCode+'-'+countryCode}).toString();
+export function getNewsDetails(languageCode, countryCode, astronomy){
+    const queryPlace = new URLSearchParams({keyword: astronomy, lr: languageCode+'-'+countryCode}).toString();
     const source = 'https://google-news13.p.rapidapi.com/search?' + queryPlace;
     
     return fetch(source, {
@@ -54,13 +54,13 @@ export function getNewsDetails(languageCode, countryCode){
 //API moon
 export function getMoonDetails(){
     // using budapest as a default because the moon phase is the same all over the world
-    const queryPlace = new URLSearchParams({city:"budapest"}).toString();
+    /*const queryPlace = new URLSearchParams({city:"budapest"}).toString();
     const source = 'https://moon-phase1.p.rapidapi.com/?' + queryPlace;
     
     return fetch(source, {
         method:"GET", 
         headers: {'X-Mashape-Key': API_KEY}
-    }).then(getJsonACB).then(keepArrayACB);
+    }).then(getJsonACB).then(keepArrayACB);*/
 }
 
 //API constellation

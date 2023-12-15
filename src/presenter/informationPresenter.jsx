@@ -47,7 +47,13 @@ export default function Information(props){
         /> 
 
         {promiseData(props.model.weatherPromiseState)}
-        {promiseData(props.model.moonPromiseState)}
+
+        {/* Code with api fetch */}
+        {/*promiseData(props.model.moonPromiseState)*/}
+
+        {/* Code without api fetch */}
+        <MoonView/>
+
         {promiseData(props.model.newsPromiseState)}
 
         </div>

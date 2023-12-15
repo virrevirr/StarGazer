@@ -8,15 +8,15 @@ export default{
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
 
+    doesObjectMatch(obj, targetLocation) {
+        // Checking if the city is already in the list
+        return obj["city"] === targetLocation.city && obj["state"] === targetLocation.state
+                 && obj["country"] === targetLocation.country;
+    },
+
     addToWantToGo(locToAdd){
         // Add city to haveVisited
-        function doesObjectMatch(obj, targetLocation) {
-            return obj["city"] === targetLocation.city && obj["state"] === targetLocation.state
-                     && obj["country"] === targetLocation.country;
-        }
-
-        // Checking if the city is already in the haveVisited list
-        const foundObject = this.wantToGo.find(obj => doesObjectMatch(obj, locToAdd));
+        const foundObject = this.wantToGo.find(obj => this.doesObjectMatch(obj, locToAdd));
     
         if (!foundObject) {
             // Adding the city to the list if it is not already there
@@ -28,13 +28,7 @@ export default{
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
         // Add city to haveVisited
-        function doesObjectMatch(obj, targetLocation) {
-            return obj["city"] === targetLocation.city && obj["state"] === targetLocation.state
-                     && obj["country"] === targetLocation.country;
-        }
-
-        // Checking if the city is already in the haveVisited list
-        const foundObject = this.haveVisited.find(obj => doesObjectMatch(obj, locToAdd));
+        const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, locToAdd));
     
         if (!foundObject) {
             // Adding the city to the list if it is not already there
@@ -49,21 +43,16 @@ export default{
         function isObjectMatch(obj, targetCity) {
             return obj["city"] === targetCity;
         }
-
-        function isObjectInList(list, targetCity, newValue) {
-            // Checking if the city is in the haveVisited list
-            const foundObject = list.find(obj => isObjectMatch(obj, targetCity));
-            
-            if (foundObject) {
-                // Adding the constellation to the city object
-                if (foundObject["constellations"].includes("No constellations")) {
-                    foundObject["constellations"].filter(item => item === "No constellations");
-                    console.log('Array after removing value:', foundObject);
-                }
-                foundObject["constellations"].push(newValue);
+        const foundObject = this.haveVisited.find(obj => isObjectMatch(obj, this.currentLocation.city));
+        
+        if (foundObject) {
+            // Adding the constellation to the city object
+            if (foundObject["constellations"].includes("No constellations")) {
+                foundObject["constellations"].filter(item => item === "No constellations");
+                console.log('Array after removing value:', foundObject);
             }
+            foundObject["constellations"].push(constellationToAdd);
         }
-        isObjectInList(this.haveVisited, this.currentLocation.city, constellationToAdd)
         console.log("this.haveVisited", this.haveVisited)
     },
 
@@ -108,14 +97,14 @@ export default{
 
     getMoon(){
         // liknande startSearch
-        resolvePromise(getMoonDetails(), this.moonPromiseState);
+        //resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
     newsPromiseState: {},
 
-    searchNewsByCountry(languageCode, countryCode){
+    searchNewsByCountry(languageCode, countryCode, astronomyTranslated){
         // liknande startSearch
-        resolvePromise(getNewsDetails(languageCode, countryCode), this.newsPromiseState);
+        resolvePromise(getNewsDetails(languageCode, countryCode, astronomyTranslated), this.newsPromiseState);
     },
 
     searchParams: {},
