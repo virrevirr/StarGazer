@@ -205,6 +205,76 @@ ul{
     background-color: rgb(93, 142, 206);
 }
 
+/* informationView nedan */
+.biggerButtonDesign{
+    transition-duration: 0.4s;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 37px;
+    width: 150px;
+    font-size:14px;
+    color: white;
+    border: 2px solid whitesmoke;
+}
+
+.biggerButtonDesign:hover {
+    background-color: transparent;
+    color: grey;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.biggerButtonDesign:active {
+    background-color: transparent;
+    box-shadow: 0 2px;
+    transform: translateY(4px);
+    border-radius: 5px;
+}
+
+.moonContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    text-align: center;
+    align-items: center;
+    justify-content:center;
+}
+
+.weatherContainer{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.bigWeatherContainer{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.moonInformation{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 35%;
+    align-items: center;
+    column-gap: 20px;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+.constellationsLocation{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+}
+
 /* Media query for narrow screens */
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
 

@@ -31,10 +31,10 @@ function WeatherView(props){
 }
 
     return (
-        <table> {/* Lägg till class för att rendera weather som prototypen ELLER utplacerad där det ser bra ut på skärmen */}
+        <table className="bigWeatherContainer"> {/* Lägg till class för att rendera weather som prototypen ELLER utplacerad där det ser bra ut på skärmen */}
             <tbody>
                 <h2> Weather forecast </h2>
-                <div>   {/* Lägg till class för att rendera dom 3 dagarna bredvid varandra i kolumner (typ som grid) */}
+                <div className="weatherContainer">   {/* Lägg till class för att rendera dom 3 dagarna bredvid varandra i kolumner (typ som grid) */}
                     {weatherByDay()}
                 </div>
             </tbody>
