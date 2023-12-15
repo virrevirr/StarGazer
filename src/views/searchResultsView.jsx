@@ -17,7 +17,7 @@ function SearchResultsView(props){
     return(
        <div className="searchResultsContainer"> {/* Gör resultaten skrollbara istället och gör diven mindre så att sökrutan och resultaten är samma storlek */}
             {/* Code with api fetch */}
-            props.searchResult.map(renderResultCB)
+            {props.searchResult.map(renderResultCB)}
 
             {/* Test code without api fetch */}
             {/*<span key={searchResult} onClick={onLocationClickACB}>*/}
