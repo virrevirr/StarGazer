@@ -12,44 +12,33 @@ function ProfileView(props){
         window.location.hash = '#/search'
     };
 
-    function renderDictACB(object){ 
+
+    function onLocationClickACB(event){
+        props.onLocationClick(place);
+        window.location.hash = '#/information'
+    };
+
+    function renderWantToGoACB(place){ 
         /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
-        console.log("object in profileView",object)
-        const place = object[0][0]
-        const constellations = object[1]
-        console.log("constellations in profileView", place.city, constellations)
-
-        function onLocationClickACB(event){
-            props.onLocationClick(place);
-            window.location.hash = '#/information'
-        };
-
-        function renderArrACB(constellation){
-            return(<span key={constellation}>
-                        {constellation}
-                    </span>);
-        };
-
-        /*return (<div>
-                    <span onClick={onLocationClickACB} key={place}>
-                        {place.city +", "+ place.state +", "+ place.country}
-                        {constellations.map(renderArrACB)}
-                    </span>
-                </div>);*/
-    }   
-
-    function renderArrayACB(place){ 
-        /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
-        function onLocationClickACB(event){
-            props.onLocationClick(place);
-            window.location.hash = '#/information'
-        };
         return (<div>
                     <span onClick={onLocationClickACB} key={place}>
                         {place.city +", "+ place.state +", "+ place.country}
                     </span>
                 </div>);
     } 
+
+    function renderHaveVisitedACB(place){
+        function renderConstellationsACB(constellation){
+            return constellation
+        }
+
+        return (<div>
+            <span onClick={onLocationClickACB} key={place}>
+                {place.city +", "+ place.state +", "+ place.country+": "}
+                {place.constellations.map(renderConstellationsACB)}
+            </span>
+        </div>);
+    }
 
     return (
         <div>
@@ -67,7 +56,7 @@ function ProfileView(props){
                         <h1>Places I want to go</h1>
                         <ul>
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
-                            {props.wantToGoPlaces.map(renderArrayACB)}
+                            {props.wantToGoPlaces.map(renderWantToGoACB)}
                         </ul>
                     </td>
 
@@ -77,7 +66,7 @@ function ProfileView(props){
                         <h1>Places I have been</h1>
                         <ul>
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
-                            {Object.entries(props.haveVisitedPlaces).map(renderDictACB)}
+                            {props.haveVisitedPlaces.map(renderHaveVisitedACB)}
                         </ul>
                     </td>
                 </tbody>

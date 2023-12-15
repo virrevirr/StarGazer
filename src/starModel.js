@@ -3,10 +3,7 @@ import resolvePromise from "./resolvePromise"
 
 export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
-
-    /* Funktionalitet: Gör om till en dictionary */
-
-    haveVisited: {}, 
+    haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
@@ -24,11 +21,27 @@ export default{
 
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
-        this.haveVisited = { ...this.haveVisited, [locToAdd]: null }; /* Funktionalitet: Gör om till en dictionary */
+        this.haveVisited = [ ...this.haveVisited, locToAdd]; /* Funktionalitet: Gör om till en dictionary */
     },
 
     addToSeen(constellationToAdd){
-        this.haveVisited = { ...this.haveVisited, [this.currentLocation]: constellationToAdd };
+        function isObjectMatch(obj, city, targetCity) {
+            return obj[city] === targetCity;
+        }
+
+        function isObjectInList(list, city, targetCity, newParameter, newValue) {
+            const foundObject = list.find(obj => isObjectMatch(obj, city, targetCity));
+            
+            if (foundObject) {
+                if (foundObject[newParameter]){
+                    foundObject[newParameter].push(newValue);
+                }
+                else{
+                foundObject[newParameter] = [newValue]}
+            }
+        }
+
+        isObjectInList(this.haveVisited, "city", this.currentLocation.city, "constellations", constellationToAdd)
         console.log("this.haveVisited", this.haveVisited)
     },
 
@@ -42,18 +55,18 @@ export default{
     setCurrentLocation(location){
 
         {/* Code with api fetch */}
-        if (location === this.currentLocation || !location){
+        /*if (location === this.currentLocation || !location){
             return;
         }
-        this.currentLocation = location
+        this.currentLocation = location*/
 
 
         {/* Test code without api fetch */}
-        /*this.currentLocation = {
+        this.currentLocation = {
             city: "Paris",
-            state: "Sample State",
+            state: "Paris",
             country: "France",
-          };*/
+          };
     },  
 
 
@@ -90,7 +103,7 @@ export default{
     startSearch(searchParams){
 
         {/* Code with api fetch */}
-        resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+       // resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
 
 
