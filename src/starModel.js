@@ -9,30 +9,61 @@ export default{
     currentLocationPromiseState: {},
 
     addToWantToGo(locToAdd){
-        this.wantToGo = [...this.wantToGo, locToAdd];
-    },
+        // Use an arrow function to preserve the 'this' context
+    function isCityInList(cityToCheck) {
+        return this.wantToGo.some(obj => obj.city === cityToCheck);
+    };
 
-    removeFromWantToGo(locToRemove){
-        function shouldWeKeepConstCB(location){
-            return location !== locToRemove;
-        }
-        this.wantToGo = this.wantToGo.filter(shouldWeKeepConstCB);
+    // Check if locToAdd is already a value for the "city" parameter
+    if (!isCityInList(locToAdd.city)) {
+        this.wantToGo = [...this.wantToGo, locToAdd];
+        console.log('Location added:', this.wantToGo);
+    }
     },
 
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
-        this.haveVisited = [ ...this.haveVisited, locToAdd]; /* Funktionalitet: Gör om till en dictionary */
+        // Add city to haveVisited
+        function isObjectMatch(obj, city, targetCity) {
+            return obj[city] === targetCity;
+        }
+
+        function isObjectInList(list, city, targetCity) {
+            // Checking if the city is already in the haveVisited list
+            const foundObject = list.find(obj => isObjectMatch(obj, city, targetCity));
+            
+            if (foundObject) {
+                // Adding the city to the list if it is not already there
+                if (!foundObject){
+                    
+                }
+            }
+        }
+
+        function isCityInList(cityToCheck) {
+            return this.wantToGo.some(obj => obj.city === cityToCheck);
+        }
+
+        // Check if locToAdd is already a value for the "city" parameter
+        if (!isCityInList(locToAdd.city)) {
+            this.wantToGo = [...this.wantToGo, locToAdd];
+            console.log('Location added:', this.wantToGo);
+        }
+        isObjectInList(this.haveVisited, "city", this.currentLocation.city)
     },
 
     addToSeen(constellationToAdd){
+        // Add constellation to a specific city in haveVisited
         function isObjectMatch(obj, city, targetCity) {
             return obj[city] === targetCity;
         }
 
         function isObjectInList(list, city, targetCity, newParameter, newValue) {
+            // Checking if the city is in the haveVisited list
             const foundObject = list.find(obj => isObjectMatch(obj, city, targetCity));
             
             if (foundObject) {
+                // Adding the constellation to the city object
                 if (foundObject[newParameter]){
                     foundObject[newParameter].push(newValue);
                 }
@@ -40,7 +71,6 @@ export default{
                 foundObject[newParameter] = [newValue]}
             }
         }
-
         isObjectInList(this.haveVisited, "city", this.currentLocation.city, "constellations", constellationToAdd)
         console.log("this.haveVisited", this.haveVisited)
     },
@@ -52,6 +82,13 @@ export default{
         this.haveVisited = this.haveVisited.filter(shouldWeKeepLocCB);
     },
 
+    removeFromWantToGo(locToRemove){
+        function shouldWeKeepConstCB(location){
+            return location !== locToRemove;
+        }
+        this.wantToGo = this.wantToGo.filter(shouldWeKeepConstCB);
+    },
+
     setCurrentLocation(location){
 
         {/* Code with api fetch */}
@@ -59,7 +96,6 @@ export default{
             return;
         }
         this.currentLocation = location*/
-
 
         {/* Test code without api fetch */}
         this.currentLocation = {
