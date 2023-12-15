@@ -1,4 +1,4 @@
-// "home sidan" där man ska söka på en plats. knapp för profilen och "sök".
+
 
 function SearchFormView(props){
     

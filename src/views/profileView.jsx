@@ -1,6 +1,3 @@
-//view för profilen, har ska lista på sparade stjärnbilder visas (till att börja med) och namn på personen,
-//och en knapp för gå tillbaka till föregående sida (fråga TA hur man kan göra detta)
-//går säkert att titta på sidebarView koden för inspo för listan av stjärnbilder då de kommer funka lite likadant.
 
 function ProfileView(props){
     console.log("have visited", props.haveVisitedPlaces)
@@ -14,7 +11,7 @@ function ProfileView(props){
         window.location.hash = '#/search';
     }
 
-    function renderWantToGoACB(place){ 
+    function renderArrayACB(place){ 
         function onLocationClickACB(event){
             props.onLocationClick(place);
             window.location.hash = '#/information';
@@ -26,54 +23,56 @@ function ProfileView(props){
                 </div>);
     } 
 
-    function renderHaveVisitedACB(place){
-        function onLocationClickACB(event){
-            props.onLocationClick(place);
-            window.location.hash = '#/information';
-        }
-        function renderConstellationsACB(constellation){
+    function renderConstellationsACB(place){
+        function renderACB(constellation){
             return constellation+" ";
         }
         return (<div>
-            <span onClick={onLocationClickACB} key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
-                {place.city +", "+ place.state +", "+ place.country}
-                <td></td>
-                <td></td>
-                Constellations I saw here: {place.constellations.map(renderConstellationsACB)}
+            <span key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
+            {place.city}: {place.constellations.map(renderACB)}
             </span>
         </div>);
     }
 
     return (
         <div>
-            <div> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
+            <div> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att texten får plats i knappen*/}
                 <button className="buttonDesign" onClick={navigateToSearchACB}>Search city</button>
             </div>
 
             <div>
-                <h1>Profile Name</h1> {/* Funktionalitet: Lägg till den faktiska användarens namn här */}
+                <h1>Profile Name</h1> {/* Lägg till en profil-ikon */}
+                {/* Funktionalitet: Lägg till den faktiska användarens namn här */}
             </div>
             
             <table> {/* Lägg till class för att snygga till kolumnerna (alt. kom på en lösning som är bättre än att ha en table) */}
                 <tbody>
-                    <td>
-                        <h1>Places I have been</h1>
+                    <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
+                        <h1>Places I want to go</h1>
                         <ul>
-                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
-                            {props.haveVisitedPlaces.map(renderHaveVisitedACB)}
+                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
+                            {props.wantToGoPlaces.map(renderArrayACB)}
                         </ul>
                     </td>
 
                     <td></td>
 
                     <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
-                        <h1>Places I want to go</h1>
+                        <h1>Places I have been</h1>
                         <ul>
-                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
-                            {props.wantToGoPlaces.map(renderWantToGoACB)}
+                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
+                            {props.haveVisitedPlaces.map(renderArrayACB)}
                         </ul>
                     </td>
 
+                    <td></td>
+
+                    <td> {/* Lägg till funktion för att kunna skrolla igenom constellations */}
+                        <h1>Constellations I saw</h1>
+                        <ul>
+                            {props.haveVisitedPlaces.map(renderConstellationsACB)}
+                        </ul>
+                    </td>
                 </tbody>
             </table>
 
