@@ -44,7 +44,9 @@ function ConstellationView(props){
 
             <div > {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
                 <h1>Stars included</h1> 
+                <ul>
                 {props.constellationData.map(starsInConstellationCB)}
+                </ul>
             </div>
 
             <div className="logOutButton">
@@ -57,7 +59,7 @@ function ConstellationView(props){
     function starsInConstellationCB(star){
         return (
             <span key={star.name}> {/* Lägg till class för att rendera stjärnorna i en grid (som bilderna i labben) alt. på en row */}
-                    <h3>{star.name}</h3>
+                    {star.name}
             </span>
         );}
 }
