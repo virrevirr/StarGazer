@@ -18,13 +18,13 @@ function keepArrayACB(searchInput){
 export function searchPlaces(searchParams){
 
     /* Code with api fetch */
-    /*const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString(); //blir rätt format nu
+    const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString(); //blir rätt format nu
     const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
     
     return fetch(source, {
         method:"GET", 
         headers: {'X-Mashape-Key': API_KEY}
-    }).then(getJsonACB).then(keepArrayACB);*/
+    }).then(getJsonACB).then(keepArrayACB);
 }
 
 

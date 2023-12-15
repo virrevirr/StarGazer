@@ -92,17 +92,17 @@ export default{
     setCurrentLocation(location){
 
         {/* Code with api fetch */}
-        /*if (location === this.currentLocation || !location){
+        if (location === this.currentLocation || !location){
             return;
         }
-        this.currentLocation = location*/
+        this.currentLocation = location
 
         {/* Test code without api fetch */}
-        this.currentLocation = {
+        /*this.currentLocation = {
             city: "Paris",
             state: "Paris",
             country: "France",
-          };
+          };*/
     },  
 
 
@@ -139,7 +139,7 @@ export default{
     startSearch(searchParams){
 
         {/* Code with api fetch */}
-       // resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+       resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
 
 
