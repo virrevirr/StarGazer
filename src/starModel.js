@@ -25,14 +25,17 @@ export default{
     },
 
     addToSeen(constellationToAdd){
+        // Add constellation to a specific city in haveVisited
         function isObjectMatch(obj, city, targetCity) {
             return obj[city] === targetCity;
         }
 
         function isObjectInList(list, city, targetCity, newParameter, newValue) {
+            // Checking if the city is in the haveVisited list
             const foundObject = list.find(obj => isObjectMatch(obj, city, targetCity));
             
             if (foundObject) {
+                // Adding the constellation to the city object
                 if (foundObject[newParameter]){
                     foundObject[newParameter].push(newValue);
                 }
