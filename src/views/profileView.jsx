@@ -25,7 +25,7 @@ function ProfileView(props){
 
     function renderConstellationsACB(place){
         function renderACB(constellation){
-            return constellation+" ";
+            return constellation+", ";
         }
         return (<div>
             <span key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
