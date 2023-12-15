@@ -29,7 +29,7 @@ export default function Search(props){
     function promiseData(promiseState){
 
         {/* Code with api fetch */}
-        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
+        /*if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
         else{ // if promise is true, check data and error. 
@@ -39,12 +39,12 @@ export default function Search(props){
             }
             return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
             onLocationClick = {onLocationClickACB}/>;
-        }
+        }*/
 
         {/* Test code without api fetch */}
-        /*return <SearchResultsView
+        return <SearchResultsView
             onLocationClick = {onLocationClickACB}
-             />;*/
+             />;
     }
 
     return (
