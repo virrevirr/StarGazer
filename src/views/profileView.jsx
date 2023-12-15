@@ -29,7 +29,7 @@ function ProfileView(props){
         }
         return (<div>
             <span key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
-            {place.city}: {place.constellations.map(renderACB)}
+                {place.city}: {place.constellations.map(renderACB)}
             </span>
         </div>);
     }
