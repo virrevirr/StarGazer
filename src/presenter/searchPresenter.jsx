@@ -22,8 +22,6 @@ export default function Search(props){
         const countryToCode = countries[input.country].alpha2;
         const languageToCode = countries[input.country].iso6391;
         const astronomyTranslated = countries[input.country].astronomy;
-        console.log("Country code", countryToCode);
-        console.log("Language code", languageToCode);
         props.model.searchNewsByCountry(languageToCode, countryToCode, astronomyTranslated);
     }
 
@@ -33,14 +31,15 @@ export default function Search(props){
         /*if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
-        else{ // if promise is true, check data and error. 
-            if(!promiseState.data){
-                if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
-                return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
+        // if promise is true, check data and error. 
+        if(!promiseState.data){
+            if(!promiseState.error){
+                return <img src="https://brfenergi.se/iprog/loading.gif" height = {"50"}/>;
             }
-            return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
-            onLocationClick = {onLocationClickACB}/>;
-        }*/
+            return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
+        }
+        return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
+        onLocationClick = {onLocationClickACB}/>;*/
 
         {/* Test code without api fetch */}
         return <SearchResultsView

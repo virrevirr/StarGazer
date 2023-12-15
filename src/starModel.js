@@ -17,50 +17,37 @@ export default{
     addToWantToGo(locToAdd){
         // Add city to haveVisited
         const foundObject = this.wantToGo.find(obj => this.doesObjectMatch(obj, locToAdd));
-    
-        if (!foundObject) {
-            // Adding the city to the list if it is not already there
-            this.wantToGo = [...this.wantToGo, locToAdd];
-            console.log("location to visit added", locToAdd)
-        }
+        // Adding the city to the list if it is not already there
+        foundObject || (this.wantToGo = [...this.wantToGo, locToAdd]);
     },
 
-    //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
         // Add city to haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, locToAdd));
-    
-        if (!foundObject) {
-            // Adding the city to the list if it is not already there
-            locToAdd["constellations"] = ["No constellations"]
-            this.haveVisited = [...this.haveVisited, locToAdd];
-            console.log("location have visited added", locToAdd)
-        }
+        // Adding the city to the list if it is not already there
+        foundObject || (this.haveVisited = [...this.haveVisited, { ...locToAdd, constellations: ["No constellations"] }]);
     },
 
-    addToSeen(constellationToAdd){
+    addToSeen(location, constellationToAdd){
         // Add constellation to a specific city in haveVisited
-        function isObjectMatch(obj, targetCity) {
-            return obj["city"] === targetCity;
+        const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, location));
+
+        function filterCB(item){
+            // remove "No constellations" if we have a constellation
+            item !== "No constellations";
         }
-        const foundObject = this.haveVisited.find(obj => isObjectMatch(obj, this.currentLocation.city));
-        
-        if (foundObject) {
-            // Adding the constellation to the city object
-            if (foundObject["constellations"].includes("No constellations")) {
-                foundObject["constellations"].filter(item => item === "No constellations");
-                console.log('Array after removing value:', foundObject);
-            }
-            foundObject["constellations"].push(constellationToAdd);
-        }
-        console.log("this.haveVisited", this.haveVisited)
+        // Adding the constellation to the city object
+        foundObject && (foundObject["constellations"] = foundObject["constellations"].includes("No constellations")
+        ? [...foundObject["constellations"].filter(filterCB), constellationToAdd]
+        : [...foundObject["constellations"], constellationToAdd]
+        );
     },
 
     removeFromVisited(locToRemove){
         function shouldWeKeepLocCB(location){
             return location !== locToRemove;  
         }
-        this.haveVisited = this.haveVisited.filter(shouldWeKeepLocCB);
+        this.haveVisited = [...this.haveVisited].filter(obj => obj.location !== locToRemove);    
     },
 
     removeFromWantToGo(locToRemove){
@@ -78,32 +65,30 @@ export default{
         }
         this.currentLocation = location*/
 
-        {/* Test code without api fetch */}
         this.currentLocation = {
             city: "Paris",
-            state: "Paris",
-            country: "France",
-          };
-    },  
+            state: "Sample State",
+            country: "France"}
+
+    }, 
 
     weatherPromiseState: {},
 
     searchWeatherByCity(city){
-        // liknande startSearch
         resolvePromise(getWeatherDetails(city), this.weatherPromiseState);
     },
     
     moonPromiseState: {},
 
     getMoon(){
-        // liknande startSearch
+
+        {/* Code with api fetch */}
         //resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
     newsPromiseState: {},
 
     searchNewsByCountry(languageCode, countryCode, astronomyTranslated){
-        // liknande startSearch
         resolvePromise(getNewsDetails(languageCode, countryCode, astronomyTranslated), this.newsPromiseState);
     },
 

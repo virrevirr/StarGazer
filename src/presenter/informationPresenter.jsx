@@ -18,24 +18,23 @@ export default function Information(props){
         if(!promiseState.promise) {//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
-        else{ // if promise is true, check data and error. 
-            if(!promiseState.data){
-                if(!promiseState.error){return <img src="https://brfenergi.se/iprog/loading.gif"/>;}
-                return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
+        // if promise is true, check data and error. 
+        if(!promiseState.data){
+            if(!promiseState.error){
+                return <img src="https://brfenergi.se/iprog/loading.gif" height = {"50"}/>;
             }
-            if (promiseState.data.moon){
-                console.log("moon", promiseState.data);
-                return (<MoonView moonData = {promiseState.data}/> );
-            }
-            if (promiseState.data.forecast){
-                console.log("weather", promiseState.data);
-                return  (<WeatherView weatherData = {promiseState.data}/>);
-            }
-            else{
-                console.log("news", promiseState.data);
-                return (<NewsView newsData = {promiseState.data}/> );
-            }
+            return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
         }
+        if(promiseState.data.moon){
+            console.log("moon", promiseState.data);
+            return (<MoonView moonData = {promiseState.data}/> );
+        }
+        if(promiseState.data.forecast){
+            console.log("weather", promiseState.data);
+            return  (<WeatherView weatherData = {promiseState.data}/>);
+        }
+        console.log("news", promiseState.data);
+        return (<NewsView newsData = {promiseState.data}/> );
     }
 
     return (
@@ -52,7 +51,7 @@ export default function Information(props){
         {/*promiseData(props.model.moonPromiseState)*/}
 
         {/* Code without api fetch */}
-        <MoonView/>
+        <MoonView />
 
         {promiseData(props.model.newsPromiseState)}
 

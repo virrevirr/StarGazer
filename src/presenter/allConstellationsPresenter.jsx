@@ -12,7 +12,7 @@ export default function AllConstellations(props){
         <div>
             <AllConstellationsView
             allConstellations = {starConstellations}
-            onConstellationClick= {onConstellationClickACB} //startSearch from model (makes a promise) 
+            onConstellationClick= {onConstellationClickACB}
             /> 
         </div>
         );

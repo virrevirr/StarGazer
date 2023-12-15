@@ -13,7 +13,7 @@ function ProfileView(props){
     };
 
 
-    function onLocationClickACB(event){
+    function onLocationClickACB(place){
         props.onLocationClick(place);
         window.location.hash = '#/information'
     };
