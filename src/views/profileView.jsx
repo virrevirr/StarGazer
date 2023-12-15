@@ -48,7 +48,7 @@ function ProfileView(props){
             <table> {/* Lägg till class för att snygga till kolumnerna (alt. kom på en lösning som är bättre än att ha en table) */}
                 <tbody>
                     <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
-                        <h1>Places I want to go</h1>
+                        <h2>Places I want to go</h2>
                         <ul>
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
                             {props.wantToGoPlaces.map(renderArrayACB)}
@@ -58,7 +58,7 @@ function ProfileView(props){
                     <td></td>
 
                     <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
-                        <h1>Places I have been</h1>
+                        <h2>Places I have been</h2>
                         <ul>
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
                             {props.haveVisitedPlaces.map(renderArrayACB)}
@@ -68,7 +68,7 @@ function ProfileView(props){
                     <td></td>
 
                     <td> {/* Lägg till funktion för att kunna skrolla igenom constellations */}
-                        <h1>Constellations I saw</h1>
+                        <h2>Constellations I saw</h2>
                         <ul>
                             {props.haveVisitedPlaces.map(renderConstellationsACB)}
                         </ul>
