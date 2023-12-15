@@ -19,8 +19,12 @@ function modelToPersistence(model){
 }
 
 function persistenceToModel(data, model){
-    function placeToGoToModelACB(place){model.wantToGo=place;}
-    function placeVisitedToModelACB(place){model.haveVisited=place;}
+    function placeToGoToModelACB(place){
+        model.wantToGo=place;
+    }
+    function placeVisitedToModelACB(place){
+        model.haveVisited=place;
+    }
 
     model.setCurrentLocation(data?.place);
     const placeToGoArray = data?.placesToGo || [];
