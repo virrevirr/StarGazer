@@ -4,27 +4,21 @@ function InformationView(props){
     function wantToGoACB(event){
         return props.addToGo(props.locationData);
     }
-    
     function visitedACB(event){
         return props.addToVisited(props.locationData);
     }
-
     function navigateToProfileACB(){
         window.location.hash = '#/profile';
     }
-    
     function navigateToLoginACB(){
         window.location.hash = '#/'
     };
-
     function navigateToSearchACB(){
         window.location.hash = '#/search'
     };
-
     function navigateToAllConstellationsACB(){
         window.location.hash = '#/allConstellations'
     };
-
     return (
         <div>
             <div className="profileButton">
@@ -36,8 +30,10 @@ function InformationView(props){
             </div>
             
             <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
-                <button onClick={wantToGoACB} disabled={props.isLocVisited}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
-                <button onClick={visitedACB} disabled={props.isLocVisited}>I have been here</button>
+                <button onClick={wantToGoACB} disabled={props.wantToVisit}>
+                    I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
+                <button onClick={visitedACB} disabled={props.isLocVisited}>
+                    I have been here</button>
             </span>
 
             <h1> {props.locationData.city +", "+ props.locationData.country} </h1> 

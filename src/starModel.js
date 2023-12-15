@@ -12,13 +12,6 @@ export default{
         this.wantToGo = [...this.wantToGo, locToAdd];
     },
 
-    removeFromWantToGo(locToRemove){
-        function shouldWeKeepConstCB(location){
-            return location !== locToRemove;
-        }
-        this.wantToGo = this.wantToGo.filter(shouldWeKeepConstCB);
-    },
-
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
         this.haveVisited = [ ...this.haveVisited, locToAdd]; /* Funktionalitet: Gör om till en dictionary */
@@ -43,7 +36,6 @@ export default{
                 foundObject[newParameter] = [newValue]}
             }
         }
-
         isObjectInList(this.haveVisited, "city", this.currentLocation.city, "constellations", constellationToAdd)
         console.log("this.haveVisited", this.haveVisited)
     },
@@ -55,6 +47,13 @@ export default{
         this.haveVisited = this.haveVisited.filter(shouldWeKeepLocCB);
     },
 
+    removeFromWantToGo(locToRemove){
+        function shouldWeKeepConstCB(location){
+            return location !== locToRemove;
+        }
+        this.wantToGo = this.wantToGo.filter(shouldWeKeepConstCB);
+    },
+
     setCurrentLocation(location){
 
         {/* Code with api fetch */}
@@ -62,7 +61,6 @@ export default{
             return;
         }
         this.currentLocation = location*/
-
 
         {/* Test code without api fetch */}
         this.currentLocation = {

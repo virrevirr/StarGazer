@@ -5,7 +5,7 @@ function ConstellationView(props){
 
     function navigateToProfileACB(){
         window.location.hash = '#/profile';
-    }
+    };
     
     function navigateToLoginACB(){
         window.location.hash = '#/'
@@ -17,7 +17,7 @@ function ConstellationView(props){
 
     function haveSeenACB(event){
         return props.haveSeen(props.constellationData[0].constellation);
-    }
+    };
 
     return (
         <div className="searchContainer"> {/* Lägg till class som är specifik för den här? */}
