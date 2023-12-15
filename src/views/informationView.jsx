@@ -3,13 +3,13 @@ function InformationView(props){
 
     function wantToGoACB(event){
         return props.addToGo(props.locationData);
-    }
+    };
     function visitedACB(event){
         return props.addToVisited(props.locationData);
-    }
+    };
     function navigateToProfileACB(){
         window.location.hash = '#/profile';
-    }
+    };
     function navigateToLoginACB(){
         window.location.hash = '#/'
     };
@@ -30,9 +30,9 @@ function InformationView(props){
             </div>
             
             <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
-                <button onClick={wantToGoACB} disabled={props.wantToVisit}>
+                <button className="buttonDesign" onClick={wantToGoACB}>
                     I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
-                <button onClick={visitedACB} disabled={props.isLocVisited}>
+                <button className="buttonDesign" onClick={visitedACB}>
                     I have been here</button>
             </span>
 

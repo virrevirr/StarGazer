@@ -7,12 +7,6 @@ import NewsView from "../views/newsView.jsx";
 
 //model is starModel
 export default function Information(props){
-    function visitedCB(location){
-        return location === props.model.currentLocation;
-    }
-    function wantToVisitCB(location){
-        return location === props.model.currentLocation;
-    }
     function addToWantToGoACB(){
         props.model.addToWantToGo(props.model.currentLocation);
     }
@@ -48,8 +42,6 @@ export default function Information(props){
         <div>
         <InformationView 
         locationData={props.model.currentLocation} //current location är objekt
-        isLocVisited = {props.model.haveVisited.find(visitedCB)} //isLocVisited expected to be falsy with empty menu
-        wantToVisit = {props.model.wantToGo.find(wantToVisitCB)}
         addToGo ={addToWantToGoACB}
         addToVisited={addVisitedACB} 
         /> 
