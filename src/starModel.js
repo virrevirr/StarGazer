@@ -9,47 +9,26 @@ export default{
     currentLocationPromiseState: {},
 
     addToWantToGo(locToAdd){
-        // Use an arrow function to preserve the 'this' context
-    function isCityInList(cityToCheck) {
-        return this.wantToGo.some(obj => obj.city === cityToCheck);
-    };
-
-    // Check if locToAdd is already a value for the "city" parameter
-    if (!isCityInList(locToAdd.city)) {
-        this.wantToGo = [...this.wantToGo, locToAdd];
-        console.log('Location added:', this.wantToGo);
-    }
+    this.wantToGo = [...this.wantToGo, locToAdd];
     },
 
     //We save searchQuery in locToAdd, so just a str that has been inputted. 
     addToVisited(locToAdd){
         // Add city to haveVisited
-        function isObjectMatch(obj, city, targetCity) {
+        function doesObjectMatch(obj, city, targetCity) {
             return obj[city] === targetCity;
         }
 
-        function isObjectInList(list, city, targetCity) {
+        function doesObjectExist(haveVisited, city, targetCity, locToAdd) {
             // Checking if the city is already in the haveVisited list
-            const foundObject = list.find(obj => isObjectMatch(obj, city, targetCity));
+            const foundObject = haveVisited.find(obj => doesObjectMatch(obj, city, targetCity));
             
-            if (foundObject) {
+            if (!foundObject) {
                 // Adding the city to the list if it is not already there
-                if (!foundObject){
-                    
-                }
+                haveVisited = [...haveVisited, locToAdd];
             }
         }
-
-        function isCityInList(cityToCheck) {
-            return this.wantToGo.some(obj => obj.city === cityToCheck);
-        }
-
-        // Check if locToAdd is already a value for the "city" parameter
-        if (!isCityInList(locToAdd.city)) {
-            this.wantToGo = [...this.wantToGo, locToAdd];
-            console.log('Location added:', this.wantToGo);
-        }
-        isObjectInList(this.haveVisited, "city", this.currentLocation.city)
+        doesObjectExist(this.haveVisited, "city", this.currentLocation.city, locToAdd)
     },
 
     addToSeen(constellationToAdd){
@@ -92,17 +71,17 @@ export default{
     setCurrentLocation(location){
 
         {/* Code with api fetch */}
-        if (location === this.currentLocation || !location){
+        /*if (location === this.currentLocation || !location){
             return;
         }
-        this.currentLocation = location
+        this.currentLocation = location*/
 
         {/* Test code without api fetch */}
-        /*this.currentLocation = {
+        this.currentLocation = {
             city: "Paris",
             state: "Paris",
             country: "France",
-          };*/
+          };
     },  
 
 
@@ -139,7 +118,7 @@ export default{
     startSearch(searchParams){
 
         {/* Code with api fetch */}
-       resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+        //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
 
 
