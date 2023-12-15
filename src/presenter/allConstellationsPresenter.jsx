@@ -4,7 +4,6 @@ import starConstellations from "../starConstellations.jsx"
 export default function AllConstellations(props){
 
     function onConstellationClickACB(constellation){
-        console.log("Constellation clicked:", constellation)
         props.model.fetchConstellation(constellation);
     }
 

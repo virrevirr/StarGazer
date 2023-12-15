@@ -1,19 +1,17 @@
 
 function AllConstellationsView(props){
+    console.log("all constellations", props.allConstellations)
 
     function navigateToProfileACB(){
-        console.log("navigate to profile");
         window.location.hash = '#/profile';
     }
     
     function navigateToLoginACB(){
-        console.log("navigate to login")
-        window.location.hash = '#/'
+        window.location.hash = '#/';
     };
 
     function navigateToSearchACB(){
-        console.log("navigate to search")
-        window.location.hash = '#/search'
+        window.location.hash = '#/search';
     };
 
     return(

@@ -58,18 +58,10 @@ export default{
     },
 
     setCurrentLocation(location){
-
-        {/* Code with api fetch */}
-        /*if (location === this.currentLocation || !location){
+        if (location === this.currentLocation || !location){
             return;
         }
-        this.currentLocation = location*/
-
-        this.currentLocation = {
-            city: "Paris",
-            state: "Sample State",
-            country: "France"}
-
+        this.currentLocation = location
     }, 
 
     weatherPromiseState: {},

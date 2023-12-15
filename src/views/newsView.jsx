@@ -1,5 +1,5 @@
 function NewsView(props){
-    console.log("news", props.newsData)
+    console.log("news data", props.newsData)
 
     function news() {
         const news = [];

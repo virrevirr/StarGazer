@@ -6,7 +6,6 @@ import ConstellationView from "../views/constellationView.jsx";
 export default function Constellation(props){
     
     function haveSeenACB(constellation){
-        console.log("props.model.currentLocation", props.model.currentLocation)
         props.model.addToSeen(props.model.currentLocation, constellation);
     }
 

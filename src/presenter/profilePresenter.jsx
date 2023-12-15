@@ -3,7 +3,6 @@ import countries from "../countries.jsx";
 
 export default function Profile(props){
     function clickedLocationACB(input){
-        console.log("input in profilePresenter", input)
         props.model.setCurrentLocation(input);
         props.model.searchWeatherByCity(input.city);
         //props.model.getMoon();

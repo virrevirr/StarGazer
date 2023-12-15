@@ -1,18 +1,18 @@
 import starConstellations from "../starConstellations.jsx"
 
 function ConstellationView(props){
-    console.log("constellation",props.constellationData)
+    console.log("constellation", props.constellationData);
 
     function navigateToProfileACB(){
         window.location.hash = '#/profile';
     };
     
     function navigateToLoginACB(){
-        window.location.hash = '#/'
+        window.location.hash = '#/';
     };
 
     function navigateToAllConstellationsACB(){
-        window.location.hash = '#/allConstellations'
+        window.location.hash = '#/allConstellations';
     };
 
     function haveSeenACB(event){

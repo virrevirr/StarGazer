@@ -3,23 +3,22 @@
 //går säkert att titta på sidebarView koden för inspo för listan av stjärnbilder då de kommer funka lite likadant.
 
 function ProfileView(props){
+    console.log("have visited", props.haveVisitedPlaces)
+    console.log("want to go", props.wantToGoPlaces)
     
     function navigateToLoginACB(){
-        window.location.hash = '#/'
-    };
+        window.location.hash = '#/';
+    }
 
     function navigateToSearchACB(){
-        window.location.hash = '#/search'
-    };
-
-
-    function onLocationClickACB(place){
-        props.onLocationClick(place);
-        window.location.hash = '#/information'
-    };
+        window.location.hash = '#/search';
+    }
 
     function renderWantToGoACB(place){ 
-        /* Funktionalitet: Lägg till constellation och mappa över en dictionary som i allConstellationsView */
+        function onLocationClickACB(event){
+            props.onLocationClick(place);
+            window.location.hash = '#/information';
+        };
         return (<div>
                     <span onClick={onLocationClickACB} key={place}>
                         {place.city +", "+ place.state +", "+ place.country}
@@ -28,12 +27,15 @@ function ProfileView(props){
     } 
 
     function renderHaveVisitedACB(place){
-        function renderConstellationsACB(constellation){
-            return constellation+" "
+        function onLocationClickACB(event){
+            props.onLocationClick(place);
+            window.location.hash = '#/information';
         }
-
+        function renderConstellationsACB(constellation){
+            return constellation+" ";
+        }
         return (<div>
-            <span onClick={onLocationClickACB} key={place}>
+            <span onClick={onLocationClickACB} key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
                 {place.city +", "+ place.state +", "+ place.country}
                 <td></td>
                 <td></td>
@@ -54,6 +56,16 @@ function ProfileView(props){
             
             <table> {/* Lägg till class för att snygga till kolumnerna (alt. kom på en lösning som är bättre än att ha en table) */}
                 <tbody>
+                    <td>
+                        <h1>Places I have been</h1>
+                        <ul>
+                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
+                            {props.haveVisitedPlaces.map(renderHaveVisitedACB)}
+                        </ul>
+                    </td>
+
+                    <td></td>
+
                     <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
                         <h1>Places I want to go</h1>
                         <ul>
@@ -62,15 +74,6 @@ function ProfileView(props){
                         </ul>
                     </td>
 
-                    <td></td>
-
-                    <td>
-                        <h1>Places I have been</h1>
-                        <ul>
-                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
-                            {props.haveVisitedPlaces.map(renderHaveVisitedACB)}
-                        </ul>
-                    </td>
                 </tbody>
             </table>
 
@@ -78,7 +81,6 @@ function ProfileView(props){
                 <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
             </div>
         </div>
-
     );
 }
 

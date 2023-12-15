@@ -3,23 +3,20 @@
 function SearchFormView(props){
     
     function userInputACB(event){
-        console.log("search for ", event.target.value);
+        console.log("searched for ", event.target.value);
         return props.userInput(event.target.value);
     }
 
     function clickSearchACB(){
-        console.log("click search");
         return props.clickSearch();
     }
 
     function navigateToProfileACB(){
-        console.log("navigate to profile");
         window.location.hash = '#/profile';
     }
     
     function navigateToLoginACB(){
-        console.log("navigate to login")
-        window.location.hash = '#/'
+        window.location.hash = '#/';
     };
 
     return(

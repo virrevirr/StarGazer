@@ -26,9 +26,7 @@ export default function Search(props){
     }
 
     function promiseData(promiseState){
-
-        {/* Code with api fetch */}
-        /*if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
+        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
             return "no data";
         }  
         // if promise is true, check data and error. 
@@ -39,12 +37,7 @@ export default function Search(props){
             return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
         }
         return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
-        onLocationClick = {onLocationClickACB}/>;*/
-
-        {/* Test code without api fetch */}
-        return <SearchResultsView
-            onLocationClick = {onLocationClickACB}
-             />;
+        onLocationClick = {onLocationClickACB}/>;
     }
 
     return (
@@ -53,7 +46,12 @@ export default function Search(props){
             text = {props.model.searchParams}
             userInput= {setSearchInputACB} //setSearch from model
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
-            /> {promiseData(props.model.searchResultsPromiseState)}
+            /> 
+            
+            {/*promiseData(props.model.searchResultsPromiseState)*/}
+            
+            {/* Test code without api fetch */}
+            <SearchResultsView onLocationClick = {onLocationClickACB}/>;
             
         </div>
         );
