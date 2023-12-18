@@ -19,16 +19,23 @@ function SearchResultsView(props){
         country: "Sweden"
     }]
 
+
     return(
        <div className="searchResultsContainer"> {/* Gör resultaten skrollbara istället och gör diven mindre så att sökrutan och resultaten är samma storlek */}
             {/* Code with api fetch */}
             {/*props.searchResult.map(renderResultCB)*/}
 
+            {!searchResult && defaultCities()} {/* try with api fetch, to render default cities*/}
             {/* Code without api fetch */}
-            {searchResult.map(renderResultCB)}
+            {searchResult && searchResult.map(renderResultCB)}
 
         </div>
     );
+
+    function defaultCities(){
+        const defaultCities = searchResult.slice(0, 10);
+        return defaultCities.map(renderResultCB)
+    }
 
     function renderResultCB(result){
         function onLocationClickACB(event){
