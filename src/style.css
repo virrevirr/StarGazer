@@ -311,6 +311,25 @@ ul{
     margin-bottom: -50px;
 }
 
+.newsScroll::-webkit-scrollbar{
+    width: 20px;
+}
+
+.newsScroll::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.newsScroll::-webkit-scrollbar-thumb{
+    background-color: rgb(77, 181, 210);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+.newsScroll::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(93, 142, 206);
+}
+
 
 /*All constellations____________________________________________________________________________________________*/
 
@@ -319,6 +338,10 @@ ul{
     flex-wrap: wrap;
     justify-content: space-between; /* Distribute columns with space in between */
     margin: 0 auto; /* Center the container horizontally */
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 90%;
+    height: 550px;
 }
 
 .constellationDisplay{
@@ -329,12 +352,31 @@ ul{
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 
-/* profil css */
+.constellationsContainer::-webkit-scrollbar{
+    width: 20px;
+}
+
+.constellationsContainer::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.constellationsContainer::-webkit-scrollbar-thumb{
+    background-color: rgb(77, 181, 210);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+.constellationsContainer::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(93, 142, 206);
+}
+
+/* profil css ________________________________________________________________________________________________ */
 a{
     color: whitesmoke;
 }
 
-/* Media query for narrow screens */
+/* Media query for narrow screens ___________________________________________________________________________*/
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
 
     .debug {
