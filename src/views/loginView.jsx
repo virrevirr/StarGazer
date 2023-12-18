@@ -1,5 +1,5 @@
 /* code snippets taken from https://clerk.com/blog/building-a-react-login-page-template */
-import "../style.css";
+import "/style.css";
 
  
 
