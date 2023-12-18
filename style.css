@@ -1,10 +1,5 @@
 /* css */
 
-
-.debug {
-    border-style: solid;
-}
-
 /*url for the background image later*/
 body{
     background-image: url('src/space_background.png');
@@ -213,6 +208,18 @@ ul{
     margin: 0 auto; /* Center the container horizontally */
 }
 
+.constellationsPosition{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.beenAndWantButtons{
+    margin-top: 70px;
+    margin-bottom: -50px;
+}
+
 /*Weather View____________________*/
 .weatherContainer{
     display: flex;
@@ -277,7 +284,7 @@ ul{
 .localNews{
     display: flex;
     flex: 1;
-    height: 400px;
+    height: 450px;
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -291,7 +298,7 @@ ul{
 .newsScroll{
     overflow-x: hidden;
     overflow-y: auto;
-    height: 400px;
+    height: 500px;
     align-items: center;
 }
 
@@ -345,24 +352,11 @@ ul{
     border-radius: 5px;
 }
 
-.constellationsPosition{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    align-items: center;
-}
-
 .backToSearchButton {
     position: absolute;
     top: 0;
     left: 0;
 }
-
-.beenAndWantButtons{
-    margin-top: 70px;
-    margin-bottom: -50px;
-}
-
 
 /*All constellations____________________________________________________________________________________________*/
 
