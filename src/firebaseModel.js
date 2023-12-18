@@ -49,21 +49,23 @@ function readFromFirebase(model){
 }
 
 function connectToFirebase(model, watchFunction){
-    readFromFirebase(model);
+    function loginlogOut(user) {
+        console.log("Authentication state changed:", user);
+            model.user = user ? user.uid : null;
+            user? (model.setLoggedIn(true), model.setUserId(auth.currentUser.uid)):
+            (model.setLoggedIn(false), model.setUserId(null));
+            readFromFirebase(model);        
+      }
+
+    loginlogOut(auth.currentUser)
+    onAuthStateChanged(auth, loginlogOut);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
-    
     return watchFunction(checkACB, sideEffectACB);
 }
 
 
-function loginlogOut(model) {
-    model ? (model.setLoggedIn(true), model.setUserId(auth.currentUser.uid)) :
-    (model.setLoggedIn(false), model.setUserId(null));
-    readFromFirebase(model);
-  }
 
-onAuthStateChanged(auth, loginlogOut);
 
-export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase,loginlogOut, auth}
+export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase,connectToFirebase, auth}
 export default connectToFirebase;

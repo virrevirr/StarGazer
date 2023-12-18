@@ -8,7 +8,8 @@ function LogInView(props){
 
     function handleLoginClick() {
         console.log("Button clicked");
-        props.loginCB;
+        props.loginCB();
+     
       }
 
     return(

@@ -3,23 +3,24 @@
 /* eslint-disable */
 
 import LogInView from "../views/loginView.jsx";
-import { loginlogOut, auth } from "../firebaseModel";
+import { auth } from "../firebaseModel";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 function Login(props) {
   const provider = new GoogleAuthProvider();
 
-  async function loginCB() {
-    loginlogOut(props.user);
-    
+  function connect() {
+    console.log("loginAB");
     try {
-      auth.currentUser?(await signOut(auth), window.location.hash = "search"): await signInWithPopup(auth, provider)
+      auth.currentUser?(signOut(auth)): (signInWithPopup(auth, provider))
+      
     } catch (error) {
       console.error("Error during login/logout:", error);
     }
+    window.location.hash = '#/search';
   }
 
-  return <LogInView handleLoginClick={loginCB} />;
+  return <LogInView loginCB={connect} />;
 }
 
 export default Login;
