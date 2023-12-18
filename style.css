@@ -7,8 +7,7 @@
 
 /*url for the background image later*/
 body{
-    background-color: black;
-    /*background-image: url('src/space_background.png');*/
+    background-image: url('src/space_background.png');
     background-size: cover;
     background-position: center;
     margin:0;
@@ -207,6 +206,116 @@ ul{
 }
 
 /* informationView nedan _________________________________________________________________________________________*/
+.viewParentContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute columns with space in between */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/*Weather View____________________*/
+.weatherContainer{
+    display: flex;
+    height: 100%;
+    width: 155px; /*precis så stor som en dags väder*/
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.bigWeatherContainer{
+    width: 33%; /*precis så stor som en dags väder*/
+    display: flex;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px; 
+    padding: 10px; 
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+}
+
+.weatherContainer::-webkit-scrollbar{
+    width: 20px;
+}
+
+.weatherContainer::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.weatherContainer::-webkit-scrollbar-thumb{
+    background-color: rgb(77, 181, 210);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+.weatherContainer::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(93, 142, 206);
+}
+
+/*MoonView_______________________________*/
+.moonContainer{
+    display: flex;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 33%;
+    width: 33%;
+    margin: 10px; 
+    padding: 10px; 
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+}
+.moonInformation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    margin: 0 auto;
+}
+/*NewsView_____________________________*/
+.localNews{
+    display: flex;
+    flex: 1;
+    height: 400px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px; 
+    padding: 10px; 
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+    width: 20%;
+}
+
+.newsScroll{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 400px;
+    align-items: center;
+}
+
+.newsScroll::-webkit-scrollbar{
+    width: 20px;
+}
+
+.newsScroll::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.newsScroll::-webkit-scrollbar-thumb{
+    background-color: rgb(77, 181, 210);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+.newsScroll::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(93, 142, 206);
+}
+
+/*Buttons_____________________________________________________________________________________*/
+
 .biggerButtonDesign{
     transition-duration: 0.4s;
     padding: 5px 10px;
@@ -236,68 +345,10 @@ ul{
     border-radius: 5px;
 }
 
-.moonContainer{
-    display: flex;
-    flex: 1;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    height: 33%;
-    width: 33%;
-    float: center;
-}
-
-.moonInformation{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1;
-    margin: 0 auto;
-}
-
-.weatherContainer{
-    display: flex;
-    height: 100%;
-    width: 155px; /*precis så stor som en dags väder*/
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-.bigWeatherContainer{
-    width: 33%; /*precis så stor som en dags väder*/
-    display: flex;
-    flex: 1;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    float: left; /* Aligns container next to moon */
-}
-
 .constellationsPosition{
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    align-items: center;
-}
-
-.localNews{
-    border: 2px solid #ccc;
-    display: flex;
-    flex: 1;
-    height: 400px;
-    width: 33%;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    float: right;
-}
-
-.newsScroll{
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 400px;
-    width: 50%;
     align-items: center;
 }
 
@@ -310,25 +361,6 @@ ul{
 .beenAndWantButtons{
     margin-top: 70px;
     margin-bottom: -50px;
-}
-
-.newsScroll::-webkit-scrollbar{
-    width: 20px;
-}
-
-.newsScroll::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-.newsScroll::-webkit-scrollbar-thumb{
-    background-color: rgb(77, 181, 210);
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-
-.newsScroll::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(93, 142, 206);
 }
 
 
@@ -376,6 +408,7 @@ ul{
 a{
     color: whitesmoke;
 }
+
 
 /* Media query for narrow screens ___________________________________________________________________________*/
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */

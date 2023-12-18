@@ -43,18 +43,18 @@ export default function Information(props){
         locationData={props.model.currentLocation} //current location är objekt
         addToGo ={addToWantToGoACB}
         addToVisited={addVisitedACB} 
-        /> 
+        />
+            <div className="viewParentContainer">
+                {promiseData(props.model.weatherPromiseState)}
 
-        {promiseData(props.model.weatherPromiseState)}
+                {/* Code with api fetch */}
+                {/*promiseData(props.model.moonPromiseState)*/}
 
-        {/* Code with api fetch */}
-        {/*promiseData(props.model.moonPromiseState)*/}
+                {/* Code without api fetch */}
+                <MoonView />
 
-        {/* Code without api fetch */}
-        <MoonView />
-
-        {promiseData(props.model.newsPromiseState)}
-
+                {promiseData(props.model.newsPromiseState)}
+            </div>
         </div>
         );
 }
