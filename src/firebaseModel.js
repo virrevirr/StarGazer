@@ -12,7 +12,7 @@ const db= getDatabase(app)
 const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
-const PATH="dinnerModel60"; // what is this???
+const PATH="dinnerModel60"; // this should be the user
 
 
 function modelToPersistence(model){

@@ -24,7 +24,7 @@ function AllConstellationsView(props){
             <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
         </div>
         
-        <div class = "grid"> {/* Lägg till grid-class för sökresultat som i labben (kör 3 rader, 14 kolumner) */}
+        <div class = "constellationsContainer"> {/* Lägg till grid-class för sökresultat som i labben (kör 3 rader, 14 kolumner) */}
             {Object.entries(props.allConstellations).map(renderResultCB)}
         </div> 
 
@@ -43,10 +43,13 @@ function AllConstellationsView(props){
         };
 
         return(
-            <span key={constellation[0]} onClick={onConstellationClickACB}> 
-                <img src = {constellation[1]} height = {"100"} />
-                <p>{constellation[0]}</p>
-            </span>
+            <div className="constellationDisplay">
+                <span key={constellation[0]} onClick={onConstellationClickACB}> 
+                    <img src = {constellation[1]} height = {"100"} />
+                    <p>{constellation[0]}</p>
+                </span>
+            </div>
+            
         );}
     }
     export default AllConstellationsView;

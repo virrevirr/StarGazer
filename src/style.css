@@ -312,6 +312,23 @@ ul{
 }
 
 
+/*All constellations____________________________________________________________________________________________*/
+
+.constellationsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute columns with space in between */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.constellationDisplay{
+    width: calc(33.33% - 20px); /* Fixed width for each column */
+    height: 150px; 
+    margin: 10px; 
+    padding: 10px; 
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+}
+
 
 
 /* Media query for narrow screens */
