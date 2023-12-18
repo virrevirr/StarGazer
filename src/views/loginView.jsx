@@ -9,9 +9,9 @@ function LogInView(props){
     function handleLoginClick() {
         console.log("Button clicked");
         props.loginCB();
-        window.location.hash = '#/search';
-     
-      }
+        }
+        
+      
 
     return(
         <div className="mainContainer"> 
