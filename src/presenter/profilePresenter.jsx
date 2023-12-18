@@ -1,6 +1,7 @@
 import ProfileView from "../views/profileView.jsx";
 import countries from "../countries.jsx";
 
+
 export default function Profile(props){
     function clickedLocationACB(input){
         props.model.setCurrentLocation(input);
@@ -17,11 +18,17 @@ export default function Profile(props){
         props.model.fetchConstellation(constellation);
     }
 
+    function removeCityACB(city){
+        props.model.removeFromWantToGo(city)
+        props.model.removeFromVisited(city)
+    }
+
     return (<ProfileView
         onLocationClick={clickedLocationACB}
         onConstellationClick = {clickedConstellationACB}
         wantToGoPlaces={props.model.wantToGo || []}
         haveVisitedPlaces={props.model.haveVisited || []}
+        deleteCityButton={removeCityACB}
         />); 
         /* Funktionalitet: exportera användarens namn/användarnamn till viewn */
 }
