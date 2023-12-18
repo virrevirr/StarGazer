@@ -322,7 +322,7 @@ ul{
 }
 
 .constellationDisplay{
-    width: calc(33.33% - 20px); /* Fixed width for each column */
+    width: calc(14% - 30px); /* Fixed width for each column */
     height: 150px; 
     margin: 10px; 
     padding: 10px; 
