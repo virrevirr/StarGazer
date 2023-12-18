@@ -181,25 +181,6 @@ ul{
     margin: 0 auto;
 }
 
-.searchResultsContainer::-webkit-scrollbar{
-    width: 20px;
-}
-
-.searchResultsContainer::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-.searchResultsContainer::-webkit-scrollbar-thumb{
-    background-color: rgb(77, 181, 210);
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-
-.searchResultsContainer::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(93, 142, 206);
-}
-
 /* informationView nedan _________________________________________________________________________________________*/
 .viewParentContainer{
     display: flex;
@@ -239,25 +220,6 @@ ul{
     margin: 10px; 
     padding: 10px; 
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
-}
-
-.weatherContainer::-webkit-scrollbar{
-    width: 20px;
-}
-
-.weatherContainer::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-.weatherContainer::-webkit-scrollbar-thumb{
-    background-color: rgb(77, 181, 210);
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-
-.weatherContainer::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(93, 142, 206);
 }
 
 /*MoonView_______________________________*/
@@ -300,25 +262,6 @@ ul{
     overflow-y: auto;
     height: 500px;
     align-items: center;
-}
-
-.newsScroll::-webkit-scrollbar{
-    width: 20px;
-}
-
-.newsScroll::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-.newsScroll::-webkit-scrollbar-thumb{
-    background-color: rgb(77, 181, 210);
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-
-.newsScroll::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(93, 142, 206);
 }
 
 /*Buttons_____________________________________________________________________________________*/
@@ -379,24 +322,6 @@ ul{
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 
-.constellationsContainer::-webkit-scrollbar{
-    width: 20px;
-}
-
-.constellationsContainer::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-.constellationsContainer::-webkit-scrollbar-thumb{
-    background-color: rgb(77, 181, 210);
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-
-.constellationsContainer::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(93, 142, 206);
-}
 
 /* profil css ________________________________________________________________________________________________ */
 a{
@@ -419,4 +344,38 @@ a{
     .grid {
         grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
       }
+  }
+
+  
+  
+  /* Scrollbar customization______________________________________________________________________*/
+  .searchResultsContainer::-webkit-scrollbar,
+  .weatherContainer::-webkit-scrollbar,
+  .newsScroll::-webkit-scrollbar,
+  .constellationsContainer::-webkit-scrollbar {
+      width: 20px;
+  }
+  
+  .searchResultsContainer::-webkit-scrollbar-track,
+  .weatherContainer::-webkit-scrollbar-track,
+  .newsScroll::-webkit-scrollbar-track,
+  .constellationsContainer::-webkit-scrollbar-track {
+      background-color: transparent;
+  }
+  
+  .searchResultsContainer::-webkit-scrollbar-thumb,
+  .weatherContainer::-webkit-scrollbar-thumb,
+  .newsScroll::-webkit-scrollbar-thumb,
+  .constellationsContainer::-webkit-scrollbar-thumb {
+      background-color: rgb(77, 181, 210);
+      border-radius: 20px;
+      border: 6px solid transparent;
+      background-clip: content-box;
+  }
+  
+  .searchResultsContainer::-webkit-scrollbar-thumb:hover,
+  .weatherContainer::-webkit-scrollbar-thumb:hover,
+  .newsScroll::-webkit-scrollbar-thumb:hover,
+  .constellationsContainer::-webkit-scrollbar-thumb:hover {
+      background-color: rgb(93, 142, 206);
   }

@@ -17,7 +17,8 @@ function SearchResultsView(props){
         city: "Stockholm",
         state: "Sample State",
         country: "Sweden"
-    }]
+    }
+]
 
 
     return(
