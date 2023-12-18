@@ -329,7 +329,10 @@ ul{
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 
-
+/* profil css */
+a{
+    color: white;
+}
 
 /* Media query for narrow screens */
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
