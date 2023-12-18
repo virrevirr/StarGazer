@@ -2,7 +2,7 @@
 
 /*url for the background image later*/
 body{
-    background-image: url('src/space_background.png');
+    background-image: url('src/images/space_background.png');
     background-size: cover;
     background-position: center;
     margin:0;

@@ -5,7 +5,7 @@ function MoonView(props){
     let moonData = {
         moon : {
         phase : "Warning Crescent",
-        img_flat : "src/moon.png",
+        img_flat : "src/images/moon.png",
         info : "This phase occurs between the new Moon and first quarter phases. At the beginning of this stage, we see a thin, crescent-shape Moon, which, in the Northern Hemisphere, appears on the right side. The lit area slowly widens each day, covering more and more of the right side of the Moon’s surface until the first quarter phase, when the Moons entire right side is illuminated. (In the Southern Hemisphere, the same thing happens, only on the left side.) Some lunar and lunisolar calendars, such as the Islamic (or Hijri) calendar, define the start of a month as when the Moon first becomes visible, which is usually a day or so after the new Moon, during its waxing crescent stage."
         }
     }
