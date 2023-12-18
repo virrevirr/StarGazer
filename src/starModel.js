@@ -32,15 +32,14 @@ export default{
         // Add constellation to a specific city in haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, location));
 
-        function filterCB(item){
+        function filterCB(item, index, array){
             // remove "No constellations" if we have a constellation
             item !== "No constellations";
         }
-        // Adding the constellation to the city object
+        // Adding the constellation to the city object and removing duplicates
         foundObject && (foundObject["constellations"] = foundObject["constellations"].includes("No constellations")
-        ? [...foundObject["constellations"].filter(filterCB), constellationToAdd]
-        : [...foundObject["constellations"], constellationToAdd]
-        );
+        ? [...new Set([...foundObject["constellations"].filter(filterCB), constellationToAdd])]
+        : [...new Set([...foundObject["constellations"], constellationToAdd])]);
     },
 
     removeFromVisited(locToRemove){
