@@ -54,9 +54,11 @@ function connectToFirebase(model, watchFunction){
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
 }
-function loginlogOut(model,authentication){
+
+function loginlogOut(user){
          user ? (model.setLoggedIn(true), model.setUserId(user.uid)):
         (model.setLoggedIn(false), model.setUserId(null));
+        readFromFirebase(model);
 }
 
 export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, authentication}
