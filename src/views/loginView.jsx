@@ -4,8 +4,12 @@ import "../style.css";
  
 
 function LogInView(props){
-    function authGoogleACB() {
-        props.authenticator(auth, provider);
+
+
+    function handleLoginClick() {
+        console.log("Button clicked");
+        props.loginCB();
+     
       }
 
     return(
@@ -13,7 +17,7 @@ function LogInView(props){
             <img className= "logo" src= {'src/logga.png'} height = {"200"}></img>
             <br/>
             <div className="loginContainer"> 
-                <button className = "buttonDesign" onClick= {authGoogleACB} >Sign in</button>
+                <button className = "buttonDesign" onClick= {handleLoginClick} >Sign in</button>
             </div>
         </div>
     )

@@ -3,6 +3,10 @@ function ProfileView(props){
     console.log("have visited", props.haveVisitedPlaces)
     console.log("want to go", props.wantToGoPlaces)
     
+    function deleteCityButton(place){
+        props.deleteCityButton(place);
+    }
+    
     function navigateToLoginACB(){
         window.location.hash = '#/';
     }
@@ -15,9 +19,18 @@ function ProfileView(props){
         function onLocationClickACB(event){
             props.onLocationClick(place);
             window.location.hash = '#/information';
+        }
+        
+        function deleteClickACB(event){
+            event.stopPropagation(); // Prevent the event from propagating to parent elements
+            
+            props.deleteCityButton(place);
         };
         return (<div>
                     <span onClick={onLocationClickACB} key={place}>
+                        <td>
+                            <button onClick={deleteClickACB}>X</button>
+                        </td>
                         {place.city +", "+ place.state +", "+ place.country}
                     </span>
                 </div>);

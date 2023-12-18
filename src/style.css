@@ -205,7 +205,7 @@ ul{
     background-color: rgb(93, 142, 206);
 }
 
-/* informationView nedan */
+/* informationView nedan _________________________________________________________________________________________*/
 .biggerButtonDesign{
     transition-duration: 0.4s;
     padding: 5px 10px;
@@ -237,36 +237,39 @@ ul{
 
 .moonContainer{
     display: flex;
-    flex-direction: column;
-    height: 100%; 
-    text-align: center;
-    align-items: center;
-    justify-content:center;
-}
-
-.weatherContainer{
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-}
-
-.bigWeatherContainer{
-    display: flex;
     flex: 1;
     text-align: center;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    height: 33%;
+    width: 33%;
+    float: center;
 }
 
 .moonInformation{
     display: flex;
     flex-direction: column;
-    height: 300px;
-    width: 35%;
     align-items: center;
-    column-gap: 20px;
     z-index: 1;
     margin: 0 auto;
+}
+
+.weatherContainer{
+    display: flex;
+    height: 100%;
+    width: 155px; /*precis så stor som en dags väder*/
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.bigWeatherContainer{
+    width: 33%; /*precis så stor som en dags väder*/
+    display: flex;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    float: left; /* Aligns container next to moon */
 }
 
 .constellationsPosition{
@@ -277,9 +280,24 @@ ul{
 }
 
 .localNews{
+    border: 2px solid #ccc;
     display: flex;
-    flex-direction: row;
-    height: 100%;
+    flex: 1;
+    height: 400px;
+    width: 33%;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    float: right;
+}
+
+.newsScroll{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 400px;
+    width: 50%;
+    align-items: center;
 }
 
 .backToSearchButton {
@@ -292,6 +310,8 @@ ul{
     margin-top: 70px;
     margin-bottom: -50px;
 }
+
+
 
 
 /* Media query for narrow screens */

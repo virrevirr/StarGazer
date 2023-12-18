@@ -1,13 +1,15 @@
 // Add relevant imports here
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set} from "/src/teacherFirebase.js";
-import firebaseConfig from "/src/firebaseConfig.js"; // config from previous step in 3.5
+import { getDatabase, ref, get, set} from "firebase/database";
+import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
 import { searchPlaces } from "./starSource.js";
-import { searchPlaces } from "./starSource";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Initialise firebase app, database, ref
 const app= initializeApp(firebaseConfig)
 const db= getDatabase(app)
+const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
 const PATH="dinnerModel60"; // what is this???
@@ -47,12 +49,23 @@ function readFromFirebase(model){
 }
 
 function connectToFirebase(model, watchFunction){
-    readFromFirebase(model);
+    function loginlogOut(user) {
+        console.log("Authentication state changed:", user);
+            model.user = user ? user.uid : null;
+            user? (model.setLoggedIn(true), model.setUserId(auth.currentUser.uid)):
+            (model.setLoggedIn(false), model.setUserId(null));
+            readFromFirebase(model);        
+      }
+
+    loginlogOut(auth.currentUser)
+    onAuthStateChanged(auth, loginlogOut);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
 }
 
 
-export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase}
+
+
+export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase,connectToFirebase, auth}
 export default connectToFirebase;

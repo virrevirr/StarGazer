@@ -12,10 +12,10 @@ function MoonView(props){
 
     return (
         <div className="moonContainer"> {/* Lägg till class för att rendera moon som prototypen */}
-            <h2>Moon phase</h2> 
-            <h3>{moonData.moon.phase}</h3>
-            <img src={moonData.moon.img_flat} height={"100"}/>
             <div className="moonInformation">
+                <h2>Moon phase</h2> 
+                <h3>{moonData.moon.phase}</h3>
+                <img src={moonData.moon.img_flat} height={"100"}/>
                 <p>{moonData.moon.info}</p>   {/* Fixa så att infon inte tar upp så mycket plats */}
             </div>
         </div>

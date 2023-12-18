@@ -39,6 +39,7 @@ function WeatherView(props){
                 </div>
             </tbody>
         </table>
+
     );
 }
 

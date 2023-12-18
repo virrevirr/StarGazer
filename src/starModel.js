@@ -46,7 +46,7 @@ export default{
         function shouldWeKeepLocCB(location){
             return location !== locToRemove;  
         }
-        this.haveVisited = [...this.haveVisited].filter(obj => obj.location !== locToRemove);    
+        this.haveVisited = [...this.haveVisited].filter(shouldWeKeepLocCB);    
     },
 
     removeFromWantToGo(locToRemove){

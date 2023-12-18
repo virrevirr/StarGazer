@@ -1,31 +1,26 @@
+// LoginPresenter
+
 /* eslint-disable */
 
 import LogInView from "../views/loginView.jsx";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../firebaseModel";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
-function Login(props){
-
-  const auth = getAuth();
+function Login(props) {
   const provider = new GoogleAuthProvider();
-  function authenticator() {
-    signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
-      console.log("User signed in with Google:", user);
-      // You can redirect or perform additional actions here
-    })
-    .catch((error) => {
-      console.error("Google authentication failed:", error.message);
-    });
-  
-    return(
-        <LogInView
-        authGoogleACB ={authenticator}
-      
-        />)
 
-    
-}
+  function connect() {
+    console.log("loginAB");
+    try {
+      auth.currentUser?(signOut(auth)): (signInWithPopup(auth, provider))
+      
+    } catch (error) {
+      console.error("Error during login/logout:", error);
+    }
+    window.location.hash = '#/search';
+  }
+
+  return <LogInView loginCB={connect} />;
 }
 
 export default Login;
