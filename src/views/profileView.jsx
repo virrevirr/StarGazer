@@ -31,7 +31,9 @@ function ProfileView(props){
                         <td>
                             <button onClick={deleteClickACB}>X</button>
                         </td>
-                        {place.city +", "+ place.state +", "+ place.country}
+                        <a href="#/information" >
+                            {place.city +", "+ place.state +", "+ place.country}
+                        </a>
                     </span>
                 </div>);
     } 
