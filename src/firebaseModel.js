@@ -4,10 +4,12 @@ import { getDatabase, ref, get, set} from "/src/teacherFirebase.js";
 import firebaseConfig from "/src/firebaseConfig.js"; // config from previous step in 3.5
 import { searchPlaces } from "./starSource.js";
 import { searchPlaces } from "./starSource";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Initialise firebase app, database, ref
 const app= initializeApp(firebaseConfig)
 const db= getDatabase(app)
+const authentication = getAuth(app);
 
 //  PATH is the “root” Firebase path
 const PATH="dinnerModel60"; // what is this???
@@ -52,7 +54,10 @@ function connectToFirebase(model, watchFunction){
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
 }
+function loginlogOut(model,authentication){
+         user ? (model.setLoggedIn(true), model.setUserId(user.uid)):
+        (model.setLoggedIn(false), model.setUserId(null));
+}
 
-
-export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase}
+export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, authentication}
 export default connectToFirebase;
