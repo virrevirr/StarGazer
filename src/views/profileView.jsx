@@ -29,7 +29,7 @@ function ProfileView(props){
         return (<div>
                     <span onClick={onLocationClickACB} key={place}>
                         <td>
-                            <button onClick={deleteClickACB}>X</button>
+                            <button className="xButton" onClick={deleteClickACB}>X</button>
                         </td>
                         <a href="#/information" >
                             {place.city +", "+ place.state +", "+ place.country}
@@ -51,8 +51,8 @@ function ProfileView(props){
 
     return (
         <div>
-            <div> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att texten får plats i knappen*/}
-                <button className="buttonDesign" onClick={navigateToSearchACB}>Search city</button>
+            <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att texten får plats i knappen*/}
+                <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
             </div>
 
             <div>
@@ -64,7 +64,7 @@ function ProfileView(props){
                 <tbody>
                     <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
                         <h2>Places I want to go</h2>
-                        <ul>
+                        <ul className="profileContainer">
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
                             {props.wantToGoPlaces.map(renderArrayACB)}
                         </ul>
@@ -74,7 +74,7 @@ function ProfileView(props){
 
                     <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
                         <h2>Places I have been</h2>
-                        <ul>
+                        <ul className="profileContainer">
                             {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
                             {props.haveVisitedPlaces.map(renderArrayACB)}
                         </ul>
@@ -84,7 +84,7 @@ function ProfileView(props){
 
                     <td> {/* Lägg till funktion för att kunna skrolla igenom constellations */}
                         <h2>Constellations I saw</h2>
-                        <ul>
+                        <ul className="profileContainer">
                             {props.haveVisitedPlaces.map(renderConstellationsACB)}
                         </ul>
                     </td>

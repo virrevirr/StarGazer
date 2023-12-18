@@ -312,6 +312,8 @@ ul{
     position: absolute;
     top: 0;
     left: 0;
+    margin-top: 1%;
+    margin-left: 2%;
 }
 
 /*All constellations____________________________________________________________________________________________*/
@@ -339,6 +341,58 @@ ul{
 /* profil css ________________________________________________________________________________________________ */
 a{
     color: whitesmoke;
+}
+
+.xButton{
+    transition-duration: 0.4s;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 10px;
+    color: white;
+    border: 1px solid whitesmoke;
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+
+.xButton:hover {
+    background-color: transparent;
+    color: grey;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.xButton:active {
+    background-color: transparent;
+    box-shadow: 0 2px;
+    transform: translateY(4px);
+    border-radius: 5px;
+}
+
+.profileContainer{
+    display: flex;
+    border: 2px solid;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 20px;
+    color: aliceblue;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 300px;
+    width: 45%;
+    margin: 0 auto;
+}
+
+.iHaveSeenButton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 1%;
+    margin-right: 1%;
 }
 
 
@@ -372,14 +426,16 @@ a{
   .searchResultsContainer::-webkit-scrollbar-track,
   .weatherContainer::-webkit-scrollbar-track,
   .newsScroll::-webkit-scrollbar-track,
-  .constellationsContainer::-webkit-scrollbar-track {
+  .constellationsContainer::-webkit-scrollbar-track 
+  .profileContainer::-webkit-scrollbar-track {
       background-color: transparent;
   }
   
   .searchResultsContainer::-webkit-scrollbar-thumb,
   .weatherContainer::-webkit-scrollbar-thumb,
   .newsScroll::-webkit-scrollbar-thumb,
-  .constellationsContainer::-webkit-scrollbar-thumb {
+  .constellationsContainer::-webkit-scrollbar-thumb
+  .profileContainer::-webkit-scrollbar-thumb {
       background-color: rgb(77, 181, 210);
       border-radius: 20px;
       border: 6px solid transparent;
@@ -389,6 +445,7 @@ a{
   .searchResultsContainer::-webkit-scrollbar-thumb:hover,
   .weatherContainer::-webkit-scrollbar-thumb:hover,
   .newsScroll::-webkit-scrollbar-thumb:hover,
-  .constellationsContainer::-webkit-scrollbar-thumb:hover {
+  .constellationsContainer::-webkit-scrollbar-thumb:hover
+  .profileContainer::-webkit-scrollbar-thumb:hover {
       background-color: rgb(93, 142, 206);
   }

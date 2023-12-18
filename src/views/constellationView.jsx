@@ -22,16 +22,16 @@ function ConstellationView(props){
     return (
         <div className="searchContainer"> {/* Lägg till class som är specifik för den här? */}
         
-            <div> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att all text får plats */}
-                <button className="buttonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
+            <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att all text får plats */}
+                <button className="biggerButtonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>
 
             <div className="profileButton">
                 <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
             </div>
 
-            <div> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
-                <button className="buttonDesign" onClick={haveSeenACB}>I have seen this in {}</button>
+            <div className="iHaveSeenButton"> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
+                <button className="biggerButtonDesign" onClick={haveSeenACB}>I have seen this in {}</button>
             </div>
 
             <div>

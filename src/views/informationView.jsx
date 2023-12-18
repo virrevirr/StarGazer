@@ -27,7 +27,7 @@ function InformationView(props){
             </div>
 
             <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
-                <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Search city</button>
+                <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
             </div>
             
             <div className="beenAndWantButtons">
