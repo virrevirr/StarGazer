@@ -1,15 +1,15 @@
 // Add relevant imports here
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set} from "/src/teacherFirebase.js";
-import firebaseConfig from "/src/firebaseConfig.js"; // config from previous step in 3.5
+import { getDatabase, ref, get, set} from "firebase/database";
+import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
 import { searchPlaces } from "./starSource.js";
-import { searchPlaces } from "./starSource";
+
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Initialise firebase app, database, ref
 const app= initializeApp(firebaseConfig)
 const db= getDatabase(app)
-const authentication = getAuth(app);
+const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
 const PATH="dinnerModel60"; // what is this???
@@ -52,14 +52,18 @@ function connectToFirebase(model, watchFunction){
     readFromFirebase(model);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
+    
     return watchFunction(checkACB, sideEffectACB);
 }
 
-function loginlogOut(user){
-         user ? (model.setLoggedIn(true), model.setUserId(user.uid)):
-        (model.setLoggedIn(false), model.setUserId(null));
-        readFromFirebase(model);
-}
 
-export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, authentication}
+function loginlogOut(model) {
+    model ? (model.setLoggedIn(true), model.setUserId(auth.currentUser.uid)) :
+    (model.setLoggedIn(false), model.setUserId(null));
+    readFromFirebase(model);
+  }
+
+onAuthStateChanged(auth, loginlogOut);
+
+export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase,loginlogOut, auth}
 export default connectToFirebase;
