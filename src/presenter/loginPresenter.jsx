@@ -20,12 +20,8 @@ function Login(props){
   
     return(
         <LogInView
-<<<<<<< Updated upstream
-
-=======
         authGoogleACB ={authenticator}
       
->>>>>>> Stashed changes
         />)
 
     
