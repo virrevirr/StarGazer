@@ -1,3 +1,4 @@
+import {LogoutIcon} from "/src/components.jsx";
 
 function ProfileView(props){
     console.log("have visited", props.haveVisitedPlaces)
@@ -78,7 +79,8 @@ function ProfileView(props){
             </div>
 
             <div className="logOutButton">
-                <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
+                {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
+                <LogoutIcon onClick={navigateToLoginACB} fillColor="#ccc" size="48"/>
             </div>
         </div>
     );

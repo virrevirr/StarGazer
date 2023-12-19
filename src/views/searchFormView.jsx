@@ -1,5 +1,4 @@
-import AccountOutlineIcon from 'vue-material-design-icons/AccountOutline.vue';
-import LogoutIcon from 'vue-material-design-icons/Logout.vue';
+import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
 
 
 function SearchFormView(props){

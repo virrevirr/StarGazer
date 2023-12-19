@@ -1,3 +1,5 @@
+import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
+
 function InformationView(props){
     console.log("location data", props.locationData)
 
@@ -22,7 +24,8 @@ function InformationView(props){
     return (
         <div>
             <div className="profileButton">
-                <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
+                {/*<button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>*/}
+                <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ccc" size="48"/>
             </div>
 
             <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
@@ -48,7 +51,8 @@ function InformationView(props){
             
 
             <div className="logOutButton">
-                <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
+                {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
+                <LogoutIcon onClick={navigateToLoginACB} fillColor="#ccc" size="48"/>
             </div>
             
         </div>

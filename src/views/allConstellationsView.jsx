@@ -1,3 +1,4 @@
+import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
 
 function AllConstellationsView(props){
     console.log("all constellations", props.allConstellations)
@@ -21,7 +22,8 @@ function AllConstellationsView(props){
         </div>
 
         <div className="profileButton">
-            <button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>
+            {/*<button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>*/}
+            <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ccc" size="48"/>
         </div>
         
         <div class = "constellationsContainer"> {/* Lägg till grid-class för sökresultat som i labben (kör 3 rader, 14 kolumner) */}
@@ -29,7 +31,8 @@ function AllConstellationsView(props){
         </div> 
 
         <div className="logOutButton">
-            <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
+            {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
+            <LogoutIcon onClick={navigateToLoginACB} fillColor="#ccc" size="48"/>
         </div>
 
     </div>
