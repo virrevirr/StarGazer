@@ -42,8 +42,7 @@ export default function Information(props){
         <InformationView 
         locationData={props.model.currentLocation} //current location är objekt
         addToGo ={addToWantToGoACB}
-        addToVisited={addVisitedACB} 
-        />
+        addToVisited={addVisitedACB}/>
             <div className="viewParentContainer">
                 {promiseData(props.model.weatherPromiseState)}
 

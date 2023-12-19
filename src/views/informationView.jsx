@@ -29,24 +29,28 @@ function InformationView(props){
                 <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
             </div>
             
-            <div className="beenAndWantButtons">
-                <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
-                    <button className="biggerButtonDesign" onClick={visitedACB}>I have been here</button>
-                    <button className="biggerButtonDesign" onClick={wantToGoACB}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
-                </span>
-            </div>
-            
+            <div className="topInfoContainer">
 
-            <h1> {props.locationData.city +", "+ props.locationData.country} </h1> 
+                <div className="location">{props.locationData.city +", "+ props.locationData.country}</div>
+                <div className="beenAndWantButtons">
+                    <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
+                        <button className="biggerButtonDesign" onClick={visitedACB}>I have been here</button>
+                        <button className="biggerButtonDesign" onClick={wantToGoACB}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
+                    </span>
+                </div>
+
+                <div className="constellationsPosition">  {/* Lägg till class för att rendera constellation-länken som prototypen */}
+                    <button className="biggerButtonDesign" onClick={navigateToAllConstellationsACB}>Find constellations</button>
+                </div>
             
-            <div className="constellationsPosition">  {/* Lägg till class för att rendera constellation-länken som prototypen */}
-                <h2>Find constellations you have seen here</h2>
-                <button className="biggerButtonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>
+
+            
 
             <div className="logOutButton">
                 <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
             </div>
+            
         </div>
     );
 }

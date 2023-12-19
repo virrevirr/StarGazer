@@ -191,19 +191,46 @@ ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Distribute columns with space in between */
-    margin: 0 auto; /* Center the container horizontally */
+    margin: 0px auto; /* Center the container horizontally */
+}
+
+.topInfoContainer{ /* Container for the location name and the been and want buttons*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
+    text-align: center;
+    margin-top: 5px;
+    flex-direction: column;
+}
+.locationAndButtonContainer{ /* Container for the location name and the been and want buttons*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
+    text-align: center;
+    margin-top: 50px;
+}
+
+.location{ /*for the location since we can't use h1 for it*/
+    font-size: 2em;
+    font-weight: bold;
+    margin: 10px  190px auto;
+    position: relative;
+    color: white;
+}
+
+.beenAndWantButtons{
+    align-items: center;
+    margin: 10px  190px auto;
 }
 
 .constellationsPosition{
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
     align-items: center;
-}
-
-.beenAndWantButtons{
-    margin-top: 70px;
-    margin-bottom: -50px;
+    justify-content: center;
+    margin: 10px auto;
+    flex-direction: column;
 }
 
 /*Weather View____________________*/
@@ -222,8 +249,8 @@ ul{
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin: 10px; 
-    padding: 10px; 
+    margin: 0px auto; 
+    padding: 0px auto;
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 
@@ -236,8 +263,8 @@ ul{
     justify-content: center;
     height: 33%;
     width: 33%;
-    margin: 10px; 
-    padding: 10px; 
+    margin: 0px auto; 
+    padding: 0px auto;
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 .moonInformation{
@@ -256,8 +283,8 @@ ul{
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin: 10px; 
-    padding: 10px; 
+    margin: 0px auto; 
+    padding: 0px auto;
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
     width: 20%;
 }
@@ -266,6 +293,7 @@ ul{
     overflow-x: hidden;
     overflow-y: auto;
     height: 500px;
+    width: 70%;
     align-items: center;
 }
 
@@ -322,7 +350,8 @@ ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Distribute columns with space in between */
-    margin: 8px; /* Center the container horizontally */
+    align-items: center; /* Center vertically if needed */
+    margin: 55px auto 15px auto; /* top right bottom left */
     overflow-x: hidden;
     overflow-y: auto;
     width: 80%;
