@@ -12,7 +12,13 @@ const db= getDatabase(app)
 const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
-const PATH="dinnerModel60"; // this should be the user
+let PATH= null; // this should be the user
+
+function setPathToUid(model) {
+    // Check if a user is signed in
+    model.setLoggedIn? PATH = 'users/' +  model.setUserId: PATH = null;
+    console.log("PATH: ", PATH);
+    }
 
 
 function modelToPersistence(model){
@@ -48,16 +54,18 @@ function readFromFirebase(model){
     return get(rf).then(dataACB).then(modelReadyACB);
 }
 
-function connectToFirebase(model, watchFunction){
-    function loginlogOut(user) {
-        console.log("Authentication state changed:", user);
-            model.user = user ? user.uid : null;
-            user? (model.setLoggedIn(true), model.setUserId(auth.currentUser.uid)):
-            (model.setLoggedIn(false), model.setUserId(null));
-            readFromFirebase(model);        
-      }
+function loginlogOut(user,model) {
+    console.log("Authentication state changed:", user);
+        model.user = user ? user.uid : null;
+        user? (model.setLoggedIn=true, model.setUserId = auth.currentUser.uid):
+        (model.setLoggedIn = false, model.setUserId=null)
+        setPathToUid(model)
+               
+  }
 
-    loginlogOut(auth.currentUser)
+function connectToFirebase(model, watchFunction){
+    loginlogOut(auth.currentUser,model)
+    readFromFirebase(model); 
     onAuthStateChanged(auth, loginlogOut);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}

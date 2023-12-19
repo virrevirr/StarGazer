@@ -7,6 +7,9 @@ export default{
     currentLocation: null, //Som currentDish, för att lägga till locations
     //ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
+    isLoggedIN: false, //used to see if user is logged in or not
+    userId: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
+
 
     doesObjectMatch(obj, targetLocation) {
         // Checking if the city is already in the list
@@ -101,4 +104,11 @@ export default{
     fetchConstellation(constellation){
         resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
     },
+    setLoggedIn(bolean){
+     this.isLoggedIN=bolean} ,//used to see if user is logged in or not
+
+     
+    setUserId(userID){ 
+        this.userId = userID},
+
 }
