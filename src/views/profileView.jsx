@@ -2,9 +2,7 @@
 function ProfileView(props){
     console.log("have visited", props.haveVisitedPlaces)
     console.log("want to go", props.wantToGoPlaces)
-    
-    function deleteCityButton(place){props.deleteCityButton(place);}
-    
+       
     function navigateToLoginACB(){window.location.hash = '#/';}
 
     function navigateToSearchACB(){window.location.hash = '#/search';}
