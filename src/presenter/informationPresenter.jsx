@@ -16,14 +16,14 @@ export default function Information(props){
 
     function promiseData(promiseState){
         if(!promiseState.promise) {//if promiseState.promise is false, no data should be returned.
-            return "no data";
+            return <p>no data</p>;
         }  
         // if promise is true, check data and error. 
         if(!promiseState.data){
             if(!promiseState.error){
                 return <img src="https://brfenergi.se/iprog/loading.gif" height = {"50"}/>;
             }
-            return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
+            return <p>{promiseState.error.toString()}</p>; //if promiseState.error is true and promise.data is false return error 
         }
         if(promiseState.data.moon){
             console.log("moon", promiseState.data);

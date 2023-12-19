@@ -322,11 +322,11 @@ ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* Distribute columns with space in between */
-    margin: 0 auto; /* Center the container horizontally */
+    margin: 8px; /* Center the container horizontally */
     overflow-x: hidden;
     overflow-y: auto;
-    width: 90%;
-    height: 550px;
+    width: 80%;
+    height: 500px;
 }
 
 .constellationDisplay{
@@ -419,14 +419,15 @@ a{
   .searchResultsContainer::-webkit-scrollbar,
   .weatherContainer::-webkit-scrollbar,
   .newsScroll::-webkit-scrollbar,
-  .constellationsContainer::-webkit-scrollbar {
+  .constellationsContainer::-webkit-scrollbar, 
+  .profileContainer::-webkit-scrollbar {
       width: 20px;
   }
   
   .searchResultsContainer::-webkit-scrollbar-track,
   .weatherContainer::-webkit-scrollbar-track,
   .newsScroll::-webkit-scrollbar-track,
-  .constellationsContainer::-webkit-scrollbar-track 
+  .constellationsContainer::-webkit-scrollbar-track, 
   .profileContainer::-webkit-scrollbar-track {
       background-color: transparent;
   }
@@ -434,7 +435,7 @@ a{
   .searchResultsContainer::-webkit-scrollbar-thumb,
   .weatherContainer::-webkit-scrollbar-thumb,
   .newsScroll::-webkit-scrollbar-thumb,
-  .constellationsContainer::-webkit-scrollbar-thumb
+  .constellationsContainer::-webkit-scrollbar-thumb,
   .profileContainer::-webkit-scrollbar-thumb {
       background-color: rgb(77, 181, 210);
       border-radius: 20px;
@@ -445,7 +446,7 @@ a{
   .searchResultsContainer::-webkit-scrollbar-thumb:hover,
   .weatherContainer::-webkit-scrollbar-thumb:hover,
   .newsScroll::-webkit-scrollbar-thumb:hover,
-  .constellationsContainer::-webkit-scrollbar-thumb:hover
+  .constellationsContainer::-webkit-scrollbar-thumb:hover,
   .profileContainer::-webkit-scrollbar-thumb:hover {
       background-color: rgb(93, 142, 206);
   }

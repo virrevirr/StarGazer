@@ -1,4 +1,3 @@
-
 function InformationView(props){
     console.log("location data", props.locationData)
 
