@@ -1,5 +1,6 @@
 /*url for the background image later*/
 body{
+    /*background-color: black;*/
     background-image: url('src/images/space_background.png');
     background-size: cover;
     background-position: center;

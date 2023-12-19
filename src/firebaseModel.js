@@ -41,11 +41,24 @@ function persistenceToModel(data, model){
 }
 
 function saveToFirebase(model){
+    // saveToFirebase: 
+    // -----------------
+    // do nothing if model.user falsy
+    // otherwise write to the same path as above, 
+    // depending on model.ready as usual
+
     console.log("model from save: ", model.ready);
-    return model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
+    
+    return model.userId && model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
 }
 
 function readFromFirebase(model){
+    // readFromFirebase: 
+    // -----------------
+    // do nothing if model.user falsy (maybe wipe the model data)
+    // otherwise read from "path/"+model.user.uid
+    // manage model.ready as usual
+
     model.ready=false;
     const rf=ref(db, PATH);
     function modelReadyACB(){model.ready=true;}

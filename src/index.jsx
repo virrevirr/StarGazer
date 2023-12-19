@@ -1,6 +1,4 @@
-
 //import "/src/teacherFetch.js"; // protection against fetch() in infinite re-render
-import { searchPlaces } from "./starSource.js";
 import {makeRouter} from "./root.jsx"; 
 import "/src/firebaseModel.js";
 import connectToFirebase from "./firebaseModel.js";
@@ -18,24 +16,7 @@ const app= createApp(<VueRoot model={reactiveModel}/>);
 app.use(makeRouter(reactiveModel));
 app.mount('#root'); 
 
-console.log(searchPlaces("Stockholm"));  //för att köra fetchen i consollen 
 //reactiveModel.doSearch({});
 connectToFirebase(reactiveModel, watch);
 window.myModel= reactiveModel; 
-
-
-/*import Login from "./presenter/loginPresenter.jsx";
-
-
-function App(){ return <div><Login/></div>; };
-const app= createApp(App);
-app.mount("#root");*/
-
-
-/*import Profile from "./presenter/profilePresenter.jsx";
-
-function App(){ return <div><Profile/></div>; };
-const app= createApp(App);
-app.mount("#root");*/
-
 
