@@ -104,6 +104,8 @@ export default{
     fetchConstellation(constellation){
         resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
     },
+
+    
     setLoggedIn(bolean){
      this.isLoggedIn=bolean} ,//used to see if user is logged in or not
 

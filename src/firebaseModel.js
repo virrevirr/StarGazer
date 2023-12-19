@@ -77,5 +77,5 @@ function connectToFirebase(model, watchFunction){
 
 
 
-export {modelToPersistence, persistenceToModel, saveToFirebase,loginlogOut, readFromFirebase,connectToFirebase, auth}
+export {modelToPersistence, persistenceToModel, saveToFirebase,loginlogOut, readFromFirebase, connectToFirebase, auth}
 export default connectToFirebase;
