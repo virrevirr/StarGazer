@@ -4,6 +4,7 @@
 import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
 import countries from "/src/countries.jsx"
+import { connect } from "./loginPresenter";
 
 export default function Search(props){
     function setSearchInputACB(newInput){
@@ -46,6 +47,7 @@ export default function Search(props){
             text = {props.model.searchParams}
             userInput= {setSearchInputACB} //setSearch from model
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
+            loginCB ={connect}
             /> 
             
             {/*promiseData(props.model.searchResultsPromiseState)*/}

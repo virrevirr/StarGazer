@@ -10,7 +10,7 @@ function ConstellationView(props){
     };
     
     function navigateToLoginACB(){
-        window.location.hash = '#/';
+        props.loginCB();
     };
 
     function navigateToAllConstellationsACB(){

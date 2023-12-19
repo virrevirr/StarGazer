@@ -48,7 +48,7 @@ function saveToFirebase(model){
 
     console.log("model from save: ", model.ready);
     
-    return model.user && model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
+    return model.isLoggedIn && model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
 }
 
 function readFromFirebase(model){
@@ -63,7 +63,7 @@ function readFromFirebase(model){
     function modelReadyACB(){model.ready=true;}
     function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
     console.log("model from read: ", model.ready);
-    return model.user? get(rf).then(dataACB).then(modelReadyACB):false;
+    return model.isLoggedIn ? get(rf).then(dataACB).then(modelReadyACB):false;
 }
 
 
@@ -82,7 +82,6 @@ function connectToFirebase(model, watchFunction){
     }
     onAuthStateChanged(auth, loginlogOut);
     readFromFirebase(model); 
-    console.log("model from connect: ", model.ready);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);

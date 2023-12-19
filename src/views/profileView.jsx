@@ -4,7 +4,7 @@ function ProfileView(props){
     console.log("have visited", props.haveVisitedPlaces)
     console.log("want to go", props.wantToGoPlaces)
        
-    function navigateToLoginACB(){window.location.hash = '#/';}
+    function navigateToLoginACB(){props.loginCB();}
 
     function navigateToSearchACB(){window.location.hash = '#/search';}
 

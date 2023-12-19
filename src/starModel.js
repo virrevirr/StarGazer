@@ -112,6 +112,7 @@ export default{
 
     setUser(user){ 
         this.user= user;
+        return this.user;
     },
 
 }

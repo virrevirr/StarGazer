@@ -13,7 +13,7 @@ function InformationView(props){
         window.location.hash = '#/profile';
     }
     function navigateToLoginACB(){
-        window.location.hash = '#/';
+        props.loginCB();
     }
     function navigateToSearchACB(){
         window.location.hash = '#/search';

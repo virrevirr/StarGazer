@@ -1,5 +1,6 @@
 import AllConstellationsView from "../views/allConstellationsView.jsx";
 import starConstellations from "../starConstellations.jsx"
+import { connect } from "./loginPresenter";
 
 export default function AllConstellations(props){
 
@@ -12,6 +13,7 @@ export default function AllConstellations(props){
             <AllConstellationsView
             allConstellations = {starConstellations}
             onConstellationClick= {onConstellationClickACB}
+            loginCB ={connect}
             /> 
         </div>
         );

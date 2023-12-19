@@ -17,7 +17,7 @@ function SearchFormView(props){
     }
     
     function navigateToLoginACB(){
-        window.location.hash = '#/';
+        props.loginCB();
     };
 
     return(

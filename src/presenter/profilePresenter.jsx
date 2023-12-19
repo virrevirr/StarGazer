@@ -1,6 +1,6 @@
 import ProfileView from "../views/profileView.jsx";
 import countries from "../countries.jsx";
-
+import { connect } from "./loginPresenter";
 
 export default function Profile(props){
     function clickedLocationACB(input){
@@ -30,6 +30,7 @@ export default function Profile(props){
         haveVisitedPlaces={props.model.haveVisited || []}
         deleteCityButton={removeCityACB}
         userName={props.model.user.displayName}
+        loginCB ={connect}
         />); 
         /* Funktionalitet: exportera användarens namn/användarnamn till viewn */
 }

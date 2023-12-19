@@ -8,7 +8,7 @@ function AllConstellationsView(props){
     }
     
     function navigateToLoginACB(){
-        window.location.hash = '#/';
+        props.loginCB();;
     };
 
     function navigateToSearchACB(){

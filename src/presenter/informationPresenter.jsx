@@ -4,7 +4,7 @@ import InformationView from "../views/informationView.jsx";
 import WeatherView from "../views/weatherView.jsx";
 import MoonView from "../views/moonView.jsx";
 import NewsView from "../views/newsView.jsx";
-
+import { connect } from "./loginPresenter";
 //model is starModel
 export default function Information(props){
     function addToWantToGoACB(){
@@ -42,7 +42,9 @@ export default function Information(props){
         <InformationView 
         locationData={props.model.currentLocation} //current location är objekt
         addToGo ={addToWantToGoACB}
-        addToVisited={addVisitedACB}/>
+        addToVisited={addVisitedACB}
+        loginCB ={connect}/>
+        
             <div className="viewParentContainer">
                 {promiseData(props.model.weatherPromiseState)}
 
