@@ -41,6 +41,7 @@ function persistenceToModel(data, model){
 }
 
 function saveToFirebase(model){
+    console.log("model from save: ", model.ready);
     return model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
 }
 
@@ -54,8 +55,7 @@ function readFromFirebase(model){
 }
 
 function loginlogOut(user,model) {
-    console.log('user:', user);
-    console.log('model:', model);
+
     if (user) {
         model.setLoggedIn(true);
         model.setUserId(auth.currentUser.uid);
@@ -67,10 +67,8 @@ function loginlogOut(user,model) {
     setPathToUid(model); // Update the path after setting user information
 }
 function connectToFirebase(model, watchFunction){
-    console.log("model from connect: ", model);
-    loginlogOut(auth.currentUser,model)
+    onAuthStateChanged(auth, loginlogOut(auth,model));
     readFromFirebase(model); 
-    onAuthStateChanged(auth, loginlogOut);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
