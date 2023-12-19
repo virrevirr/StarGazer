@@ -38,8 +38,7 @@ body{
     left: 50%; /*50%*/
     margin: -50px 0 0 -50px; /* 50 0 -50 px*/
     text-align: center;
-} 
-
+}
 
 .input{
     height: 42px;
@@ -63,7 +62,6 @@ body{
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    /*background-image: url('src/images/buttonpic.png');*/
     background-color: transparent;
     border-radius: 10px;
     height: 50px;
@@ -123,7 +121,6 @@ body{
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-
     background-color: transparent;
     height: 30px;
     width: 100px;
@@ -454,6 +451,7 @@ a{
     margin-top: -35%;  
 }
 
+
 /* Media query for narrow screens ___________________________________________________________________________*/
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
 
@@ -508,3 +506,20 @@ a{
   .profileContainer::-webkit-scrollbar-thumb:hover {
       background-color: rgb(93, 142, 206);
   }
+
+
+
+/* new more compact way of doing shit
+in view:
+<div class="parent-class my-specific-style">
+    <!-- Content -->
+</div>
+
+/* CSS */
+/*.parent-class {
+    /* General styles 
+}*/
+
+/*.my-specific-style {
+    /* Additional or modified styles 
+}*/
