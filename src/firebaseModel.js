@@ -11,7 +11,7 @@ const db= getDatabase(app)
 const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
-let PATH= 'users/' +  model.user.uid; // this should be the user
+let PATH= null; // this should be the user
 
 function setPathToUid(model) {
     // Check if a user is signed in
