@@ -18,7 +18,7 @@ function AllConstellationsView(props){
     return(
     <div>
         <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
-            <button className="buttonDesign" onClick={navigateToSearchACB}>Back to search</button>
+            <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
         </div>
 
         <div className="profileButton">

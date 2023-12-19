@@ -40,11 +40,6 @@ body{
     text-align: center;
 } 
 
-.loginContainer {
-    top: 50%;
-    left: 50%;
-    margin: -50px 0 0 -50px;  
-}
 
 .input{
     height: 42px;
@@ -68,6 +63,7 @@ body{
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+    /*background-image: url('src/images/buttonpic.png');*/
     background-color: transparent;
     border-radius: 10px;
     height: 50px;
@@ -127,7 +123,8 @@ body{
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    background-color: transparent;
+    background-image: url('/images/buttonpic.png');
+    /*background-color: transparent;*/
     height: 30px;
     width: 100px;
     font-size:14px;
@@ -303,7 +300,8 @@ ul{
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    background-color: transparent;
+    background-image: url('src/images/buttonpic.png');
+    /*background-color: transparent;*/
     border-radius: 10px;
     height: 37px;
     width: 150px;
@@ -430,6 +428,32 @@ a{
     margin-right: 1%;
 }
 
+/* Login view __________________________________________________________________________________________________*/
+
+.logo{
+    width: 700px; /* Set the desired width */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.logoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height of the container, 'vh' is viewport height */
+    margin-top: -90px;
+}
+
+.centerContent{
+    text-align: center;
+    margin-top: -20%;
+}
+
+.loginContainer {
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    margin-top: -35%;  
+}
 
 /* Media query for narrow screens ___________________________________________________________________________*/
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
