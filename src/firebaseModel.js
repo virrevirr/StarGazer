@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "firebase/database";
 import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
 import { searchPlaces } from "./starSource.js";
-
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Initialise firebase app, database, ref
@@ -16,7 +15,7 @@ let PATH= null; // this should be the user
 
 function setPathToUid(model) {
     // Check if a user is signed in
-    model.setLoggedIn? PATH = 'users/' +  model.setUserId: PATH = null;
+    model.setLoggedIn? PATH = 'users/' +  model.userId: PATH = null;
     console.log("PATH: ", PATH);
     }
 
@@ -55,15 +54,20 @@ function readFromFirebase(model){
 }
 
 function loginlogOut(user,model) {
-    console.log("Authentication state changed:", user);
-        model.user = user ? user.uid : null;
-        user? (model.setLoggedIn=true, model.setUserId = auth.currentUser.uid):
-        (model.setLoggedIn = false, model.setUserId=null)
-        setPathToUid(model)
-               
-  }
+    console.log('user:', user);
+    console.log('model:', model);
+    if (user) {
+        model.setLoggedIn(true);
+        model.setUserId(auth.currentUser.uid);
+    } else {
+        model.setLoggedIn(false);
+        model.setUserId(null);
+    }
 
+    setPathToUid(model); // Update the path after setting user information
+}
 function connectToFirebase(model, watchFunction){
+    console.log("model from connect: ", model);
     loginlogOut(auth.currentUser,model)
     readFromFirebase(model); 
     onAuthStateChanged(auth, loginlogOut);
@@ -75,5 +79,5 @@ function connectToFirebase(model, watchFunction){
 
 
 
-export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase,connectToFirebase, auth}
+export {modelToPersistence, persistenceToModel, saveToFirebase,loginlogOut, readFromFirebase,connectToFirebase, auth}
 export default connectToFirebase;

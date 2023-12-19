@@ -1,13 +1,13 @@
 import { getConstellationDetails, getMoonDetails, getNewsDetails, getWeatherDetails, searchPlaces } from "./starSource";
 import resolvePromise from "./resolvePromise"
 
-export default{
+export default{ 
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
-    //ready: false, // set till true när promise from firebase is resolved (model.ready)
+    ready: true, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
-    isLoggedIN: false, //used to see if user is logged in or not
+    isLoggedIn: false, //used to see if user is logged in or not
     userId: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
 
 
@@ -105,9 +105,9 @@ export default{
         resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
     },
     setLoggedIn(bolean){
-     this.isLoggedIN=bolean} ,//used to see if user is logged in or not
+     this.isLoggedIn=bolean} ,//used to see if user is logged in or not
 
-     
+
     setUserId(userID){ 
         this.userId = userID},
 

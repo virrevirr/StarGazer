@@ -2,8 +2,8 @@
 //import "/src/teacherFetch.js"; // protection against fetch() in infinite re-render
 import { searchPlaces } from "./starSource.js";
 import {makeRouter} from "./root.jsx"; 
-//import "/src/firebaseModel.js";
-//import connectToFirebase from "../firebaseModel.js";
+import "/src/firebaseModel.js";
+import connectToFirebase from "./firebaseModel.js";
 import model from "/src/starModel.js";
 
 
@@ -20,7 +20,7 @@ app.mount('#root');
 
 console.log(searchPlaces("Stockholm"));  //för att köra fetchen i consollen 
 //reactiveModel.doSearch({});
-//connectToFirebase(reactiveModel, watch);
+connectToFirebase(reactiveModel, watch);
 window.myModel= reactiveModel; 
 
 
