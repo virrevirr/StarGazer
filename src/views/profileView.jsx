@@ -3,19 +3,14 @@ function ProfileView(props){
     console.log("have visited", props.haveVisitedPlaces)
     console.log("want to go", props.wantToGoPlaces)
     
-    function deleteCityButton(place){
-        props.deleteCityButton(place);
-    }
+    function deleteCityButton(place){props.deleteCityButton(place);}
     
-    function navigateToLoginACB(){
-        window.location.hash = '#/';
-    }
+    function navigateToLoginACB(){window.location.hash = '#/';}
 
-    function navigateToSearchACB(){
-        window.location.hash = '#/search';
-    }
+    function navigateToSearchACB(){window.location.hash = '#/search';}
 
     function renderArrayACB(place){ 
+
         function onLocationClickACB(event){
             props.onLocationClick(place);
             window.location.hash = '#/information';
@@ -26,27 +21,28 @@ function ProfileView(props){
             
             props.deleteCityButton(place);
         };
-        return (<div>
-                    <span onClick={onLocationClickACB} key={place}>
-                        <td>
-                            <button className="xButton" onClick={deleteClickACB}>X</button>
+        return <div>
+                    <tr key={place}>
+                        <td><button className="xButton" onClick={deleteClickACB}>X</button></td>
+                        <td href="#/information" onClick={onLocationClickACB}>
+                            {place.city +", "+ place.country}
                         </td>
-                        <a href="#/information" >
-                            {place.city +", "+ place.state +", "+ place.country}
-                        </a>
-                    </span>
-                </div>);
+                    </tr>
+                </div>;
     } 
 
     function renderConstellationsACB(place){
         function renderACB(constellation){
             return constellation+", ";
         }
-        return (<div>
-            <span key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
-                {place.city}: {place.constellations.map(renderACB)}
-            </span>
-        </div>);
+        return <div>
+                    <tr key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
+                        <td>{place.city}: {place.constellations.map(renderACB)}</td>
+                        <td></td>
+                    </tr>
+                    <td></td>
+                </div>;
+
     }
 
     return (
@@ -59,37 +55,29 @@ function ProfileView(props){
                 <h1>Profile Name</h1> {/* Lägg till en profil-ikon */}
                 {/* Funktionalitet: Lägg till den faktiska användarens namn här */}
             </div>
-            
-            <table> {/* Lägg till class för att snygga till kolumnerna (alt. kom på en lösning som är bättre än att ha en table) */}
-                <tbody>
-                    <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
-                        <h2>Places I want to go</h2>
-                        <ul className="profileContainer">
-                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer */}
-                            {props.wantToGoPlaces.map(renderArrayACB)}
-                        </ul>
+
+            <div className="profileContainerParent">
+                <div>
+                    <h2>Places I want to go</h2>
+                    <td className="profileContainer">
+                        {props.wantToGoPlaces.map(renderArrayACB)}
                     </td>
+                </div>
 
-                    <td></td>
-
-                    <td> {/* Lägg till funktion för att kunna skrolla igenom alla städerna */}
-                        <h2>Places I have been</h2>
-                        <ul className="profileContainer">
-                            {/* Funktionalitet: Fundera över om vi ska ha en borttagningsknapp för städer och constellations*/}
-                            {props.haveVisitedPlaces.map(renderArrayACB)}
-                        </ul>
+                <div>
+                    <h2>Places I have been</h2>
+                    <td className="profileContainer">
+                        {props.haveVisitedPlaces.map(renderArrayACB)}
                     </td>
+                </div>
 
-                    <td></td>
-
-                    <td> {/* Lägg till funktion för att kunna skrolla igenom constellations */}
-                        <h2>Constellations I saw</h2>
-                        <ul className="profileContainer">
-                            {props.haveVisitedPlaces.map(renderConstellationsACB)}
-                        </ul>
+                <div>
+                    <h2>Constellations I saw</h2>
+                    <td className="profileContainer">
+                        {props.haveVisitedPlaces.map(renderConstellationsACB)}
                     </td>
-                </tbody>
-            </table>
+                </div>
+            </div>
 
             <div className="logOutButton">
                 <button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>
