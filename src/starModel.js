@@ -5,10 +5,10 @@ export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
-    ready: true, // set till true när promise from firebase is resolved (model.ready)
+    ready: false, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
     isLoggedIn: false, //used to see if user is logged in or not
-    userId: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
+    user: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
 
 
     doesObjectMatch(obj, targetLocation) {
@@ -105,12 +105,13 @@ export default{
         resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
     },
 
-    
+
     setLoggedIn(bolean){
      this.isLoggedIn=bolean} ,//used to see if user is logged in or not
 
 
-    setUserId(userID){ 
-        this.userId = userID},
+    setUser(user){ 
+        this.user= user;
+    },
 
 }

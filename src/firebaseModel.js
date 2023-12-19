@@ -11,12 +11,11 @@ const db= getDatabase(app)
 const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
-let PATH= null; // this should be the user
+let PATH= 'users/' +  model.user.uid; // this should be the user
 
 function setPathToUid(model) {
     // Check if a user is signed in
-    model.setLoggedIn? PATH = 'users/' +  model.userId: PATH = null;
-    console.log("PATH: ", PATH);
+    model.setLoggedIn? PATH = 'users/' +  model.user.uid: PATH = null;
     }
 
 
@@ -49,7 +48,7 @@ function saveToFirebase(model){
 
     console.log("model from save: ", model.ready);
     
-    return model.userId && model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
+    return model.user && model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
 }
 
 function readFromFirebase(model){
@@ -63,25 +62,26 @@ function readFromFirebase(model){
     const rf=ref(db, PATH);
     function modelReadyACB(){model.ready=true;}
     function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
-    
-    return get(rf).then(dataACB).then(modelReadyACB);
+    console.log("model from read: ", model.ready);
+    return model.user? get(rf).then(dataACB).then(modelReadyACB):false;
 }
 
-function loginlogOut(user,model) {
 
-    if (user) {
-        model.setLoggedIn(true);
-        model.setUserId(auth.currentUser.uid);
-    } else {
-        model.setLoggedIn(false);
-        model.setUserId(null);
-    }
-
-    setPathToUid(model); // Update the path after setting user information
-}
 function connectToFirebase(model, watchFunction){
-    onAuthStateChanged(auth, loginlogOut(auth,model));
+    function loginlogOut(user) {        
+        if (user) {
+            model.setLoggedIn(true);
+            model.setUser(auth.currentUser);
+        } else {
+            model.setLoggedIn(false);
+            model.setUser(null);
+        }
+    
+        setPathToUid(model); // Update the path after setting user information
+    }
+    onAuthStateChanged(auth, loginlogOut);
     readFromFirebase(model); 
+    console.log("model from connect: ", model.ready);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
@@ -90,5 +90,5 @@ function connectToFirebase(model, watchFunction){
 
 
 
-export {modelToPersistence, persistenceToModel, saveToFirebase,loginlogOut, readFromFirebase, connectToFirebase, auth}
+export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, connectToFirebase, auth}
 export default connectToFirebase;
