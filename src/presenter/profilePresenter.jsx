@@ -29,6 +29,7 @@ export default function Profile(props){
         wantToGoPlaces={props.model.wantToGo || []}
         haveVisitedPlaces={props.model.haveVisited || []}
         deleteCityButton={removeCityACB}
+        userName={props.model.user.displayName}
         />); 
         /* Funktionalitet: exportera användarens namn/användarnamn till viewn */
 }

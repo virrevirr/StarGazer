@@ -15,7 +15,7 @@ function LogInView(props){
 
     return(
         <div className="mainContainer"> 
-            <img className= "logo" src= {'public/images/updated_logo.png'} height = {"200"}></img>
+            <img className= "logo" src= {'/images/updated_logo.png'} height = {"200"}></img>
             <br/>
             <div className="loginContainer"> 
                 <button className = "buttonDesign" onClick= {handleLoginClick} >Sign in</button>

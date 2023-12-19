@@ -68,7 +68,8 @@ function readFromFirebase(model){
 
 
 function connectToFirebase(model, watchFunction){
-    function loginlogOut(user) {        
+    function loginlogOut(user) { 
+        console.log("user: ", user);       
         if (user) {
             model.setLoggedIn(true);
             model.setUser(auth.currentUser);

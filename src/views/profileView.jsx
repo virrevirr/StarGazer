@@ -51,8 +51,8 @@ function ProfileView(props){
             </div>
 
             <div>
-                <h1>Profile Name</h1> {/* Lägg till en profil-ikon */}
-                {/* Funktionalitet: Lägg till den faktiska användarens namn här */}
+                <h1>{props.userName}</h1> {/* Lägg till en profil-ikon */}
+                
             </div>
 
             <div className="profileContainerParent">
