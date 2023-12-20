@@ -40,18 +40,19 @@ function ConstellationView(props){
             <div>
                 <h1>{props.constellationData[0].constellation}</h1> 
             </div>
-
-            <div> {/* Lägg till class för att rendera bilden till vänster om stjärnnamnen */}
+            <div className="constellationDetailsContainer">
+                <div className="constellationImageContainer"> {/* Lägg till class för att rendera bilden till vänster om stjärnnamnen */}
                 <img src = {starConstellations[props.constellationData[0].constellation]} height = {"400"} />
-            </div>
+                </div>
 
-            <div > {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
-                <h1>Stars included</h1> 
-                <ul>
-                {props.constellationData.map(starsInConstellationCB)}
-                </ul>
+                <div className="starsIncludedContainer"> {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
+                    <h1>Stars included</h1> 
+                    <ul>
+                    {props.constellationData.map(starsInConstellationCB)}
+                    </ul>
+                </div>
             </div>
-
+            
             <div className="logOutButton">
                 {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
                 <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>

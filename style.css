@@ -451,6 +451,27 @@ a{
     margin-top: -35%;  
 }
 
+/* Constellation View________________________________________________________________________________________*/
+.constellationDetailsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Horizontal layout */
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.constellationImageContainer {
+    max-width: 50%; /* Adjust the maximum width of the image container */
+}
+
+.starsIncludedContainer {
+    max-width: 50%; /* Adjust the maximum width of the stars included container */
+    padding-left: 20px; /* Add some padding for separation */
+    width: 30%;
+    margin-top: -10%;
+    text-align: center;
+}
+
 
 /* Media query for narrow screens ___________________________________________________________________________*/
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
