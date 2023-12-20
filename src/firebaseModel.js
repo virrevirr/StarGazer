@@ -10,10 +10,11 @@ const app= initializeApp(firebaseConfig)
 const db= getDatabase(app)
 const auth = getAuth(app);
 
+
 //  PATH is the “root” Firebase path
 // this should be the user
 
-
+let PATH = null;
 
 function modelToPersistence(model){
     //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
@@ -53,7 +54,7 @@ function saveToFirebase(model){
     // depending on model.ready as usual
 
     if (model.user) {
-        console.log("model from save: ", model.ready);
+        PATH = 'users/' +  model.user.uid;
         return model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
     }
 }
@@ -66,7 +67,8 @@ function readFromFirebase(model){
     // manage model.ready as usual
 
     if (model.user){
-        const PATH = 'users/' +  model.user.uid;
+        PATH = 'users/' +  model.user.uid;
+        console.log("path: ", PATH)
         model.ready=false;
         const rf=ref(db, PATH);
         function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
@@ -79,11 +81,9 @@ function readFromFirebase(model){
 function connectToFirebase(model, watchFunction){
     function loginlogOut(user) {   
         if (user) {
-            model.setLoggedIn(true);
             model.setUser(auth.currentUser);
             
         } else {
-            model.setLoggedIn(false);
             model.setUser(null);
         }
         readFromFirebase(model);
