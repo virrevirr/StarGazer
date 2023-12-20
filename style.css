@@ -309,7 +309,6 @@ h2, h3, p, ul, a, h1, .input,
     text-align: center;
 }
 
-
 /* Media query for narrow screens ___________________________________________________________________________*/
 @media (max-width: 500px) { /* Adjust the max-width value based on our design */
 
