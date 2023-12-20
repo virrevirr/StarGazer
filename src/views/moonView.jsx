@@ -11,7 +11,7 @@ function MoonView(props){
     }
 
     return (
-        <div className="moonContainer"> {/* Lägg till class för att rendera moon som prototypen */}
+        <div className="ParentContainer moonContainer"> {/* Lägg till class för att rendera moon som prototypen */}
             <div className="moonInformation">
                 <h2>Moon phase</h2> 
                 <h3>{moonData.moon.phase}</h3>

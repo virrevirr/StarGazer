@@ -1,4 +1,5 @@
-/*url for the background image later*/
+/*Applies to entire webpage____________________________________________________*/
+
 body{
     /*background-color: black;*/
     background-image: url('/images/space_background.png');
@@ -8,84 +9,8 @@ body{
     background-attachment: fixed;
 }
 
-.flexParent {
-    display: flex; /* Makes the element a flex container, enabling FlexBox layout */
-    /*flex-direction: row;  Items will be laid out in a row */
-    justify-content: center;
-    height: 100%; /*Set the height to 100% to cover the parent container*/
-    text-align: center;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust the minimum width as needed */
-    gap: 10px; /* Space between rows and columns */
-    text-align: center; /* Center align the text */
-  }
-
-/* Applies styles to <span> elements */
-.grid span {
-    display: inline-block;
-    width: 100%; 
-    vertical-align: top; /* Aligns at the top */
-  }
-
-.mainContainer {
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    top: 50%; /*50%*/
-    left: 50%; /*50%*/
-    margin: -50px 0 0 -50px; /* 50 0 -50 px*/
-    text-align: center;
-}
-
-.input{
-    height: 42px;
-    width: 315px;
-    font-size: 16px;
-    border-style: solid;
-    border-color: white;
-    border-radius: 10px;
-    background-color: transparent;
-    color: white;
-    margin: 5px;
-}
-
-.centerButton{
-    justify-content: center;
-}
-
-.buttonDesign {
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    background-color: transparent;
-    border-radius: 10px;
-    height: 50px;
-    width: 85px;
-    font-size:14px;
-    color: white;
-    border: 2px solid whitesmoke;
-}
-
-.buttonDesign:hover {
-    background-color: transparent;
-    color: grey;
-    border: 2px solid white;
-    border-radius: 5px;
-}
-
-.buttonDesign:active {
-    background-color: transparent;
-    box-shadow: 0 2px;
-    transform: translateY(4px);
-    border-radius: 5px;
-}
-
 .profileButton {
+    /*Placement for profile button*/
     position: absolute;
     top: 0;
     right: 0;
@@ -94,6 +19,7 @@ body{
 }
 
 .logOutButton {
+    /*Placement for logOut button button*/
     position: absolute;
     bottom: 0;
     left: 0;
@@ -101,75 +27,77 @@ body{
     margin-bottom: 2%;
 }
 
-
-.searchContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-    text-align: center;
-    align-items: center;
-    justify-content:center;
-} 
-
-.searchButton {
+.backToSearchButton {
+    /*Placement for back to search button*/
     position: absolute;
-    right: 10px; /* Adjust the right position as needed */
-    top: 50%;
-    transform: translateY(-50%);
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-    cursor: pointer;
+    top: 0;
+    left: 0;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+.flexParent {
+    /*används i root - påverkar profile view och search results view*/
+    display: flex;
+    justify-content: center;
+    height: 100%;
     text-align: center;
-    text-decoration: none;
-    background-color: transparent;
-    height: 30px;
-    width: 100px;
-    font-size:14px;
-    color: white;
 }
 
-.searchButton:hover {
-    background-color: transparent;
-    color: grey;
-}
-
-.searchButton:active {
-    background-color: transparent;
-    box-shadow: 0 2px;
-    transform: translateY(4px);
+.mainContent {
+    /*Används i root*/
+    align-items: center;
 }
 
 h1{
     margin-bottom: 20px;
     position: relative;
     margin-top: 100px; /*höj om man vill centrera search bar mer*/
+}
+
+h2, h3, p, ul, a, h1, .input, 
+.searchResultsContainer, .buttonDesign {
+    /*text colour*/
     color: white;
 }
 
-h2{
-    color: white;
+/* SearchResultsView & SearchFormView _________________________________________________________*/
+
+.input{
+    /*Används för input i SearchFormView*/
+    height: 42px;
+    width: 315px;
+    font-size: 16px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    background-color: transparent;
+    margin: 5px;
 }
 
-h3{
-    color: white;
+.centerButton{
+    /*SearchFormView*/
+    justify-content: center;
 }
 
-p{
-    color: white;
-}
-
-ul{
-    color: white;
+.searchContainer {
+    /*ConstellationView and SearchFormView -- applicera ParentContainer*/
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    text-align: center;
+    align-items: center;
+    justify-content:center;
 }
 
 .searchResultsContainer {
+    /*searchResultView -- applicera ParentContainer?*/
     display: flex;
     border: 2px solid;
     border-radius: 10px;
     flex-direction: column;
     align-items: center;
     column-gap: 20px;
-    color: aliceblue;
     z-index: 1;
     overflow-x: hidden;
     overflow-y: auto;
@@ -178,30 +106,12 @@ ul{
     margin: 0 auto;
 }
 
-/* informationView nedan _________________________________________________________________________________________*/
-.viewParentContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Distribute columns with space in between */
-    margin: 0px auto; /* Center the container horizontally */
-}
+/* informationView ___________________________________________________________________________*/
 
 .topInfoContainer{ /* Container for the location name and the been and want buttons*/
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center; /* Align items vertically in the center */
-    text-align: center;
     margin-top: 5px;
     flex-direction: column;
-}
-.locationAndButtonContainer{ /* Container for the location name and the been and want buttons*/
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center; /* Align items vertically in the center */
-    text-align: center;
-    margin-top: 50px;
 }
 
 .location{ /*for the location since we can't use h1 for it*/
@@ -225,7 +135,7 @@ ul{
     flex-direction: column;
 }
 
-/*Weather View____________________*/
+/*WeatherView____________________*/
 .weatherContainer{
     display: flex;
     height: 100%;
@@ -236,29 +146,18 @@ ul{
 
 .bigWeatherContainer{
     width: 33%; /*precis så stor som en dags väder*/
-    display: flex;
-    flex: 1;
-    text-align: center;
-    align-items: center;
     justify-content: center;
-    margin: 0px auto; 
     padding: 0px auto;
-    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 
 /*MoonView_______________________________*/
 .moonContainer{
-    display: flex;
-    flex: 1;
-    text-align: center;
-    align-items: center;
     justify-content: center;
     height: 33%;
     width: 33%;
-    margin: 0px auto; 
     padding: 0px auto;
-    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
+
 .moonInformation{
     display: flex;
     flex-direction: column;
@@ -267,18 +166,13 @@ ul{
     margin: 0 auto;
 }
 /*NewsView_____________________________*/
-.localNews{
-    display: flex;
-    flex: 1;
+.ParentContainer.newsContainer{
     height: 450px;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
     justify-content: center;
-    margin: 0px auto; 
     padding: 0px auto;
-    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
     width: 20%;
+    flex-wrap: nowrap;
 }
 
 .newsScroll{
@@ -289,60 +183,10 @@ ul{
     align-items: center;
 }
 
-/*Buttons____________________________________________________________________________________*/
-
-.biggerButtonDesign{
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    background-color: transparent;
-    border-radius: 10px;
-    height: 37px;
-    width: 150px;
-    font-size:14px;
-    color: white;
-    border: 2px solid whitesmoke;
-}
-
-.biggerButtonDesign:hover {
-    background-color: transparent;
-    color: grey;
-    border: 2px solid white;
-    border-radius: 5px;
-}
-
-.biggerButtonDesign:active {
-    background-color: transparent;
-    box-shadow: 0 2px;
-    transform: translateY(4px);
-    border-radius: 5px;
-}
-
-.biggerButtonDesign:first-child{
-    margin-right: 10px;
-}
-
-.biggerButtonDesign:last-child{
-    margin-left: 10px;
-}
-
-.backToSearchButton {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 1%;
-    margin-left: 2%;
-}
-
 /*All constellations____________________________________________________________________________________________*/
 
-.constellationsContainer{
-    display: flex;
-    flex-wrap: wrap;
+.ParentContainer.constellationsContainer{
     justify-content: space-between; /* Distribute columns with space in between */
-    align-items: center; /* Center vertically if needed */
     margin: 55px auto 15px auto; /* top right bottom left */
     overflow-x: hidden;
     overflow-y: auto;
@@ -358,11 +202,7 @@ ul{
     box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
 
-
 /*Profile view________________________________________________________________________________________________ */
-a{
-    color: whitesmoke;
-}
 
 .xButton{
     transition-duration: 0.4s;
@@ -376,7 +216,6 @@ a{
     border: 1px solid whitesmoke;
     margin-right: 10px; /* Adjust the margin as needed */
 }
-
 
 .xButton:hover {
     background-color: transparent;
@@ -392,11 +231,8 @@ a{
     border-radius: 5px;
 }
 
-.profileContainerParent{
-    display: flex;
-    flex-wrap: wrap;
+.ParentContainer.profileContainerParent{
     justify-content: space-between; /* Distribute columns with space in between */
-    margin: 0px auto;
     column-gap: 20px;
 }
 
@@ -424,7 +260,7 @@ a{
     margin-right: 1%;
 }
 
-/* Login view __________________________________________________________________________________________________*/
+/* LoginView __________________________________________________________________________________________________*/
 
 .logo{
     width: 700px; /* Set the desired width */
@@ -432,6 +268,7 @@ a{
 }
 
 .logoContainer{
+    /*ParentContainer?*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -488,59 +325,124 @@ a{
     .grid {
         grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
       }
-  }
+}
 
+/*ParentContainer_________________________________________________________________*/
+
+.ParentContainer {
+    /*Används i InformationPresenter, InformationView
+    weatherView, moonView, newsView, allConstallationsView,
+    profileView.*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    box-sizing: border-box;
+    margin: 0px auto;
+}
   
-  
-  /* Scrollbar customization______________________________________________________________________*/
-  .searchResultsContainer::-webkit-scrollbar,
-  .weatherContainer::-webkit-scrollbar,
-  .newsScroll::-webkit-scrollbar,
-  .constellationsContainer::-webkit-scrollbar, 
-  .profileContainer::-webkit-scrollbar {
-      width: 20px;
-  }
-  
-  .searchResultsContainer::-webkit-scrollbar-track,
-  .weatherContainer::-webkit-scrollbar-track,
-  .newsScroll::-webkit-scrollbar-track,
-  .constellationsContainer::-webkit-scrollbar-track, 
-  .profileContainer::-webkit-scrollbar-track {
-      background-color: transparent;
-  }
-  
-  .searchResultsContainer::-webkit-scrollbar-thumb,
-  .weatherContainer::-webkit-scrollbar-thumb,
-  .newsScroll::-webkit-scrollbar-thumb,
-  .constellationsContainer::-webkit-scrollbar-thumb,
-  .profileContainer::-webkit-scrollbar-thumb {
-      background-color: rgb(77, 181, 210);
-      border-radius: 20px;
-      border: 6px solid transparent;
-      background-clip: content-box;
-  }
-  
-  .searchResultsContainer::-webkit-scrollbar-thumb:hover,
-  .weatherContainer::-webkit-scrollbar-thumb:hover,
-  .newsScroll::-webkit-scrollbar-thumb:hover,
-  .constellationsContainer::-webkit-scrollbar-thumb:hover,
-  .profileContainer::-webkit-scrollbar-thumb:hover {
-      background-color: rgb(93, 142, 206);
-  }
+/* Scrollbar______________________________________________________________________*/
+.searchResultsContainer::-webkit-scrollbar,
+.weatherContainer::-webkit-scrollbar,
+.newsScroll::-webkit-scrollbar,
+.constellationsContainer::-webkit-scrollbar, 
+.profileContainer::-webkit-scrollbar {
+    width: 20px;
+}
+
+.searchResultsContainer::-webkit-scrollbar-track,
+.weatherContainer::-webkit-scrollbar-track,
+.newsScroll::-webkit-scrollbar-track,
+.constellationsContainer::-webkit-scrollbar-track, 
+.profileContainer::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.searchResultsContainer::-webkit-scrollbar-thumb,
+.weatherContainer::-webkit-scrollbar-thumb,
+.newsScroll::-webkit-scrollbar-thumb,
+.constellationsContainer::-webkit-scrollbar-thumb,
+.profileContainer::-webkit-scrollbar-thumb {
+    background-color: rgb(77, 181, 210);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+.searchResultsContainer::-webkit-scrollbar-thumb:hover,
+.weatherContainer::-webkit-scrollbar-thumb:hover,
+.newsScroll::-webkit-scrollbar-thumb:hover,
+.constellationsContainer::-webkit-scrollbar-thumb:hover,
+.profileContainer::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(93, 142, 206);
+}
+
+/*Button Design_______________________________________________________*/
+.buttonDesign {
+    /*Överallt*/
+    transition-duration: 0.4s;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 50px;
+    width: 85px;
+    font-size:14px;
+    border: 2px solid whitesmoke;
+}
+
+.buttonDesign:hover {
+    background-color: transparent;
+    color: grey;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.buttonDesign:active {
+    background-color: transparent;
+    box-shadow: 0 2px;
+    transform: translateY(4px);
+    border-radius: 5px;
+}
+
+.biggerButtonDesign{
+    transition-duration: 0.4s;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 37px;
+    width: 150px;
+    font-size:14px;
+    color: white;
+    border: 2px solid whitesmoke;
+}
+
+.biggerButtonDesign:hover {
+    background-color: transparent;
+    color: grey;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.biggerButtonDesign:active {
+    background-color: transparent;
+    box-shadow: 0 2px;
+    transform: translateY(4px);
+    border-radius: 5px;
+}
+
+.biggerButtonDesign:first-child{
+    margin-right: 10px;
+}
+
+.biggerButtonDesign:last-child{
+    margin-left: 10px;
+}
 
 
-
-/* new more compact way of doing shit
-in view:
-<div class="parent-class my-specific-style">
-    <!-- Content -->
-</div>
-
-/* CSS */
-/*.parent-class {
-    /* General styles 
-}*/
-
-/*.my-specific-style {
-    /* Additional or modified styles 
-}*/

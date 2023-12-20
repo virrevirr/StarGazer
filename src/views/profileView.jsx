@@ -23,8 +23,8 @@ function ProfileView(props){
         return <div>
                     <tr key={place}>
                         <td><button className="xButton" onClick={deleteClickACB}>X</button></td>
-                        <td href="#/information" onClick={onLocationClickACB}>
-                            {place.city +", "+ place.country}
+                        <td onClick={onLocationClickACB}>
+                            <a href="#/information">{place.city +", "+ place.country}</a>
                         </td>
                     </tr>
                 </div>;
@@ -55,7 +55,7 @@ function ProfileView(props){
                 
             </div>
 
-            <div className="profileContainerParent">
+            <div className="ParentContainer profileContainerParent">
                 <div>
                     <h2>Places I want to go</h2>
                     <td className="profileContainer">

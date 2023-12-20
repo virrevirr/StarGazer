@@ -29,7 +29,6 @@ function SearchResultsView(props){
             {!searchResult && defaultCities()} {/* try with api fetch, to render default cities*/}
             {/* Code without api fetch */}
             {searchResult && searchResult.map(renderResultCB)}
-
         </div>
     );
 

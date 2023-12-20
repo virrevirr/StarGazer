@@ -32,7 +32,7 @@ function InformationView(props){
                 <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
             </div>
             
-            <div className="topInfoContainer">
+            <div className="ParentContainer topInfoContainer">
 
                 <div className="location">{props.locationData.city +", "+ props.locationData.country}</div>
                 <div className="beenAndWantButtons">

@@ -45,7 +45,7 @@ export default function Information(props){
         addToVisited={addVisitedACB}
         loginCB ={connect}/>
         
-            <div className="viewParentContainer">
+            <div className="ParentContainer">
                 {promiseData(props.model.weatherPromiseState)}
 
                 {/* Code with api fetch */}

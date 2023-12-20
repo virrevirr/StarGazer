@@ -26,7 +26,7 @@ function AllConstellationsView(props){
             <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
         </div>
         
-        <div class = "constellationsContainer"> {/* Lägg till grid-class för sökresultat som i labben (kör 3 rader, 14 kolumner) */}
+        <div class = "ParentContainer constellationsContainer"> {/* Lägg till grid-class för sökresultat som i labben (kör 3 rader, 14 kolumner) */}
             {Object.entries(props.allConstellations).map(renderResultCB)}
         </div> 
 
