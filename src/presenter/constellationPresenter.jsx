@@ -21,8 +21,9 @@ export default function Constellation(props){
         }
         return <ConstellationView 
         constellationData = {promiseState.data}
-        haveSeen = {haveSeenACB} />;
-        loginCB ={connect}
+        haveSeen = {haveSeenACB}
+        loginCB ={connect} />;
+      
     }
 
     return (

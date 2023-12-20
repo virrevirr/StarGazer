@@ -11,12 +11,8 @@ const db= getDatabase(app)
 const auth = getAuth(app);
 
 //  PATH is the “root” Firebase path
-let PATH= null; // this should be the user
+// this should be the user
 
-function setPathToUid(model) {
-    // Check if a user is signed in
-    model.setLoggedIn? PATH = 'users/' +  model.user.uid: PATH = null;
-    }
 
 
 function modelToPersistence(model){
@@ -52,6 +48,7 @@ function saveToFirebase(model){
 }
 
 function readFromFirebase(model){
+    const PATH = model.user ? 'users/' +  model.user.uid: null;
     // readFromFirebase: 
     // -----------------
     // do nothing if model.user falsy (maybe wipe the model data)
@@ -63,7 +60,7 @@ function readFromFirebase(model){
     function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
   
    
-    return model.isLoggedIn ? (get(rf).then(dataACB).then(modelReadyACB)):false;
+    return model.user? get(rf).then(dataACB).then(modelReadyACB): false;
 }
 
 
@@ -77,10 +74,10 @@ function connectToFirebase(model, watchFunction){
             model.setLoggedIn(false);
             model.setUser(null);
         }
-        setPathToUid(model); // Update the path after setting user information
         readFromFirebase(model);
     }
     onAuthStateChanged(auth, loginlogOut);
+   
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
