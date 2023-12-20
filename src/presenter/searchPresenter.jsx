@@ -28,14 +28,14 @@ export default function Search(props){
 
     function promiseData(promiseState){
         if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
-            return "no data";
+            return <p>no data</p>;
         }  
         // if promise is true, check data and error. 
         if(!promiseState.data){
             if(!promiseState.error){
                 return <img src="https://brfenergi.se/iprog/loading.gif" height = {"50"}/>;
             }
-            return promiseState.error.toString(); //if promiseState.error is true and promise.data is false return error 
+            return <p>{promiseState.error.toString()}</p>; //if promiseState.error is true and promise.data is false return error 
         }
         return <SearchResultsView className="in promise state" searchResult = {props.model.searchResultsPromiseState.data}
         onLocationClick = {onLocationClickACB}/>;
@@ -47,13 +47,12 @@ export default function Search(props){
             text = {props.model.searchParams}
             userInput= {setSearchInputACB} //setSearch from model
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
-            loginCB ={connect}
-            /> 
+            loginCB ={connect}/> 
             
-            {/*promiseData(props.model.searchResultsPromiseState)*/}
+            {promiseData(props.model.searchResultsPromiseState)}
             
             {/* Test code without api fetch */}
-            <SearchResultsView onLocationClick = {onLocationClickACB}/>;
+            {/*<SearchResultsView onLocationClick = {onLocationClickACB}/>;*/}
             
         </div>
         );

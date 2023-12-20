@@ -29,7 +29,6 @@ function ConstellationView(props){
             </div>
 
             <div className="profileButton">
-                {/*<button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>*/}
                 <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
             </div>
 
@@ -54,7 +53,6 @@ function ConstellationView(props){
             </div>
             
             <div className="logOutButton">
-                {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
                 <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
             </div>
         

@@ -8,18 +8,19 @@ import { createRouter, createWebHashHistory, RouterView} from "vue-router";
 
 
 export default function VueRoot(props){
-    /*function modelReady(){
+    function modelReady(){
+        console.log("root model ready: ", props.model.ready)
         return props.model.ready? false : <img src="https://brfenergi.se/iprog/loading.gif"/>;
     }
     return (modelReady() || (<div className="flexParent">
-                            <div className="login"><Login model={props.model}/></div>
                             <div className="mainContent"><RouterView/></div>
                             </div>)
-            );*/
+            );
 
-    return (<div className="flexParent">
+    /*Bypass the props.model.ready*/
+    /*return (<div className="flexParent">
             <div className="mainContent"><RouterView/></div>
-            </div>);
+            </div>);*/
 }
 
 export function makeRouter(model){

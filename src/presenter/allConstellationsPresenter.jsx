@@ -5,6 +5,8 @@ import { connect } from "./loginPresenter";
 export default function AllConstellations(props){
 
     function onConstellationClickACB(constellation){
+        /*Fetches the stars included in the chosen constellation*/
+        /*props.model.fetchConstellation(props.model.currentConstellation);*/
         props.model.fetchConstellation(constellation);
     }
 

@@ -5,7 +5,7 @@ export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
-    ready: false, // set till true när promise from firebase is resolved (model.ready)
+    ready: true, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
     isLoggedIn: false, //used to see if user is logged in or not
     user: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
@@ -40,7 +40,7 @@ export default{
             item !== "No constellations";
         }
         // Adding the constellation to the city object and removing duplicates
-        foundObject && (foundObject["constellations"] = foundObject["constellations"].includes("No constellations")
+        foundObject && (foundObject["constellations"] == foundObject["constellations"].includes("No constellations")
         ? [...new Set([...foundObject["constellations"].filter(filterCB), constellationToAdd])]
         : [...new Set([...foundObject["constellations"], constellationToAdd])]);
     },
@@ -77,7 +77,7 @@ export default{
     getMoon(){
 
         {/* Code with api fetch */}
-        //resolvePromise(getMoonDetails(), this.moonPromiseState);
+        resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
     newsPromiseState: {},
@@ -96,7 +96,7 @@ export default{
     startSearch(searchParams){
 
         {/* Code with api fetch */}
-        //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+        resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
 
     constellationPromiseState: {},

@@ -1,14 +1,14 @@
 import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
 
 function AllConstellationsView(props){
-    console.log("all constellations", props.allConstellations)
+    /*console.log("all constellations", props.allConstellations)*/
 
     function navigateToProfileACB(){
         window.location.hash = '#/profile';
     }
     
     function navigateToLoginACB(){
-        props.loginCB();;
+        props.loginCB();
     };
 
     function navigateToSearchACB(){
@@ -17,21 +17,19 @@ function AllConstellationsView(props){
 
     return(
     <div>
-        <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
+        <div className="backToSearchButton">
             <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
         </div>
 
         <div className="profileButton">
-            {/*<button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>*/}
             <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
         </div>
         
-        <div class = "ParentContainer constellationsContainer"> {/* Lägg till grid-class för sökresultat som i labben (kör 3 rader, 14 kolumner) */}
+        <div class = "ParentContainer constellationsContainer">
             {Object.entries(props.allConstellations).map(renderResultCB)}
         </div> 
 
         <div className="logOutButton">
-            {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
             <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
         </div>
 
@@ -41,6 +39,7 @@ function AllConstellationsView(props){
     function renderResultCB(constellation){
         // Renderar bild och text på varje constellation
         function onConstellationClickACB(event){
+            /*contellation[0] is the name of the constellation*/
             props.onConstellationClick(constellation[0]);
             window.location.hash= "#/constellation";
         };

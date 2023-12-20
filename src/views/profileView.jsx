@@ -73,13 +73,12 @@ function ProfileView(props){
                 <div>
                     <h2>Constellations I saw</h2>
                     <td className="profileContainer">
-                        {props.haveVisitedPlaces.map(renderConstellationsACB)}
+                        {/*props.haveVisitedPlaces.map(renderConstellationsACB)*/}
                     </td>
                 </div>
             </div>
 
             <div className="logOutButton">
-                {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
                 <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
             </div>
         </div>

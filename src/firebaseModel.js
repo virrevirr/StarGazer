@@ -29,38 +29,40 @@ function persistenceToModel(data, model){
     }
 
     model.setCurrentLocation(data?.place);
-    const placeToGoArray = data?.placesToGo || [];
-    const PlaceVisitedArray = data?.placesHaveGone || [];
+    const placeToGoArray = data?.placesToGo || "sto";
+    const PlaceVisitedArray = data?.placesHaveGone || "sto";
 
     return searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(PlaceVisitedArray).then(placeVisitedToModelACB);
 }
 
 function saveToFirebase(model){
-    // saveToFirebase: 
+        // saveToFirebase: 
     // -----------------
     // do nothing if model.user falsy
     // otherwise write to the same path as above, 
     // depending on model.ready as usual
 
-    console.log("model from save: ", model.ready);
-    
-    return model.isLoggedIn && model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
+    if (model.user) {
+        console.log("model from save: ", model.ready);
+        return model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
+    }
 }
 
 function readFromFirebase(model){
-    const PATH = model.user ? 'users/' +  model.user.uid: null;
     // readFromFirebase: 
     // -----------------
     // do nothing if model.user falsy (maybe wipe the model data)
     // otherwise read from "path/"+model.user.uid
     // manage model.ready as usual
-    model.ready=false;
-    const rf=ref(db, PATH);
-    function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
-    function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
-  
-   
-    return model.user? get(rf).then(dataACB).then(modelReadyACB): false;
+
+    if (model.user){
+        const PATH = 'users/' +  model.user.uid;
+        model.ready=false;
+        const rf=ref(db, PATH);
+        function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
+        function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
+        return get(rf).then(dataACB).then(modelReadyACB);
+    }
 }
 
 
