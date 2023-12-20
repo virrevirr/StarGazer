@@ -21,7 +21,6 @@ export function searchPlaces(searchParams){
 
     /* Code with api fetch */
     const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString();
-    console.log("query searchPlaces;", queryPlace)
     const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
     
     return fetch(source, {
@@ -34,7 +33,6 @@ export function searchPlaces(searchParams){
 //API weather
 export function getWeatherDetails(location){
     const queryPlace = new URLSearchParams({"q":location, "days":"3"}).toString();
-    console.log("query getweatherdetails;", queryPlace);
     const source = "https://weatherapi-com.p.rapidapi.com/forecast.json?" + queryPlace;
     
     return fetch(source, {
@@ -47,7 +45,6 @@ export function getWeatherDetails(location){
 //API news
 export function getNewsDetails(languageCode, countryCode, astronomy){
     const queryPlace = new URLSearchParams({keyword: astronomy, lr: languageCode+'-'+countryCode}).toString();
-    console.log("query getnewsdetails;", queryPlace)
     const source = 'https://google-news13.p.rapidapi.com/search?' + queryPlace;
     
     return fetch(source, {
@@ -60,7 +57,6 @@ export function getNewsDetails(languageCode, countryCode, astronomy){
 export function getMoonDetails(){
     // using budapest as a default because the moon phase is the same all over the world
     const queryPlace = new URLSearchParams({city:"budapest"}).toString();
-    console.log("query getmoondetails;", queryPlace)
     const source = 'https://moon-phase1.p.rapidapi.com/?' + queryPlace;
     
     return fetch(source, {
@@ -73,7 +69,6 @@ export function getMoonDetails(){
 export function getConstellationDetails(chosenConstellation){
     /*gives us all the stars that are included in the constellation we have chosen*/
     const queryPlace = new URLSearchParams({constellation:chosenConstellation}).toString();
-    console.log("query getconstellationdetails;", queryPlace)
     const source = 'https://stars-by-api-ninjas.p.rapidapi.com/v1/stars?' + queryPlace;
     
     return fetch(source, {

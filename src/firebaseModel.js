@@ -1,4 +1,5 @@
 // Add relevant imports here
+
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "firebase/database";
 import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
@@ -14,7 +15,7 @@ const auth = getAuth(app);
 //  PATH is the “root” Firebase path
 // this should be the user
 
-let PATH = null;
+
 
 function modelToPersistence(model){
     //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
@@ -54,8 +55,8 @@ function saveToFirebase(model){
     // depending on model.ready as usual
 
     if (model.user) {
-        PATH = 'users/' +  model.user.uid;
-        return model.ready? set(ref(db, PATH), modelToPersistence(model)): false;
+        console.log("saved to firebase")
+        return model.ready? set(ref(db, model.PATH), modelToPersistence(model)): false;
     }
 }
 
@@ -67,10 +68,9 @@ function readFromFirebase(model){
     // manage model.ready as usual
 
     if (model.user){
-        PATH = 'users/' +  model.user.uid;
-        console.log("path: ", PATH)
+        console.log("read from firebase")
         model.ready=false;
-        const rf=ref(db, PATH);
+        const rf=ref(db, model.PATH);
         function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
         function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
         return get(rf).then(dataACB).then(modelReadyACB);
@@ -79,17 +79,21 @@ function readFromFirebase(model){
 
 
 function connectToFirebase(model, watchFunction){
-    function loginlogOut(user) {   
+    async function loginlogOut(user) {   
         if (user) {
-            model.setUser(auth.currentUser);
+            model.setUser(user);
+            model.setPATH();
             
-        } else {
+                // Add any other user-related data you need
+            }
+        else {
             model.setUser(null);
         }
-        readFromFirebase(model);
+        await readFromFirebase(model);
+     
     }
+
     onAuthStateChanged(auth, loginlogOut);
-   
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
