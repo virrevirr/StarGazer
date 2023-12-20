@@ -29,10 +29,20 @@ function persistenceToModel(data, model){
     }
 
     model.setCurrentLocation(data?.place);
-    const placeToGoArray = data?.placesToGo || "sto";
-    const PlaceVisitedArray = data?.placesHaveGone || "sto";
+    const placeToGoArray = data?.placesToGo; //Detta gör att alla lägs till i listorna 
+    const placeVisitedArray = data?.placesHaveGone;
+    
+    if (placeToGoArray && placeVisitedArray){
+        return searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(placeVisitedArray).then(placeVisitedToModelACB);
+    }
 
-    return searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(PlaceVisitedArray).then(placeVisitedToModelACB);
+    if (placeToGoArray){
+        return searchPlaces(placeToGoArray).then(placeToGoToModelACB);
+    }
+
+    if (placeVisitedArray){
+        return searchPlaces(placeVisitedArray).then(placeVisitedToModelACB);
+    }
 }
 
 function saveToFirebase(model){
