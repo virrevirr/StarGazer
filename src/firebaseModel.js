@@ -57,31 +57,30 @@ function readFromFirebase(model){
     // do nothing if model.user falsy (maybe wipe the model data)
     // otherwise read from "path/"+model.user.uid
     // manage model.ready as usual
-
     model.ready=false;
     const rf=ref(db, PATH);
-    function modelReadyACB(){model.ready=true;}
+    function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
     function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
-    console.log("model from read: ", model.ready);
-    return model.isLoggedIn ? get(rf).then(dataACB).then(modelReadyACB):false;
+  
+   
+    return model.isLoggedIn ? (get(rf).then(dataACB).then(modelReadyACB)):false;
 }
 
 
 function connectToFirebase(model, watchFunction){
-    function loginlogOut(user) { 
-        console.log("user: ", user);       
+    function loginlogOut(user) {   
         if (user) {
             model.setLoggedIn(true);
             model.setUser(auth.currentUser);
+            
         } else {
             model.setLoggedIn(false);
             model.setUser(null);
         }
-    
         setPathToUid(model); // Update the path after setting user information
+        readFromFirebase(model);
     }
     onAuthStateChanged(auth, loginlogOut);
-    readFromFirebase(model); 
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
