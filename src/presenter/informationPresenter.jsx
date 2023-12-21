@@ -13,7 +13,6 @@ export default function Information(props){
     function addVisitedACB(){
         props.model.addToVisited(props.model.currentLocation);
     }
-
     function promiseData(promiseState){
         if(!promiseState.promise) {//if promiseState.promise is false, no data should be returned.
             return <p>no data</p>;

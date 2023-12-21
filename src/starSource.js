@@ -42,8 +42,9 @@ export function getWeatherDetails(location){
 
 
 //API news
-export function getNewsDetails(languageCode, countryCode, astronomy){
-    const queryPlace = new URLSearchParams({keyword: astronomy, lr: languageCode+'-'+countryCode}).toString();
+export function getNewsDetails(newsObj){
+    /*keyword: astronomy, lr: languageCode+'-'+countryCode*/
+    const queryPlace = new URLSearchParams({keyword: newsObj.astronomy, lr: newsObj.iso6391+'-'+newsObj.alpha2}).toString();
     const source = 'https://google-news13.p.rapidapi.com/search?' + queryPlace;
     
     return fetch(source, {

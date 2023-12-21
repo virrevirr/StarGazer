@@ -89,11 +89,11 @@ console.log("foundObject", foundObject)
             return;
         }
         resolvePromise(getWeatherDetails(city), this.weatherPromiseState);
-        this.currentWeatherCity = city
+        this.currentWeatherCity = city;
     },
+
     
     moonPromiseState: {},
-    currentMoon: null,
 
     setCurrentMoon(){
         resolvePromise(getMoonDetails(), this.moonPromiseState);
@@ -102,14 +102,14 @@ console.log("foundObject", foundObject)
     newsPromiseState: {},
     currentNews: null,
 
-    setCurrentNews(languageCode, countryCode, astronomyTranslated){
-        if ([languageCode, countryCode, astronomyTranslated] === this.currentNews || ![languageCode, countryCode, astronomyTranslated]){
+    setCurrentNews(newsObj){
+        if ((newsObj === this.currentNews) || !newsObj ){
             return;
         }
-        resolvePromise(getNewsDetails(languageCode, countryCode, astronomyTranslated), this.newsPromiseState);
-        this.currentNews = [languageCode, countryCode, astronomyTranslated]
+        resolvePromise(getNewsDetails(newsObj), this.newsPromiseState);
+        this.currentNews = newsObj;
     },
-
+    
     searchParams: {},
     searchResultsPromiseState: {},
 

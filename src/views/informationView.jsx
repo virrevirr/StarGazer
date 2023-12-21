@@ -37,7 +37,7 @@ function InformationView(props){
                 <div className="beenAndWantButtons">
                     <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
                         <button className="biggerButtonDesign" onClick={visitedACB}>I have been here</button>
-                        <button className="biggerButtonDesign" onClick={wantToGoACB}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
+                        <button className="biggerButtonDesign" onClick={wantToGoACB} disabled={props.locVisited}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
                     </span>
                 </div>
 

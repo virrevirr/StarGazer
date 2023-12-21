@@ -42,15 +42,18 @@ function persistenceToModel(data, model){
     model.setCurrentConstellation(data?.currentStarImage);
     model.setCurrentMoon(data?.currentMoonInformation);
     model.setCurrentWeather(data?.currentWeatherInformation);
-    model.setCurrentNews(data?.currentNewsInformation[0], data?.currentNewsInformation[1], data?.currentNewsInformation[2]);
+    model.setCurrentNews(data?.currentNewsInformation);
 
+    /*const weatherInfo = data?.currentWeatherInformation
+    const newsInfo = data?.currentNewsInformation
+    if (weatherInfo){model.setCurrentWeather(data?.currentWeatherInformation);}
+    if(newsInfo){model.setCurrentNews(data?.currentNewsInformation);}*/
 
     const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
+    
+    console.log("data?.currentNewsInformation from firebaseModel", data?.currentNewsInformation)
 
-    console.log("data?.currentMoonInformation from firebaseModel", data?.currentMoonInformation)
-    console.log("data?.currentWeatherInformation from firebaseModel", data?.currentWeatherInformation)
-    console.log("data?.currentNewsInformation from firebaseModel", data?.currentNewsInformation[0], data?.currentNewsInformation[1], data?.currentNewsInformation[2])
 
     if (placeToGoArray && placeVisitedArray){
         placeToGoToModelACB(placeToGoArray);

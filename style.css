@@ -168,7 +168,7 @@ h2, h3, p, ul, a, h1, .input,
     z-index: 1;
     margin: 0 auto;
     border: 1px solid white;
-    padding: 12px;
+    padding: 0px 10px;
     border-radius: 10px;
 }
 /*NewsView_____________________________*/
