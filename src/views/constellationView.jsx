@@ -3,7 +3,6 @@ import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
 import starConstellations from "../starConstellations.jsx"
 
 function ConstellationView(props){
-    console.log("constellation", props.constellationData);
 
     function navigateToProfileACB(){
         window.location.hash = '#/profile';

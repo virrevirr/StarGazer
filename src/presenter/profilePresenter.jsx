@@ -6,7 +6,6 @@ export default function Profile(props){
     function clickedLocationACB(input){
         props.model.setCurrentLocation(input);
         props.model.searchWeatherByCity(input.city);
-        //var bortkommenterad tidigare
         props.model.getMoon();
 
         const countryToCode = countries[input.country].alpha2;
@@ -33,5 +32,4 @@ export default function Profile(props){
         userName={props.model.user.displayName}
         loginCB ={connect}
         />); 
-        /* Funktionalitet: exportera användarens namn/användarnamn till viewn */
 }

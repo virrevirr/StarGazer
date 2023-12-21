@@ -33,15 +33,19 @@ export default{
     addToSeen(location, constellationToAdd){
         // Add constellation to a specific city in haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, location));
-
-        function filterCB(item, index, array){
-            // remove "No constellations" if we have a constellation
+        console.log("foundObject", foundObject)
+        function filterCB(item){
+            // Remove "No constellations" if we have a constellation
             item !== "No constellations";
         }
+
         // Adding the constellation to the city object and removing duplicates
-        foundObject && (foundObject["constellations"] == foundObject["constellations"].includes("No constellations")
+        foundObject && (foundObject["constellations"] = foundObject["constellations"].includes("No constellations")
         ? [...new Set([...foundObject["constellations"].filter(filterCB), constellationToAdd])]
         : [...new Set([...foundObject["constellations"], constellationToAdd])]);
+
+        // Spreading the array for firebase to regognize and save the changes
+        this.haveVisited = [...this.haveVisited]
     },
 
     removeFromVisited(locToRemove){
@@ -74,8 +78,6 @@ export default{
     moonPromiseState: {},
 
     getMoon(){
-
-        {/* Code with api fetch */}
         resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
@@ -83,6 +85,8 @@ export default{
 
     searchNewsByCountry(languageCode, countryCode, astronomyTranslated){
         resolvePromise(getNewsDetails(languageCode, countryCode, astronomyTranslated), this.newsPromiseState);
+        console.log("newsPromiseState from starModel", newsPromiseState)
+        console.log("promise from starModel", getNewsDetails(languageCode, countryCode, astronomyTranslated))
     },
 
     searchParams: {},

@@ -1,8 +1,8 @@
 import {LogoutIcon} from "/src/components.jsx";
 
 function ProfileView(props){
-    console.log("have visited", props.haveVisitedPlaces)
-    console.log("want to go", props.wantToGoPlaces)
+    console.log("haveVisitedPlaces from profileView", props.haveVisitedPlaces)
+    console.log("wantToGoPlaces from profileView", props.wantToGoPlaces)
        
     function navigateToLoginACB(){props.loginCB();}
 
@@ -73,7 +73,7 @@ function ProfileView(props){
                 <div>
                     <h2>Constellations I saw</h2>
                     <td className="profileContainer">
-                        {/*props.haveVisitedPlaces.map(renderConstellationsACB)*/}
+                        {props.haveVisitedPlaces.map(renderConstellationsACB)}
                     </td>
                 </div>
             </div>

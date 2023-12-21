@@ -1,6 +1,5 @@
 
 function MoonView(props){
-    console.log("moon data", props.moonData)
     {/* Code without api fetch (change back to props.moondata after)*/}
     /*let moonData = {
         moon : {

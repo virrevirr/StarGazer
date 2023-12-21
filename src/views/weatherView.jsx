@@ -1,6 +1,6 @@
 function WeatherView(props){
 
-    function weatherByDay() {
+    function weatherByDayCB() {
         const weatherDays = [];
         for (let i = 0; i < 3; i++) {
             weatherDays.push(
@@ -36,7 +36,7 @@ function WeatherView(props){
                 <tbody>
                     <h2> Weather forecast </h2>
                     <div className="weatherContainer">
-                        {weatherByDay()}
+                        {weatherByDayCB()}
                     </div>
                 </tbody>
             </table>

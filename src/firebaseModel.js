@@ -3,7 +3,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "firebase/database";
 import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
-import { searchPlaces } from "./starSource.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Initialise firebase app, database, ref
@@ -23,27 +22,37 @@ function modelToPersistence(model){
 }
 
 function persistenceToModel(data, model){
-    function placeToGoToModelACB(place){
-        model.wantToGo=place;
+
+    function placeToGoToModelACB(places){
+        model.wantToGo=places;
+        console.log("model.wantToGo from firebaseModel", model.wantToGo)
     }
-    function placeVisitedToModelACB(place){
-        model.haveVisited=place;
+    function placeVisitedToModelACB(places){
+        model.haveVisited=places;
+        console.log("model.haveVisited from firebaseModel", model.haveVisited)
     }
 
     model.setCurrentLocation(data?.place);
-    const placeToGoArray = data?.placesToGo; //Detta gör att alla lägs till i listorna 
+    const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
-    
+
+    console.log("placeToGoArray from firebaseModel", placeToGoArray)
+    console.log("placeVisitedArray from firebaseModel", placeVisitedArray)
+
     if (placeToGoArray && placeVisitedArray){
-        return searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(placeVisitedArray).then(placeVisitedToModelACB);
+        console.log("data in both want and have")
+        placeToGoToModelACB(placeToGoArray);
+        placeVisitedToModelACB(placeVisitedArray);
     }
 
-    if (placeToGoArray){
-        return searchPlaces(placeToGoArray).then(placeToGoToModelACB);
+    else if (placeToGoArray){
+        console.log("data in want")
+        return placeToGoToModelACB(placeToGoArray);
     }
 
-    if (placeVisitedArray){
-        return searchPlaces(placeVisitedArray).then(placeVisitedToModelACB);
+    else if (placeVisitedArray){
+        console.log("data in have")
+        return placeVisitedToModelACB(placeVisitedArray);
     }
 }
 

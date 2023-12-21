@@ -47,11 +47,9 @@ export default function Information(props){
         
             <div className="ParentContainer">
                 {promiseData(props.model.weatherPromiseState)}
-                {/* Code with api fetch */}
+                
                 {promiseData(props.model.moonPromiseState)}
                 
-                {/* Code without api fetch */}
-                {/*<MoonView />*/}
                 {promiseData(props.model.newsPromiseState)}
             </div>
         </div>

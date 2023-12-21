@@ -1,8 +1,7 @@
 import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
 
 function InformationView(props){
-    console.log("location data", props.locationData)
-
+    
     function wantToGoACB(event){
         return props.addToGo(props.locationData);
     }
