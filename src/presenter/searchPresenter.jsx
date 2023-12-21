@@ -17,13 +17,13 @@ export default function Search(props){
 
     function onLocationClickACB(input){
         props.model.setCurrentLocation(input);
-        props.model.searchWeatherByCity(input.city);
-        props.model.getMoon();
+        props.model.setCurrentWeather(input.city);
+        props.model.setCurrentMoon();
 
         const countryToCode = countries[input.country].alpha2;
         const languageToCode = countries[input.country].iso6391;
         const astronomyTranslated = countries[input.country].astronomy;
-        props.model.searchNewsByCountry(languageToCode, countryToCode, astronomyTranslated);
+        props.model.setCurrentNews(languageToCode, countryToCode, astronomyTranslated);
     }
 
     function promiseData(promiseState){

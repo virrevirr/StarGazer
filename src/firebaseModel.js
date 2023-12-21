@@ -21,42 +21,47 @@ const db= getDatabase(app)
 
 function modelToPersistence(model){
     //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
-    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, currentPlace: model.currentLocation, currentStarImage: model.currentConstellation}
+    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, 
+        currentPlace: model.currentLocation, 
+        currentStarImage: model.currentConstellation,
+        currentWeatherInformation: model.currentWeather,
+        currentMoonInformation: model.currentMoon,
+        currentNewsInformation: model.currentNews}
 }
 
 function persistenceToModel(data, model){
     
     function placeToGoToModelACB(places){
         model.wantToGo=places;
-        console.log("model.wantToGo from firebaseModel", model.wantToGo)
     }
     function placeVisitedToModelACB(places){
         model.haveVisited=places;
-        console.log("model.haveVisited from firebaseModel", model.haveVisited)
     }
 
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
+    model.setCurrentMoon(data?.currentMoonInformation);
+    model.setCurrentWeather(data?.currentWeatherInformation);
+    model.setCurrentNews(data?.currentNewsInformation[0], data?.currentNewsInformation[1], data?.currentNewsInformation[2]);
+
+
     const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
 
-    console.log("placeToGoArray from firebaseModel", placeToGoArray)
-    console.log("placeVisitedArray from firebaseModel", placeVisitedArray)
-    console.log("data?.currentStarImage from firebaseModel", data?.currentStarImage)
+    console.log("data?.currentMoonInformation from firebaseModel", data?.currentMoonInformation)
+    console.log("data?.currentWeatherInformation from firebaseModel", data?.currentWeatherInformation)
+    console.log("data?.currentNewsInformation from firebaseModel", data?.currentNewsInformation[0], data?.currentNewsInformation[1], data?.currentNewsInformation[2])
 
     if (placeToGoArray && placeVisitedArray){
-        console.log("data in both want and have")
         placeToGoToModelACB(placeToGoArray);
         placeVisitedToModelACB(placeVisitedArray);
     }
 
     else if (placeToGoArray){
-        console.log("data in want")
         return placeToGoToModelACB(placeToGoArray);
     }
 
     else if (placeVisitedArray){
-        console.log("data in have")
         return placeVisitedToModelACB(placeVisitedArray);
     }
 }

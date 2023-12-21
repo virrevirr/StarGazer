@@ -82,23 +82,32 @@ console.log("foundObject", foundObject)
     }, 
 
     weatherPromiseState: {},
+    currentWeatherCity: null,
 
-    searchWeatherByCity(city){
+    setCurrentWeather(city){
+        if (city === this.currentWeatherCity || !city){
+            return;
+        }
         resolvePromise(getWeatherDetails(city), this.weatherPromiseState);
+        this.currentWeatherCity = city
     },
     
     moonPromiseState: {},
+    currentMoon: null,
 
-    getMoon(){
+    setCurrentMoon(){
         resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
     newsPromiseState: {},
+    currentNews: null,
 
-    searchNewsByCountry(languageCode, countryCode, astronomyTranslated){
+    setCurrentNews(languageCode, countryCode, astronomyTranslated){
+        if ([languageCode, countryCode, astronomyTranslated] === this.currentNews || ![languageCode, countryCode, astronomyTranslated]){
+            return;
+        }
         resolvePromise(getNewsDetails(languageCode, countryCode, astronomyTranslated), this.newsPromiseState);
-        console.log("newsPromiseState from starModel", newsPromiseState)
-        console.log("promise from starModel", getNewsDetails(languageCode, countryCode, astronomyTranslated))
+        this.currentNews = [languageCode, countryCode, astronomyTranslated]
     },
 
     searchParams: {},
