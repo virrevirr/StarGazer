@@ -4,7 +4,7 @@ function SearchResultsView(props){
     console.log("search results", props.searchResult);
     
     /* Test code without api fetch */
-    /*const searchResult = [{
+    const searchResult = [{
         city: "Paris",
         state: "Sample State",
         country: "France"
@@ -19,17 +19,17 @@ function SearchResultsView(props){
         state: "Sample State",
         country: "Sweden"
     }
-    ]*/
+    ]
 
 
     return(
        <div className="searchResultsContainer">
             {/* Code with api fetch */}
-            {props.searchResult.map(renderResultCB)}
+            {/*props.searchResult.map(renderResultCB)*/}
 
-            {/*!searchResult && defaultCities()*/} {/* try with api fetch, to render default cities*/}
+            {!searchResult && defaultCities()} {/* try with api fetch, to render default cities*/}
             {/* Code without api fetch */}
-            {/*searchResult && searchResult.map(renderResultCB)*/}
+            {searchResult && searchResult.map(renderResultCB)}
         </div>
     );
 

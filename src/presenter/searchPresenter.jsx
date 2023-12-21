@@ -49,10 +49,11 @@ export default function Search(props){
             clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
             loginCB ={connect}/> 
             
-            {promiseData(props.model.searchResultsPromiseState)}
+            {/*Code with api fetch*/}
+            {/*promiseData(props.model.searchResultsPromiseState)*/}
             
             {/* Test code without api fetch */}
-            {/*<SearchResultsView onLocationClick = {onLocationClickACB}/>;*/}
+            {<SearchResultsView onLocationClick = {onLocationClickACB}/>}
             
         </div>
         );

@@ -99,7 +99,7 @@ export default{
     startSearch(searchParams){
 
         {/* Code with api fetch */}
-        resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+        //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
 
     constellationPromiseState: {},
