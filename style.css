@@ -234,6 +234,7 @@ h2, h3, p, ul, a, h1, .input,
 .ParentContainer.profileContainerParent{
     justify-content: space-between; /* Distribute columns with space in between */
     column-gap: 20px;
+    text-align: left;
 }
 
 .profileContainer{
