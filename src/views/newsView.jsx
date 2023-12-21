@@ -8,7 +8,10 @@ function NewsView(props){
                     <h3>{props.newsData.items[i].title}</h3>
                     <img src={props.newsData.items[i].images.thumbnail} height={"100"}/>
                     <p>{props.newsData.items[i].snippet}</p>
-                    <a href={props.newsData.items[i].newsUrl} target="_blank">More information</a> {/*Link to astronomical news source*/}
+                    <div className="moreInformation">
+                        <a href={props.newsData.items[i].newsUrl} target="_blank">More information</a> {/*Link to astronomical news source*/}
+                    </div>
+                    
                 </div>
             );
         }

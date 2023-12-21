@@ -145,6 +145,7 @@ h2, h3, p, ul, a, h1, .input,
     border: 1px solid white;
     padding: 20px 20px;
     margin-bottom: 2px;
+    border-radius: 10px;
 }
 
 .bigWeatherContainer{
@@ -168,6 +169,7 @@ h2, h3, p, ul, a, h1, .input,
     margin: 0 auto;
     border: 1px solid white;
     padding: 12px;
+    border-radius: 10px;
 }
 /*NewsView_____________________________*/
 .ParentContainer.newsContainer{
@@ -187,11 +189,12 @@ h2, h3, p, ul, a, h1, .input,
     align-items: center;
     border: 1px solid white;
     margin-top: -3px;
+    border-radius: 10px;
+    padding: 0px 20px;
 }
 
 .moreInformation{
-    font-size: 12px;
-    border: 1px solid white;
+    font-size: 20px;
 }
 
 /*All constellations____________________________________________________________________________________________*/
