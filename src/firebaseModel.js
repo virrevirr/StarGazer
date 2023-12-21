@@ -33,18 +33,14 @@ function persistenceToModel(data, model){
     model.setCurrentLocation(data?.place);
     const placeToGoArray = data?.placesToGo; //Detta gör att alla lägs till i listorna 
     const placeVisitedArray = data?.placesHaveGone;
-    
-    if (placeToGoArray && placeVisitedArray){
-        return searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(placeVisitedArray).then(placeVisitedToModelACB);
-    }
 
-    if (placeToGoArray){
-        return searchPlaces(placeToGoArray).then(placeToGoToModelACB);
-    }
-
-    if (placeVisitedArray){
-        return searchPlaces(placeVisitedArray).then(placeVisitedToModelACB);
-    }
+    return placeToGoArray && placeVisitedArray? 
+        (searchPlaces(placeToGoArray).then(placeToGoToModelACB) && searchPlaces(placeVisitedArray).then(placeVisitedToModelACB))
+    : placeToGoArray? 
+        searchPlaces(placeToGoArray).then(placeToGoToModelACB) 
+    : placeVisitedArray? 
+        searchPlaces(placeVisitedArray).then(placeVisitedToModelACB) 
+    : false;
 }
 
 function saveToFirebase(model){
