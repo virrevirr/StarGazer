@@ -11,14 +11,14 @@ function AllConstellationsView(props){
         props.loginCB();
     };
 
-    function navigateToSearchACB(){
-        window.location.hash = '#/search';
+    function navigateToInformationACB(){
+        window.location.hash = '#/information';
     };
 
     return(
     <div>
         <div className="backToSearchButton">
-            <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
+            <button className="biggerButtonDesign" onClick={navigateToInformationACB}>Back to search</button>
         </div>
 
         <div className="profileButton">
