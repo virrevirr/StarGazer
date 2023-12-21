@@ -139,15 +139,17 @@ h2, h3, p, ul, a, h1, .input,
 .weatherContainer{
     display: flex;
     height: 100%;
-    width: 155px; /*precis så stor som en dags väder*/
+    width: 230px; /*precis så stor som en dags väder*/
     overflow-x: auto;
     overflow-y: hidden;
+    border: 1px solid white;
+    padding: 20px 20px;
+    margin-bottom: 2px;
 }
 
 .bigWeatherContainer{
     width: 33%; /*precis så stor som en dags väder*/
     justify-content: center;
-    padding: 0px auto;
 }
 
 /*MoonView_______________________________*/
@@ -164,10 +166,12 @@ h2, h3, p, ul, a, h1, .input,
     align-items: center;
     z-index: 1;
     margin: 0 auto;
+    border: 1px solid white;
+    padding: 12px;
 }
 /*NewsView_____________________________*/
 .ParentContainer.newsContainer{
-    height: 450px;
+    height: 458px;
     flex-direction: column;
     justify-content: center;
     padding: 0px auto;
@@ -181,6 +185,13 @@ h2, h3, p, ul, a, h1, .input,
     height: 500px;
     width: 70%;
     align-items: center;
+    border: 1px solid white;
+    margin-top: -3px;
+}
+
+.moreInformation{
+    font-size: 12px;
+    border: 1px solid white;
 }
 
 /*All constellations____________________________________________________________________________________________*/
@@ -445,5 +456,3 @@ h2, h3, p, ul, a, h1, .input,
 .biggerButtonDesign:last-child{
     margin-left: 10px;
 }
-
-

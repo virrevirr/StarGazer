@@ -30,7 +30,7 @@ function SearchFormView(props){
             <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
         </div>
         <div className="centerButton">
-            <input className="input" placeholder={"Search city"} onChange={userInputACB}/>
+            <input className="input" placeholder={"Search City (min. 3 letters)"} onChange={userInputACB}/>
             <button className="buttonDesign" onClick={clickSearchACB}>&#128269;</button>
         </div>
         <div className="logOutButton">
