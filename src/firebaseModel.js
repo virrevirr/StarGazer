@@ -3,14 +3,17 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "firebase/database";
 import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged,setPersistence, browserSessionPersistence } from "firebase/auth";
+import {  } from "firebase/auth";
+
+// Set persistence to SESSION
 
 // Initialise firebase app, database, ref
 const app= initializeApp(firebaseConfig)
-const db= getDatabase(app)
+
 const auth = getAuth(app);
-
-
+setPersistence(auth, browserSessionPersistence);
+const db= getDatabase(app)
 //  PATH is the “root” Firebase path
 // this should be the user
 
@@ -65,10 +68,10 @@ function saveToFirebase(model){
     // otherwise write to the same path as above, 
     // depending on model.ready as usual
 
-    if (model.user) {
-        console.log("saved to firebase")
-        return model.ready? set(ref(db, model.PATH), modelToPersistence(model)): false;
-    }
+    console.log("saved to firebase")
+    if(model.user){
+    return model.ready ? set(ref(db, model.PATH), modelToPersistence(model)): false;}
+
 }
 
 function readFromFirebase(model){
@@ -77,34 +80,38 @@ function readFromFirebase(model){
     // do nothing if model.user falsy (maybe wipe the model data)
     // otherwise read from "path/"+model.user.uid
     // manage model.ready as usual
-
-    if (model.user){
-        console.log("read from firebase")
-        model.ready=false;
-        const rf=ref(db, model.PATH);
-        function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
-        function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
-        return get(rf).then(dataACB).then(modelReadyACB);
-    }
+    console.log("before trying to read to firebase");
+    model.ready=false;
+    if(model.user){
+    console.log("trying to read to firebase", model.user.uid, model.PATH);
+    const rf=ref(db, model.PATH);
+    function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
+    function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
+    return get(rf).then(dataACB).then(modelReadyACB);}
+    
 }
 
 
 function connectToFirebase(model, watchFunction){
-    async function loginlogOut(user) {   
+
+    function loginlogOut(user) {   
+       console.log("on change")
+        model.user = user;
         if (user) {
-            model.setUser(user);
+
+           
             model.setPATH();
+            readFromFirebase(model);
+            
             
                 // Add any other user-related data you need
             }
-        else {
-            model.setUser(null);
-        }
-        await readFromFirebase(model);
-     
+    
+        
     }
-
-    onAuthStateChanged(auth, loginlogOut);
+    console.log("connect to firebase befor onAuth")
+    onAuthStateChanged(auth,loginlogOut);
+    console.log("connect to firebase befor onAuth")
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);

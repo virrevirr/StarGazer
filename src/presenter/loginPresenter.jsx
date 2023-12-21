@@ -5,12 +5,18 @@
 import LogInView from "../views/loginView.jsx";
 import { auth } from "../firebaseModel";
 import { GoogleAuthProvider, signInWithPopup,  signOut } from "firebase/auth";
+const provider = new GoogleAuthProvider();
 
 export async function connect() {
-  const provider = new GoogleAuthProvider();
+  
   console.log("loginAB");
   try {
-    auth.currentUser? (await signOut(auth), window.location.hash = '#/'): (await signInWithPopup(auth, provider),  window.location.hash = '#/search');
+    if(auth.currentUser) {
+      await signOut(auth);
+      window.location.hash = '#/';}
+    else{
+       await signInWithPopup(auth, provider);
+       window.location.hash = '#/search';}
   } catch (error) {
     console.error("Error during login/logout:", error);
   }
