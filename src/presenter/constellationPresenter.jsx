@@ -23,7 +23,7 @@ export default function Constellation(props){
             return <p>{promiseState.error.toString()}</p>; //if promiseState.error is true and promise.data is false return error 
         }
         return <ConstellationView 
-        constellationData = {promiseState.data}
+        currentConstellation = {promiseState.data}
         haveSeen = {haveSeenACB} 
         loginCB ={connect}/>;
     }

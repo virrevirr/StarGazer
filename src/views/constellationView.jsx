@@ -17,7 +17,7 @@ function ConstellationView(props){
     };
 
     function haveSeenACB(event){
-        return props.haveSeen(props.constellationData[0].constellation);
+        return props.haveSeen(props.currentConstellation[0].constellation);
     };
 
     return (
@@ -36,17 +36,17 @@ function ConstellationView(props){
             </div>
 
             <div>
-                <h1>{props.constellationData[0].constellation}</h1> 
+                <h1>{props.currentConstellation[0].constellation}</h1> 
             </div>
             <div className="constellationDetailsContainer">
                 <div className="constellationImageContainer"> {/* Lägg till class för att rendera bilden till vänster om stjärnnamnen */}
-                <img src = {starConstellations[props.constellationData[0].constellation]} height = {"400"} />
+                <img src = {starConstellations[props.currentConstellation[0].constellation]} height = {"400"} />
                 </div>
 
                 <div className="starsIncludedContainer"> {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
                     <h1>Stars included</h1> 
                     <ul>
-                    {props.constellationData.map(starsInConstellationCB)}
+                    {props.currentConstellation.map(starsInConstellationCB)}
                     </ul>
                 </div>
             </div>

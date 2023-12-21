@@ -69,11 +69,16 @@ console.log("foundObject", foundObject)
         this.currentLocation = location
     }, 
 
+    currentConstellation: null,
+    constellationPromiseState: {},
+
     setCurrentConstellation(constellation){
         if (constellation === this.currentConstellation || !constellation){
             return;
         }
+        resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
         this.currentConstellation = constellation
+        console.log("this.currentConstellation", this.currentConstellation)
     }, 
 
     weatherPromiseState: {},
@@ -107,12 +112,6 @@ console.log("foundObject", foundObject)
 
         {/* Code with api fetch */}
         //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
-    },
-
-    constellationPromiseState: {},
-
-    fetchConstellation(constellation){
-        resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
     },
 
 

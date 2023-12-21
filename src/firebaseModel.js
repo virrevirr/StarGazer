@@ -18,7 +18,7 @@ const auth = getAuth(app);
 
 function modelToPersistence(model){
     //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
-    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, place: model.currentLocation}
+    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, currentPlace: model.currentLocation, currentStarImage: model.currentConstellation}
 }
 
 function persistenceToModel(data, model){
@@ -32,12 +32,14 @@ function persistenceToModel(data, model){
         console.log("model.haveVisited from firebaseModel", model.haveVisited)
     }
 
-    model.setCurrentLocation(data?.place);
+    model.setCurrentLocation(data?.currentPlace);
+    model.setCurrentConstellation(data?.currentStarImage);
     const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
 
     console.log("placeToGoArray from firebaseModel", placeToGoArray)
     console.log("placeVisitedArray from firebaseModel", placeVisitedArray)
+    console.log("data?.currentStarImage from firebaseModel", data?.currentStarImage)
 
     if (placeToGoArray && placeVisitedArray){
         console.log("data in both want and have")
