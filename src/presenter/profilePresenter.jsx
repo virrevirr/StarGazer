@@ -14,10 +14,6 @@ export default function Profile(props){
         props.model.searchNewsByCountry(languageToCode, countryToCode, astronomyTranslated);
     }
 
-    function clickedConstellationACB(input){
-        props.model.fetchConstellation(constellation);
-    }
-
     function removeCityACB(city){
         props.model.removeFromWantToGo(city)
         props.model.removeFromVisited(city)
@@ -25,7 +21,6 @@ export default function Profile(props){
 
     return (<ProfileView
         onLocationClick={clickedLocationACB}
-        onConstellationClick = {clickedConstellationACB}
         wantToGoPlaces={props.model.wantToGo || []}
         haveVisitedPlaces={props.model.haveVisited || []}
         deleteCityButton={removeCityACB}

@@ -69,6 +69,13 @@ console.log("foundObject", foundObject)
         this.currentLocation = location
     }, 
 
+    setCurrentConstellation(constellation){
+        if (constellation === this.currentConstellation || !constellation){
+            return;
+        }
+        this.currentConstellation = constellation
+    }, 
+
     weatherPromiseState: {},
 
     searchWeatherByCity(city){
