@@ -12,7 +12,7 @@ import {  } from "firebase/auth";
 const app= initializeApp(firebaseConfig)
 
 const auth = getAuth(app);
-setPersistence(auth, browserSessionPersistence);
+
 const db= getDatabase(app)
 //  PATH is the “root” Firebase path
 // this should be the user
@@ -98,7 +98,7 @@ function connectToFirebase(model, watchFunction){
        console.log("on change")
         model.user = user;
         if (user) {
-
+            setPersistence(auth, browserSessionPersistence);
            
             model.setPATH();
             readFromFirebase(model);
