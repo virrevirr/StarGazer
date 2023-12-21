@@ -4,7 +4,7 @@ export default{
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
     currentLocation: null, //Som currentDish, för att lägga till locations
-    ready: true, // set till true när promise from firebase is resolved (model.ready)
+        ready: true, // set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
     PATH: null, //used to see if user is logged in or not
     user: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
@@ -33,7 +33,7 @@ export default{
     addToSeen(location, constellationToAdd){
         // Add constellation to a specific city in haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, location));
-        console.log("foundObject", foundObject)
+console.log("foundObject", foundObject)
         function filterCB(item){
             // Remove "No constellations" if we have a constellation
             item !== "No constellations";

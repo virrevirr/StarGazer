@@ -4,14 +4,10 @@ import "/style.css";
  
 
 function LogInView(props){
-
-
     function handleLoginClick() {
         console.log("Button clicked");
         props.loginCB();
         }
-        
-      
 
     return(
         <div className="logoContainer"> 

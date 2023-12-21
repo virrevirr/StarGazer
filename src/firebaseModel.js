@@ -22,7 +22,7 @@ function modelToPersistence(model){
 }
 
 function persistenceToModel(data, model){
-
+    
     function placeToGoToModelACB(places){
         model.wantToGo=places;
         console.log("model.wantToGo from firebaseModel", model.wantToGo)

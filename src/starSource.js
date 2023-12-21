@@ -18,7 +18,6 @@ function keepArrayACB(searchInput){
 
 //API search for places
 export function searchPlaces(searchParams){
-
     /* Code with api fetch */
     /*const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString();
     const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
