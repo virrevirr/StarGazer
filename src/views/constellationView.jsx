@@ -5,33 +5,40 @@ import starConstellations from "../starConstellations.jsx"
 function ConstellationView(props){
 
     function navigateToProfileACB(){
+        // ACB to navigate to profile
         window.location.hash = '#/profile';
     };
     
     function navigateToLoginACB(){
+        // ACB to navigate to login
         props.loginCB();
     };
 
     function navigateToAllConstellationsACB(){
+        // ACB to navigate to allConstellations
         window.location.hash = '#/allConstellations';
     };
 
     function haveSeenACB(event){
+        // Add to seen
         return props.haveSeen(props.currentConstellation[0].constellation);
     };
 
     return (
-        <div className="searchContainer"> {/* Lägg till class som är specifik för den här? */}
+        <div className="searchContainer">
         
-            <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att all text får plats */}
+            <div className="backToSearchButton"> 
+                {/* Button to navigate to search */}
                 <button className="biggerButtonDesign" onClick={navigateToAllConstellationsACB}>Constellations</button>
             </div>
 
             <div className="profileButton">
+                {/* 3rd party component to navigate to profile */}
                 <AccountOutlineIcon title="Profile" onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
             </div>
 
-            <div className="iHaveSeenButton"> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
+            <div className="iHaveSeenButton">
+                {/* Button to add to seen */}
                 <button className="biggerButtonDesign" title="Add to Profile" onClick={haveSeenACB}>I have seen this in {props.location.city}</button>
             </div>
 
@@ -39,11 +46,12 @@ function ConstellationView(props){
                 <h1>{props.currentConstellation[0].constellation}</h1> 
             </div>
             <div className="constellationDetailsContainer">
-                <div className="constellationImageContainer"> {/* Lägg till class för att rendera bilden till vänster om stjärnnamnen */}
+                {/* Render all information about the constellation */}
+                <div className="constellationImageContainer">
                 <img src = {starConstellations[props.currentConstellation[0].constellation]} height = {"400"} />
                 </div>
 
-                <div className="starsIncludedContainer"> {/* Lägg till class för att rendera stjärnorna till höger om bilden */}
+                <div className="starsIncludedContainer">
                     <h1>Stars included</h1> 
                     <ul>
                     {props.currentConstellation.map(starsInConstellationCB)}
@@ -59,8 +67,9 @@ function ConstellationView(props){
     );
     
     function starsInConstellationCB(star){
+        // Render each star in the constellation
         return (
-            <span key={star.name}> {/* Lägg till class för att rendera stjärnorna i en grid (som bilderna i labben) alt. på en row */}
+            <span key={star.name}>
                     {star.name}
             </span>
         );}

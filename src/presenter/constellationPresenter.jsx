@@ -1,26 +1,22 @@
-// this will be a presenter for each constellation
-// similar to detailsPresenter but for information for constellation
 import ConstellationView from "../views/constellationView.jsx";
 import { connect } from "./loginPresenter";
-//model is starModel
-
 export default function Constellation(props){
     
     function haveSeenACB(constellation){
-        /*props.model.currentConstellation ist? */
+        // Add to seen
         props.model.addToSeen(props.model.currentLocation, constellation);
     }
 
     function promiseData(promiseState){
-        if(!promiseState.promise){//if promiseState.promise is false, no data should be returned.
+        // Function to handle promiseState
+        if(!promiseState.promise){
             return <p>no data</p>; 
         }  
-        // if promise is true, check data and error. 
         if(!promiseState.data){
             if(!promiseState.error){
                 return <img src="https://brfenergi.se/iprog/loading.gif" height = {"50"}/>;
             }
-            return <p>{promiseState.error.toString()}</p>; //if promiseState.error is true and promise.data is false return error 
+            return <p>{promiseState.error.toString()}</p>;
         }
         return <ConstellationView 
         currentConstellation = {promiseState.data}
