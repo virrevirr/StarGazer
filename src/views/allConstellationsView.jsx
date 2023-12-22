@@ -18,7 +18,7 @@ function AllConstellationsView(props){
     return(
     <div>
         <div className="backToSearchButton">
-            <button className="biggerButtonDesign" onClick={navigateToInformationACB}>Back to search</button>
+            <button className="biggerButtonDesign" onClick={navigateToInformationACB}>Back to {props.location.city}</button>
         </div>
 
         <div className="profileButton">

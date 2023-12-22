@@ -27,16 +27,10 @@ function SearchResultsView(props){
             {/* Code with api fetch */}
             {/*props.searchResult.map(renderResultCB)*/}
 
-            {!searchResult && defaultCities()} {/* try with api fetch, to render default cities*/}
             {/* Code without api fetch */}
-            {searchResult && searchResult.map(renderResultCB)}
+            {searchResult.map(renderResultCB)}
         </div>
     );
-
-    function defaultCities(){
-        const defaultCities = searchResult.slice(0, 10);
-        return defaultCities.map(renderResultCB)
-    }
 
     function renderResultCB(result){
         function onLocationClickACB(event){

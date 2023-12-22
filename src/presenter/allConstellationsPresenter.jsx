@@ -13,6 +13,7 @@ export default function AllConstellations(props){
     return (
         <div>
             <AllConstellationsView
+            location = {props.model.currentLocation}
             allConstellations = {starConstellations}
             onConstellationClick= {onConstellationClickACB}
             loginCB ={connect}

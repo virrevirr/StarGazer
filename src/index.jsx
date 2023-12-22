@@ -16,7 +16,8 @@ const app= createApp(<VueRoot model={reactiveModel}/>);
 app.use(makeRouter(reactiveModel));
 app.mount('#root'); 
 
-//reactiveModel.doSearch({});
 connectToFirebase(reactiveModel, watch);
 window.myModel= reactiveModel; 
 
+ // shows some initial cities
+ reactiveModel.startSearch("paris");

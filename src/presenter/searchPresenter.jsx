@@ -21,9 +21,6 @@ export default function Search(props){
         
         props.model.setCurrentMoon();
 
-        /*const countryToCode = countries[input.country].alpha2;
-        const languageToCode = countries[input.country].iso6391;
-        const astronomyTranslated = countries[input.country].astronomy;*/
         props.model.setCurrentNewsCountry(input.country);
     }
 

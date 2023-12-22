@@ -116,7 +116,7 @@ export default{
         this.currentNewsCountry = country;
     },
     
-    searchParams: {},
+    searchParams: null,
     searchResultsPromiseState: {},
 
     setSearch(queryText){ // används i searchPresenter för att koppla till 
