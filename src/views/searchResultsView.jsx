@@ -34,14 +34,13 @@ function SearchResultsView(props){
 
     function renderResultCB(result){
         function onLocationClickACB(event){
-            window.location.hash= "#/information";
             props.onLocationClick(result);
         };
 
         return (
             <span key={result} onClick={onLocationClickACB}>
                 {/*render each city with its title*/}
-                <p>{result.city + ", " + result.state +", " + result.country}</p>
+                <a href="#/information"><p>{result.city + ", " + result.state +", " + result.country}</p></a>
                 
             </span>
         );
