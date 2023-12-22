@@ -13,6 +13,10 @@ export default function Information(props){
     function addVisitedACB(){
         props.model.addToVisited(props.model.currentLocation);
     }
+    function inVisitedCB(location){
+        return location === props.model.currentLocation;
+    }
+
     function promiseData(promiseState){
         if(!promiseState.promise) {//if promiseState.promise is false, no data should be returned.
             return <p>no data</p>;
@@ -42,6 +46,7 @@ export default function Information(props){
         locationData={props.model.currentLocation} //current location är objekt
         addToGo ={addToWantToGoACB}
         addToVisited={addVisitedACB}
+        locVisited = {props.model.haveVisited.find(inVisitedCB)}
         loginCB ={connect}/>
         
             <div className="ParentContainer">
