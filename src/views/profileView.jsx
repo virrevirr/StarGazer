@@ -32,9 +32,9 @@ function ProfileView(props){
 
     function renderConstellationsACB(place){
         function renderACB(constellation){
-            return constellation+", ";
+            return constellation+" | ";
         }
-        return <div>
+        return <div className="padding">
                     <tr key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
                         <td>{place.city}: {place.constellations.map(renderACB)}</td>
                         <td></td>

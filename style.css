@@ -276,6 +276,10 @@ h2, h3, p, ul, a, h1, .input,
     margin-right: 1%;
 }
 
+.padding{
+    padding-bottom: 7px;
+}
+
 /* LoginView __________________________________________________________________________________________________*/
 
 .logo{
@@ -326,7 +330,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 /* Media query for narrow screens ___________________________________________________________________________*/
-@media (max-width: 500px) { /* Adjust the max-width value based on our design */
+@media (min-width: 350px) { /* Adjust the max-width value based on our design */
 
     .debug {
         border-style: solid;
@@ -340,7 +344,16 @@ h2, h3, p, ul, a, h1, .input,
     .grid {
         grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
       }
+
 }
+
+@media(max-width: 400px){ /*For mobile screens*/
+    .constellationDisplay{
+        width: calc(50% - 20px); /* Three columns per row for medium screens */
+    }
+
+}
+
 
 /*ParentContainer_________________________________________________________________*/
 
