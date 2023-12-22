@@ -3,39 +3,45 @@ import countries from "./countries.jsx";
 import resolvePromise from "./resolvePromise";
 
 export default{ 
-    wantToGo: [], //Kommer behövas för att displaya locations i personal profile
-    haveVisited: [],
-    currentLocation: null, //Som currentDish, för att lägga till locations
-        ready: true, // set till true när promise from firebase is resolved (model.ready)
+    wantToGo: [], // Array with all location objects that the user want to visit
+    haveVisited: [], // Array with all location objects that the user has visited
+    currentLocation: null, // Keeping track of the most currently clicked location
+    ready: true, // Set till true när promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
-    PATH: null, //used to see if user is logged in or not
-    user: null, // initiallized to null, set to auth.currentUser.uid when user is logged in
-
+    PATH: null, // Used to see if user is logged in or not
+    user: null, // Initiallized to null, set to auth.currentUser.uid when user is logged in
+    currentConstellation: null, // Keeping track of the most currently clicked constellation
+    constellationPromiseState: {}, 
+    weatherPromiseState: {},
+    moonPromiseState: {},
+    newsPromiseState: {},
+    searchParams: null, // Keeping track of most recent search input from user
+    searchResultsPromiseState: {},
 
     doesObjectMatch(obj, targetLocation) {
+        // Function to check if targetLocation and object is a match
         // Checking if the city is already in the list
         return obj["city"] === targetLocation.city && obj["state"] === targetLocation.state
                  && obj["country"] === targetLocation.country;
     },
 
     addToWantToGo(locToAdd){
-        // Add city to haveVisited
+        // Adding city to wantToGo
         const foundObject = this.wantToGo.find(obj => this.doesObjectMatch(obj, locToAdd));
         // Adding the city to the list if it is not already there
         foundObject || (this.wantToGo = [...this.wantToGo, locToAdd]);
     },
 
     addToVisited(locToAdd){
-        // Add city to haveVisited
+        // Adding city to haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, locToAdd));
-        // Adding the city to the list if it is not already there
+        // Adding the city to the list if it is not already there and adding a property; constellations
         foundObject || (this.haveVisited = [...this.haveVisited, { ...locToAdd, constellations: ["No constellations"] }]);
     },
 
     addToSeen(location, constellationToAdd){
-        // Add constellation to a specific city in haveVisited
+        // Adding constellation to a specific location object in haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, location));
-        console.log("foundObject", foundObject)
         function filterCB(item){
             // Remove "No constellations" if we have a constellation
             item !== "No constellations";
@@ -46,11 +52,12 @@ export default{
         ? [...new Set([...foundObject["constellations"].filter(filterCB), constellationToAdd])]
         : [...new Set([...foundObject["constellations"], constellationToAdd])]);
 
-        // Spreading the array for firebase to regognize and save the changes
+        // Spreading the array for firebase to recognize and save the changes
         this.haveVisited = [...this.haveVisited]
     },
 
     removeFromVisited(locToRemove){
+        // Removing a city from haveVisited
         function shouldWeKeepLocCB(location){
             return location !== locToRemove;  
         }
@@ -58,6 +65,7 @@ export default{
     },
 
     removeFromWantToGo(locToRemove){
+        // Removing a city from wantToGo
         function shouldWeKeepConstCB(location){
             return location !== locToRemove;
         }
@@ -65,81 +73,66 @@ export default{
     },
 
     setCurrentLocation(location){
+        // Setting the most currently clicked location
         if (location === this.currentLocation || !location){
             return;
         }
         this.currentLocation = location
     }, 
 
-    currentConstellation: null,
-    constellationPromiseState: {},
-
     setCurrentConstellation(constellation){
+        // Setting the most currently clicked constellation and fetching the astronomy API with the constellation
         if (constellation === this.currentConstellation || !constellation){
             return;
         }
         resolvePromise(getConstellationDetails(constellation), this.constellationPromiseState);
         this.currentConstellation = constellation
-        console.log("this.currentConstellation", this.currentConstellation)
     }, 
 
-    weatherPromiseState: {},
-    currentWeatherCity: null,
 
     setCurrentWeatherCity(city){
-        if (city === this.currentWeatherCity || !city){
-            return;
-        }
+        // Fetching the weather API based on the current city
         resolvePromise(getWeatherDetails(city), this.weatherPromiseState);
-        this.currentWeatherCity = city;
     },
 
-    
-    moonPromiseState: {},
-
     setCurrentMoon(){
+        // Fetching the moon phase API
         resolvePromise(getMoonDetails(), this.moonPromiseState);
     },
 
-    newsPromiseState: {},
-    currentNewsCountry: null,
-
     setCurrentNewsCountry(country){
-        console.log("country from starModel", country)
-        if ((country === this.currentNewsCountry) || !country){
-            return;
-        }
+        // Fetching the news API based on the current country
+        // Getting the codes and translated astronomy from the countries dictionary
         const countryToCode = countries[country].alpha2;
         const languageToCode = countries[country].iso6391;
         const astronomyTranslated = countries[country].astronomy;
         resolvePromise(getNewsDetails(astronomyTranslated, languageToCode, countryToCode), this.newsPromiseState);
-        this.currentNewsCountry = country;
     },
     
-    searchParams: null,
-    searchResultsPromiseState: {},
 
-    setSearch(queryText){ // används i searchPresenter för att koppla till 
+    setSearch(queryText){ 
+        // Setting the search parameters to the users input
         this.searchParams = queryText
     },
 
     startSearch(searchParams){
-
+        // Doing the search for cities by fetching the city API with the user input
         {/* Code with api fetch */}
         //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
 
 
     setPATH(){
-       
-        this.PATH = 'users/' +  this.user.uid;} ,//used to see if user is logged in or not
+        // Setting the path based on the authenticated user
+        // Used to see if user is logged in or not
+        this.PATH = 'users/' +  this.user.uid;} ,
 
 
     setUser(user){ 
-            this.user = user
-            console.log("User ID in StarModel: ", this.user.uid);
-            console.log("Display Name in StarModel: ", this.user.displayName);
-            // Access other properties as needed
+        // Setting the user in the model
+        this.user = user
+        console.log("User ID in StarModel: ", this.user.uid);
+        console.log("Display Name in StarModel: ", this.user.displayName);
     },
 
 }
