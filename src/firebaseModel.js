@@ -18,8 +18,14 @@ function persistenceToModel(data, model){
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
     model.setCurrentMoon();
-    model.wantToGo = data?.placesToGo;
-    model.haveVisited = data?.placesHaveGone;
+
+    if (data?.placesToGo){
+        model.wantToGo = data?.placesToGo;
+    }
+    
+    if (data?.placesHaveGone){
+        model.haveVisited = data?.placesHaveGone;
+    }
 
     if (data?.currentPlace){
         // We can fetch the weather and news using currentLocation
