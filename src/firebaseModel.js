@@ -5,40 +5,26 @@ import { getAuth, onAuthStateChanged,setPersistence, browserSessionPersistence }
 
 // Initialise firebase app, database, auth
 const app= initializeApp(firebaseConfig)
-
 const auth = getAuth(app);
-
 const db= getDatabase(app)
 
 function modelToPersistence(model){
+    // Writing the necessary properties to firebase
     return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, currentPlace: model.currentLocation, currentStarImage: model.currentConstellation,}
 }
 
 function persistenceToModel(data, model){
-    // 
+    // Reading properties from firebase and fetching every API with them
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
     model.setCurrentMoon();
+    model.wantToGo = data?.placesToGo;
+    model.haveVisited = data?.placesHaveGone;
 
     if (data?.currentPlace){
+        // We can fetch the weather and news using currentLocation
         model.setCurrentWeatherCity(data?.currentPlace.city);
         model.setCurrentNewsCountry(data?.currentPlace.country);
-    }
-
-    const placeToGoArray = data?.placesToGo;
-    const placeVisitedArray = data?.placesHaveGone;
-
-    if (placeToGoArray && placeVisitedArray){
-        model.wantToGo=placeToGoArray;
-        model.haveVisited=placeVisitedArray;
-    }
-
-    else if (placeToGoArray){
-        model.wantToGo=placeToGoArray;
-    }
-
-    else if (placeVisitedArray){
-        model.haveVisited=placeVisitedArray;
     }
 }
 
@@ -72,7 +58,7 @@ function readFromFirebase(model){
 
 
 function connectToFirebase(model, watchFunction){
-
+    // JOLINE KOMMENTERA HÄR :)
     function loginlogOut(user) {   
        console.log("on change")
         model.user = user;
@@ -84,16 +70,11 @@ function connectToFirebase(model, watchFunction){
     
         
     }
-    console.log("connect to firebase befor onAuth")
     onAuthStateChanged(auth,loginlogOut);
-    console.log("connect to firebase befor onAuth")
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
     return watchFunction(checkACB, sideEffectACB);
 }
-
-
-
 
 export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, connectToFirebase, auth}
 export default connectToFirebase;
