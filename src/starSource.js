@@ -1,6 +1,7 @@
 //funkar som dishSource.js
 
 import {API_KEY} from "./apiConfig.js";
+import {API_KEY_MOON} from "./apiConfig.js";
 
 
 function getJsonACB(resp){
@@ -61,7 +62,7 @@ export function getMoonDetails(){
     
     return fetch(source, {
         method:"GET", 
-        headers: {'X-Mashape-Key': API_KEY}
+        headers: {'X-Mashape-Key': API_KEY_MOON}
     }).then(getJsonACB).then(keepArrayACB);
 }
 

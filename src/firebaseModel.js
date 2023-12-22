@@ -1,30 +1,21 @@
-// Add relevant imports here
-
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "firebase/database";
-import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
+import firebaseConfig from "../firebaseConfig.js";
 import { getAuth, onAuthStateChanged,setPersistence, browserSessionPersistence } from "firebase/auth";
 
-// Set persistence to SESSION
-
-// Initialise firebase app, database, ref
+// Initialise firebase app, database, auth
 const app= initializeApp(firebaseConfig)
 
 const auth = getAuth(app);
 
 const db= getDatabase(app)
-//  PATH is the “root” Firebase path
-// this should be the user
-
-
 
 function modelToPersistence(model){
-    //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
     return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, currentPlace: model.currentLocation, currentStarImage: model.currentConstellation,}
 }
 
 function persistenceToModel(data, model){
-
+    // 
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
     model.setCurrentMoon();
@@ -52,12 +43,9 @@ function persistenceToModel(data, model){
 }
 
 function saveToFirebase(model){
-        // saveToFirebase: 
-    // -----------------
     // do nothing if model.user falsy
     // otherwise write to the same path as above, 
     // depending on model.ready as usual
-
     console.log("saved to firebase")
     if(model.user){
     return model.ready ? set(ref(db, model.PATH), modelToPersistence(model)): false;}
@@ -65,18 +53,19 @@ function saveToFirebase(model){
 }
 
 function readFromFirebase(model){
-    // readFromFirebase: 
-    // -----------------
-    // do nothing if model.user falsy (maybe wipe the model data)
+    // do nothing if model.user falsy
     // otherwise read from "path/"+model.user.uid
     // manage model.ready as usual
-    console.log("before trying to read to firebase");
     model.ready=false;
     if(model.user){
-    console.log("trying to read to firebase", model.user.uid, model.PATH);
-    const rf=ref(db, model.PATH);
-    function modelReadyACB(){model.ready=true; console.log("model ready in modelReadyACB", model.ready);}
-    function dataACB(data){return persistenceToModel(data.val(), model);} //dataACB does not return a promise --> should it?
+        console.log("trying to read to firebase", model.user.uid, model.PATH);
+        const rf=ref(db, model.PATH);
+        function modelReadyACB(){
+            model.ready=true; console.log("model ready in modelReadyACB", model.ready);
+        }
+        function dataACB(data){
+            return persistenceToModel(data.val(), model);
+        }
     return get(rf).then(dataACB).then(modelReadyACB);}
     
 }
@@ -89,12 +78,8 @@ function connectToFirebase(model, watchFunction){
         model.user = user;
         if (user) {
             setPersistence(auth, browserSessionPersistence);
-           
             model.setPATH();
             readFromFirebase(model);
-            
-            
-                // Add any other user-related data you need
             }
     
         
