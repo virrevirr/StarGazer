@@ -20,22 +20,10 @@ const db= getDatabase(app)
 
 function modelToPersistence(model){
     //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
-    return {
-        placesToGo: model.wantToGo, 
-        placesHaveGone: model.haveVisited, 
-        currentPlace: model.currentLocation, 
-        currentStarImage: model.currentConstellation,
-        }
+    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, currentPlace: model.currentLocation, currentStarImage: model.currentConstellation,}
 }
 
 function persistenceToModel(data, model){
-    
-    function placeToGoToModelACB(places){
-        model.wantToGo=places;
-    }
-    function placeVisitedToModelACB(places){
-        model.haveVisited=places;
-    }
 
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
@@ -44,24 +32,22 @@ function persistenceToModel(data, model){
     if (data?.currentPlace){
         model.setCurrentWeatherCity(data?.currentPlace.city);
         model.setCurrentNewsCountry(data?.currentPlace.country);
-        console.log("weather from firebaseModel", data?.currentPlace.city);
-        console.log("news from firebaseModel", data?.currentPlace.country);
     }
 
     const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
 
     if (placeToGoArray && placeVisitedArray){
-        placeToGoToModelACB(placeToGoArray);
-        placeVisitedToModelACB(placeVisitedArray);
+        model.wantToGo=placeToGoArray;
+        model.haveVisited=placeVisitedArray;
     }
 
     else if (placeToGoArray){
-        return placeToGoToModelACB(placeToGoArray);
+        model.wantToGo=placeToGoArray;
     }
 
     else if (placeVisitedArray){
-        return placeVisitedToModelACB(placeVisitedArray);
+        model.haveVisited=placeVisitedArray;
     }
 }
 

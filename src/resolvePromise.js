@@ -1,4 +1,4 @@
-// tagen från labben - it works so why change it. 
+// tagen från labben 
 
 function resolvePromise(prms, promiseState){
     promiseState.promise= prms;
