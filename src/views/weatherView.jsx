@@ -1,6 +1,7 @@
 function WeatherView(props){
-
     function weatherByDayCB() {
+        /*Will display the weather forecast, sunrise/sunset and 
+        moonrise/moonset for three days ahead*/
         const weatherDays = [];
         for (let i = 0; i < 3; i++) {
             weatherDays.push(
