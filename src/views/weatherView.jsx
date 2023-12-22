@@ -35,7 +35,7 @@ function WeatherView(props){
             <table>
                 <tbody>
                     <h2> Weather forecast </h2>
-                    <div className="weatherContainer">
+                    <div className="boarderAndStackable weatherContainer">
                         {weatherByDayCB()}
                     </div>
                 </tbody>

@@ -135,44 +135,49 @@ h2, h3, p, ul, a, h1, .input,
     flex-direction: column;
 }
 
+.boarderAndStackable{
+    border: 1px solid white;
+    padding: 0px 10px;
+    border-radius: 10px;
+    /*width: calc(33.33% - 20px); /* Fixed width for each column */
+}
+
 /*WeatherView____________________*/
-.weatherContainer{
+.boarderAndStackable.weatherContainer{
     display: flex;
     height: 100%;
     width: 230px; /*precis så stor som en dags väder*/
     overflow-x: auto;
     overflow-y: hidden;
-    border: 1px solid white;
-    padding: 20px 20px;
     margin-bottom: 2px;
-    border-radius: 10px;
+    padding: 18px;
 }
 
 .bigWeatherContainer{
+    flex:1;
     width: 33%; /*precis så stor som en dags väder*/
     justify-content: center;
 }
 
 /*MoonView_______________________________*/
 .moonContainer{
+    flex:1;
     justify-content: center;
     height: 33%;
     width: 33%;
     padding: 0px auto;
 }
 
-.moonInformation{
+.boarderAndStackable.moonInformation{
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
     margin: 0 auto;
-    border: 1px solid white;
-    padding: 0px 10px;
-    border-radius: 10px;
 }
 /*NewsView_____________________________*/
 .ParentContainer.newsContainer{
+    flex:1;
     height: 458px;
     flex-direction: column;
     justify-content: center;
@@ -181,16 +186,13 @@ h2, h3, p, ul, a, h1, .input,
     flex-wrap: nowrap;
 }
 
-.newsScroll{
+.boarderAndStackable.newsScroll{
     overflow-x: hidden;
     overflow-y: auto;
     height: 500px;
     width: 70%;
     align-items: center;
-    border: 1px solid white;
     margin-top: -3px;
-    border-radius: 10px;
-    padding: 0px 20px;
 }
 
 .moreInformation{
@@ -249,6 +251,7 @@ h2, h3, p, ul, a, h1, .input,
     justify-content: space-between; /* Distribute columns with space in between */
     column-gap: 20px;
     text-align: center;
+    margin: 0px 100px;
 }
 
 .profileContainer{
@@ -350,6 +353,10 @@ h2, h3, p, ul, a, h1, .input,
 @media(max-width: 400px){ /*For mobile screens*/
     .constellationDisplay{
         width: calc(50% - 20px); /* Three columns per row for medium screens */
+    }
+
+    .boarderAndStackable{
+        width: calc(100% - 20px); /* Three columns per row for medium screens */
     }
 
 }
