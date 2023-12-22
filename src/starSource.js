@@ -1,10 +1,12 @@
-//funkar som dishSource.js
 
+// Importing API keys for the APIs
 import {API_KEY} from "./apiConfig.js";
 import {API_KEY_MOON} from "./apiConfig.js";
 
 
 function getJsonACB(resp){
+    // Checking if the fetch worked 
+    // Returning either the json property of the response or throwing the error
     if(!resp.ok){
         throw new Error("Something went wrong with the fetch"+ resp.status);
     }
@@ -12,13 +14,14 @@ function getJsonACB(resp){
 }
 
 function keepArrayACB(searchInput){ 
+    // Keeping the array
     console.log("searchInput: ", searchInput);
     return searchInput;
 }
 
-
-//API search for places
 export function searchPlaces(searchParams){
+    // Fetch API for cities with user input
+
     /* Code with api fetch */
     /*const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString();
     const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;

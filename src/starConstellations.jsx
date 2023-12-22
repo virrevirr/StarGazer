@@ -1,4 +1,4 @@
-// constellations and images taken manually from Wikipedia
+// Constellations and images taken manually from Wikipedia
 
 const starConstellations = {
     'Andromeda': 'https://upload.wikimedia.org/wikipedia/commons/8/87/Andromeda_IAU.svg',
