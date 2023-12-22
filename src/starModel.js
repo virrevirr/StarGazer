@@ -1,5 +1,7 @@
 import { getConstellationDetails, getMoonDetails, getNewsDetails, getWeatherDetails, searchPlaces } from "./starSource";
-import resolvePromise from "./resolvePromise"
+import countries from "./countries.jsx";
+import resolvePromise from "./resolvePromise";
+
 export default{ 
     wantToGo: [], //Kommer behövas för att displaya locations i personal profile
     haveVisited: [],
@@ -33,7 +35,7 @@ export default{
     addToSeen(location, constellationToAdd){
         // Add constellation to a specific city in haveVisited
         const foundObject = this.haveVisited.find(obj => this.doesObjectMatch(obj, location));
-console.log("foundObject", foundObject)
+        console.log("foundObject", foundObject)
         function filterCB(item){
             // Remove "No constellations" if we have a constellation
             item !== "No constellations";
@@ -84,7 +86,7 @@ console.log("foundObject", foundObject)
     weatherPromiseState: {},
     currentWeatherCity: null,
 
-    setCurrentWeather(city){
+    setCurrentWeatherCity(city){
         if (city === this.currentWeatherCity || !city){
             return;
         }
@@ -100,14 +102,18 @@ console.log("foundObject", foundObject)
     },
 
     newsPromiseState: {},
-    currentNews: null,
+    currentNewsCountry: null,
 
-    setCurrentNews(newsObj){
-        if ((newsObj === this.currentNews) || !newsObj ){
+    setCurrentNewsCountry(country){
+        console.log("country from starModel", country)
+        if ((country === this.currentNewsCountry) || !country){
             return;
         }
-        resolvePromise(getNewsDetails(newsObj), this.newsPromiseState);
-        this.currentNews = newsObj;
+        const countryToCode = countries[country].alpha2;
+        const languageToCode = countries[country].iso6391;
+        const astronomyTranslated = countries[country].astronomy;
+        resolvePromise(getNewsDetails(astronomyTranslated, languageToCode, countryToCode), this.newsPromiseState);
+        this.currentNewsCountry = country;
     },
     
     searchParams: {},

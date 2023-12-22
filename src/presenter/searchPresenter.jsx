@@ -3,7 +3,6 @@
 
 import SearchFormView from "../views/searchFormView";
 import SearchResultsView from "../views/searchResultsView";
-import countries from "/src/countries.jsx"
 import { connect } from "./loginPresenter";
 
 export default function Search(props){
@@ -18,16 +17,14 @@ export default function Search(props){
     function onLocationClickACB(input){
         props.model.setCurrentLocation(input);
 
-        props.model.setCurrentWeather(input.city);
+        props.model.setCurrentWeatherCity(input.city);
         
         props.model.setCurrentMoon();
 
         /*const countryToCode = countries[input.country].alpha2;
         const languageToCode = countries[input.country].iso6391;
-        const astronomyTranslated = countries[input.country].astronomy;
-        props.model.setCurrentNews(languageToCode, countryToCode, astronomyTranslated);*/
-        props.model.setCurrentNews(countries[input.country]);
-
+        const astronomyTranslated = countries[input.country].astronomy;*/
+        props.model.setCurrentNewsCountry(input.country);
     }
 
     function promiseData(promiseState){

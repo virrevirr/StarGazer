@@ -4,7 +4,6 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set} from "firebase/database";
 import firebaseConfig from "../firebaseConfig.js"; // config from previous step in 3.5
 import { getAuth, onAuthStateChanged,setPersistence, browserSessionPersistence } from "firebase/auth";
-import {  } from "firebase/auth";
 
 // Set persistence to SESSION
 
@@ -21,12 +20,13 @@ const db= getDatabase(app)
 
 function modelToPersistence(model){
     //borde vi ha någon .sort funktion på platserna som vi har i labbarna?
-    return {placesToGo: model.wantToGo, placesHaveGone: model.haveVisited, 
+    return {
+        placesToGo: model.wantToGo, 
+        placesHaveGone: model.haveVisited, 
         currentPlace: model.currentLocation, 
         currentStarImage: model.currentConstellation,
-        currentWeatherInformation: model.currentWeather,
-        currentMoonInformation: model.currentMoon,
-        currentNewsInformation: model.currentNews}
+        currentCountry: model.currentNewsCountry
+        }
 }
 
 function persistenceToModel(data, model){
@@ -40,19 +40,18 @@ function persistenceToModel(data, model){
 
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
-    model.setCurrentMoon(data?.currentMoonInformation);
-    model.setCurrentWeather(data?.currentWeatherInformation);
-    model.setCurrentNews(data?.currentNewsInformation);
+    model.setCurrentMoon();
+    model.setCurrentNewsCountry(data?.currentCountry);
 
-    /*const weatherInfo = data?.currentWeatherInformation
-    const newsInfo = data?.currentNewsInformation
-    if (weatherInfo){model.setCurrentWeather(data?.currentWeatherInformation);}
-    if(newsInfo){model.setCurrentNews(data?.currentNewsInformation);}*/
+    if (data?.currentPlace){
+        model.setCurrentWeatherCity(data?.currentPlace.city);
+        console.log("weather from firebaseModel", data?.currentPlace.city)
+    }
 
     const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
     
-    console.log("data?.currentNewsInformation from firebaseModel", data?.currentNewsInformation)
+    console.log("news from firebaseModel", data?.currentCountry)
 
 
     if (placeToGoArray && placeVisitedArray){
