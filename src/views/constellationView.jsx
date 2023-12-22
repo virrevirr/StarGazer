@@ -32,7 +32,7 @@ function ConstellationView(props){
             </div>
 
             <div className="iHaveSeenButton"> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
-                <button className="biggerButtonDesign" onClick={haveSeenACB}>I have seen this in {props.location.city}</button>
+                <button className="biggerButtonDesign" title="Add to Profile" onClick={haveSeenACB}>I have seen this in {props.location.city}</button>
             </div>
 
             <div>
