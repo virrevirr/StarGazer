@@ -1,7 +1,7 @@
 /*Applies to entire webpage____________________________________________________*/
 
 body{
-    /*Placement of background image*/
+    /* Placement of background image */
     background-image: url('/images/space_background.png');
     background-size: cover;
     background-position: center;
@@ -10,7 +10,7 @@ body{
 }
 
 .profileButton {
-    /*Placement for profile button*/
+    /* Placement for profile button */
     position: absolute;
     top: 0;
     right: 0;
@@ -19,7 +19,7 @@ body{
 }
 
 .logOutButton {
-    /*Placement for logOut button button*/
+    /* Placement for logOut button */
     position: absolute;
     bottom: 0;
     left: 0;
@@ -28,7 +28,7 @@ body{
 }
 
 .backToSearchButton {
-    /*Placement for back to search button*/
+    /* Placement for back to search button */
     position: absolute;
     top: 0;
     left: 0;
