@@ -1,33 +1,10 @@
 // search results
 
 function SearchResultsView(props) {
-    /* Test code without api fetch */
-    const searchResult = [
-      {
-        city: "Paris",
-        state: "Sample State",
-        country: "France",
-      },
-      {
-        city: "London",
-        state: "Sample State",
-        country: "United Kingdom",
-      },
-      {
-        city: "Stockholm",
-        state: "Sample State",
-        country: "Sweden",
-      },
-    ];
-  
     return (
       // Rendering the search results.
       <div className="searchResultsContainer">
-        {/* Code with api fetch */}
-        {/*props.searchResult.map(renderResultCB)*/}
-  
-        {/* Code without api fetch */}
-        {searchResult.map(renderResultCB)}
+        {props.searchResult.map(renderResultCB)}
       </div>
     );
   

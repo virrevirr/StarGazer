@@ -148,10 +148,7 @@ import {
   
     startSearch(searchParams) {
       // Doing the search for cities by fetching the city API with the user input
-      {
-        /* Code with api fetch */
-      }
-      //resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
+      resolvePromise(searchPlaces(searchParams), this.searchResultsPromiseState);
     },
   
     setPATH() {
