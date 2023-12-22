@@ -25,7 +25,6 @@ function modelToPersistence(model){
         placesHaveGone: model.haveVisited, 
         currentPlace: model.currentLocation, 
         currentStarImage: model.currentConstellation,
-        currentCountry: model.currentNewsCountry
         }
 }
 
@@ -41,18 +40,16 @@ function persistenceToModel(data, model){
     model.setCurrentLocation(data?.currentPlace);
     model.setCurrentConstellation(data?.currentStarImage);
     model.setCurrentMoon();
-    model.setCurrentNewsCountry(data?.currentCountry);
 
     if (data?.currentPlace){
         model.setCurrentWeatherCity(data?.currentPlace.city);
-        console.log("weather from firebaseModel", data?.currentPlace.city)
+        model.setCurrentNewsCountry(data?.currentPlace.country);
+        console.log("weather from firebaseModel", data?.currentPlace.city);
+        console.log("news from firebaseModel", data?.currentPlace.country);
     }
 
     const placeToGoArray = data?.placesToGo;
     const placeVisitedArray = data?.placesHaveGone;
-    
-    console.log("news from firebaseModel", data?.currentCountry)
-
 
     if (placeToGoArray && placeVisitedArray){
         placeToGoToModelACB(placeToGoArray);
