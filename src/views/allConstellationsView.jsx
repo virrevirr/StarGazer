@@ -22,7 +22,7 @@ function AllConstellationsView(props){
         </div>
 
         <div className="profileButton">
-            <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
+            <AccountOutlineIcon title="Profile" onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
         </div>
         
         <div class = "ParentContainer constellationsContainer">
@@ -30,7 +30,7 @@ function AllConstellationsView(props){
         </div> 
 
         <div className="logOutButton">
-            <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
+            <LogoutIcon title="Log Out" onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
         </div>
 
     </div>

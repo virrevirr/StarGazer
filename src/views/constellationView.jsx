@@ -28,7 +28,7 @@ function ConstellationView(props){
             </div>
 
             <div className="profileButton">
-                <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
+                <AccountOutlineIcon title="Profile" onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
             </div>
 
             <div className="iHaveSeenButton"> {/* Lägg till class för att rendera knappen längst ner till höger och gör så att all text får plats i den */}
@@ -52,7 +52,7 @@ function ConstellationView(props){
             </div>
             
             <div className="logOutButton">
-                <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
+                <LogoutIcon title="Log Out" onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
             </div>
         
         </div>

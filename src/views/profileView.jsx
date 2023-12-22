@@ -79,7 +79,7 @@ function ProfileView(props){
             </div>
 
             <div className="logOutButton">
-                <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
+                <LogoutIcon title="Log Out" onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
             </div>
         </div>
     );

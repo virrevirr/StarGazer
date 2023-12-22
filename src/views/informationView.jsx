@@ -24,7 +24,7 @@ function InformationView(props){
         <div>
             <div className="profileButton">
                 {/*<button className="buttonDesign" onClick={navigateToProfileACB}>Profile</button>*/}
-                <AccountOutlineIcon onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
+                <AccountOutlineIcon title="Profile" onClick={navigateToProfileACB} fillColor="#ffffff" size="48"/>
             </div>
 
             <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet */}
@@ -36,8 +36,8 @@ function InformationView(props){
                 <div className="location">{props.locationData.city +", "+ props.locationData.country}</div>
                 <div className="beenAndWantButtons">
                     <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
-                        <button className="biggerButtonDesign" onClick={visitedACB}>I have been here</button>
-                        <button className="biggerButtonDesign" onClick={wantToGoACB} disabled={props.locVisited}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
+                        <button className="biggerButtonDesign" title="Add to Profile!" onClick={visitedACB}>I have been here</button>
+                        <button className="biggerButtonDesign" title="Add to Profile!" onClick={wantToGoACB} disabled={props.locVisited}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
                     </span>
                 </div>
 
@@ -51,7 +51,7 @@ function InformationView(props){
 
             <div className="logOutButton">
                 {/*<button className="buttonDesign" onClick={navigateToLoginACB}>Log out</button>*/}
-                <LogoutIcon onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
+                <LogoutIcon title="Log Out" onClick={navigateToLoginACB} fillColor="#ffffff" size="48"/>
             </div>
             
         </div>
