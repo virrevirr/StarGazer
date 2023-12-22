@@ -7,43 +7,40 @@ import { connect } from "./loginPresenter";
 
 export default function Search(props){
     function setSearchInputACB(newInput){
-        // asyncronous callback to handle the user input
+        // Asyncronous callback to handle the user input
         props.model.setSearch(newInput);
     }
 
     function searchNowACB(){
-        // asyncronous callback to handle the search
+        // Asyncronous callback to handle the search
         props.model.startSearch(props.model.searchParams);
     }
 
     function onLocationClickACB(input){
-        // asyncronous callback to set the location and the news, weather and moon phase in that country
+        // Asyncronous callback to set the location and the news, weather and moon phase in that country
         props.model.setCurrentLocation(input);
 
         props.model.setCurrentWeatherCity(input.city);
         
         props.model.setCurrentMoon();
 
-        /*const countryToCode = countries[input.country].alpha2;
-        const languageToCode = countries[input.country].iso6391;
-        const astronomyTranslated = countries[input.country].astronomy;*/
         props.model.setCurrentNewsCountry(input.country);
     }
 
 
     function promiseData(promiseState){
-        //if promiseState.promise is false, no data should be returned.
+        // If promiseState.promise is false, no data should be returned.
         if(!promiseState.promise){
             return <p>no data</p>;
         }  
-        // if promise is true, check data and error. 
+        // If promise is true, check data and error. 
         if(!promiseState.data){
             if(!promiseState.error){
                 return <img src="https://brfenergi.se/iprog/loading.gif" height = {"50"}/>;
             }
             return <p>{promiseState.error.toString()}</p>; //if promiseState.error is true and promise.data is false return error 
         }
-        // presenting search result if a search has been made
+        // Presenting search result if a search has been made
         return <SearchResultsView 
         searchResult = {props.model.searchResultsPromiseState.data}
         onLocationClick = {onLocationClickACB}/>;
@@ -51,14 +48,15 @@ export default function Search(props){
 
     return (
         <div>
-            {/* first we render the search view */}
+            {/* First we render the search view */}
             <SearchFormView
             
-            //the user input
+            // The user input
             text = {props.model.searchParams}
 
-            userInput= {setSearchInputACB} //setSearch from model
-            clickSearch= {searchNowACB} //startSearch from model (makes a promise) 
+            // Events defined in SearchFormView 
+            userInput= {setSearchInputACB} // setSearch from starModel
+            clickSearch= {searchNowACB} // startSearch from starModel (makes a promise) 
             loginCB ={connect}/> 
             
             {/*Code with api fetch*/}

@@ -1,8 +1,7 @@
 // search results
 
 function SearchResultsView(props){
-    console.log("search results", props.searchResult);
-    
+
     /* Test code without api fetch */
     const searchResult = [{
         city: "Paris",
@@ -22,7 +21,7 @@ function SearchResultsView(props){
     ]
 
 
-    return(
+    return( // Rendering the search results.
        <div className="searchResultsContainer">
             {/* Code with api fetch */}
             {/*props.searchResult.map(renderResultCB)*/}
@@ -33,6 +32,8 @@ function SearchResultsView(props){
     );
 
     function renderResultCB(result){
+        // We render the search results with its title. We are able to click on it,
+        // for it to lead to the city's information page. 
         function onLocationClickACB(event){
             props.onLocationClick(result);
         };

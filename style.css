@@ -1,7 +1,7 @@
 /*Applies to entire webpage____________________________________________________*/
 
 body{
-    /*background-color: black;*/
+    /*Placement of background image*/
     background-image: url('/images/space_background.png');
     background-size: cover;
     background-position: center;
@@ -37,7 +37,7 @@ body{
 }
 
 .flexParent {
-    /*används i root - påverkar profile view och search results view*/
+    /* is used root - affects profile view and search results view*/
     display: flex;
     justify-content: center;
     height: 100%;
@@ -45,11 +45,12 @@ body{
 }
 
 .mainContent {
-    /*Används i root*/
+    /*Is used in root*/
     align-items: center;
 }
 
 h1{
+    /*Styling of header*/
     margin-bottom: 20px;
     position: relative;
     margin-top: 100px; /*höj om man vill centrera search bar mer*/
@@ -64,7 +65,7 @@ h2, h3, p, ul, a, h1, .input,
 /* SearchResultsView & SearchFormView _________________________________________________________*/
 
 .input{
-    /*Används för input i SearchFormView*/
+    /*Search Bar*/
     height: 42px;
     width: 315px;
     font-size: 16px;
@@ -76,12 +77,12 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .centerButton{
-    /*SearchFormView*/
+    /*Placement of the Search Bar and Search Button*/
     justify-content: center;
 }
 
 .searchContainer {
-    /*ConstellationView and SearchFormView -- applicera ParentContainer*/
+    /*Container for the header and search bar */
     display: flex;
     flex-direction: column;
     height: 100%; 
@@ -91,7 +92,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .searchResultsContainer {
-    /*searchResultView -- applicera ParentContainer?*/
+    /*Container for the rendering of search results*/
     display: flex;
     border: 2px solid;
     border-radius: 10px;
@@ -108,13 +109,15 @@ h2, h3, p, ul, a, h1, .input,
 
 /* informationView ___________________________________________________________________________*/
 
-.topInfoContainer{ /* Container for the location name and the been and want buttons*/
+.topInfoContainer{ 
+    /* Container for the location name and the been and want buttons*/
     justify-content: space-between;
     margin-top: 5px;
     flex-direction: column;
 }
 
-.location{ /*for the location since we can't use h1 for it*/
+.location{ 
+    /*for the location since we can't use h1 for it*/
     font-size: 2em;
     font-weight: bold;
     margin: 10px  190px auto;
@@ -123,11 +126,13 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .beenAndWantButtons{
+    /* Placement of the "I have been" and "I want to go" buttons */
     align-items: center;
     margin: 10px  190px auto;
 }
 
 .constellationsPosition{
+    /* Placement of the "Find Constellations" button*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,14 +141,15 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .boarderAndStackable{
+    /* Creates border around the widgets in information view */
     border: 1px solid white;
     padding: 0px 10px;
     border-radius: 10px;
-    /*width: calc(33.33% - 20px); /* Fixed width for each column */
 }
 
 /*WeatherView____________________*/
 .boarderAndStackable.weatherContainer{
+    /* Weather Container for the three days */
     display: flex;
     height: 100%;
     width: 230px; /*precis så stor som en dags väder*/
@@ -154,6 +160,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .bigWeatherContainer{
+    /* Includes the header as well*/
     flex:1;
     width: 33%; /*precis så stor som en dags väder*/
     justify-content: center;
@@ -161,6 +168,7 @@ h2, h3, p, ul, a, h1, .input,
 
 /*MoonView_______________________________*/
 .moonContainer{
+    /*Container for the Moon Phase*/
     flex:1;
     justify-content: center;
     height: 33%;
@@ -169,6 +177,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .boarderAndStackable.moonInformation{
+    /* Styling for the information */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,6 +186,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 /*NewsView_____________________________*/
 .ParentContainer.newsContainer{
+    /* Container for the local news */
     flex:1;
     height: 458px;
     flex-direction: column;
@@ -187,6 +197,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .boarderAndStackable.newsScroll{
+    /* Styling for the news information*/
     overflow-x: hidden;
     overflow-y: auto;
     height: 500px;
@@ -196,14 +207,16 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .moreInformation{
+    /* Font size for the hyperlink "More Information" */
     font-size: 20px;
 }
 
 /*All constellations____________________________________________________________________________________________*/
 
 .ParentContainer.constellationsContainer{
+    /* Container for the all of the constellations */
     justify-content: space-between; /* Distribute columns with space in between */
-    margin: 55px auto 15px auto; /* top right bottom left */
+    margin: 55px auto 15px auto; 
     overflow-x: hidden;
     overflow-y: auto;
     width: 80%;
@@ -211,6 +224,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .constellationDisplay{
+    /* Styling for the display of the constellations */
     width: calc(14% - 30px); /* Fixed width for each column */
     height: 150px; 
     margin: 10px; 
@@ -221,6 +235,8 @@ h2, h3, p, ul, a, h1, .input,
 /*Profile view________________________________________________________________________________________________ */
 
 .xButton{
+    /* Styling of the X button that is positioned
+    next to the city the user has added to their profile */
     transition-duration: 0.4s;
     padding: 5px 10px;
     cursor: pointer;
@@ -230,10 +246,11 @@ h2, h3, p, ul, a, h1, .input,
     border-radius: 10px;
     color: white;
     border: 1px solid whitesmoke;
-    margin-right: 10px; /* Adjust the margin as needed */
+    margin-right: 10px; 
 }
 
 .xButton:hover {
+    /* Making the X button hoverable */
     background-color: transparent;
     color: grey;
     border: 2px solid white;
@@ -241,6 +258,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .xButton:active {
+    /* How the button looks when clicking on it */
     background-color: transparent;
     box-shadow: 0 2px;
     transform: translateY(4px);
@@ -248,6 +266,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .ParentContainer.profileContainerParent{
+    /* Container for the profile and the three boxes */ 
     justify-content: space-between; /* Distribute columns with space in between */
     column-gap: 20px;
     text-align: center;
@@ -255,6 +274,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .profileContainer{
+    /* Container for one box in the profile */
     display: flex;
     border: 2px solid;
     border-radius: 10px;
@@ -272,6 +292,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .iHaveSeenButton{
+    /* Styling for the "I have seen this in..." Button*/
     position: absolute;
     bottom: 0;
     right: 0;
@@ -280,18 +301,20 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .padding{
+    /* Padding Styling */
     padding-bottom: 7px;
 }
 
 /* LoginView __________________________________________________________________________________________________*/
 
 .logo{
-    width: 700px; /* Set the desired width */
-    height: auto; /* Maintain the aspect ratio */
+    /* Adjustment */
+    width: 700px; 
+    height: auto; /* Maintaining the aspect ratio */
 }
 
 .logoContainer{
-    /*ParentContainer?*/
+    /* Styling for the Logo*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -300,11 +323,13 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .centerContent{
+    /* Center Styling */
     text-align: center;
     margin-top: -20%;
 }
 
 .loginContainer {
+    /* Placement of the Sign in Button*/
     top: 50%;
     left: 50%;
     margin: auto;
@@ -313,20 +338,23 @@ h2, h3, p, ul, a, h1, .input,
 
 /* Constellation View________________________________________________________________________________________*/
 .constellationDetailsContainer {
+    /* Container for the Constellation Details - image and information */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row; /* Horizontal layout */
-    margin-top: 20px; /* Adjust the margin as needed */
+    margin-top: 20px; 
 }
 
 .constellationImageContainer {
-    max-width: 50%; /* Adjust the maximum width of the image container */
+    /* Seperate container for the image */
+    max-width: 50%; 
 }
 
 .starsIncludedContainer {
-    max-width: 50%; /* Adjust the maximum width of the stars included container */
-    padding-left: 20px; /* Add some padding for separation */
+    /* Seperate container for the information on Stars Included */
+    max-width: 50%; 
+    padding-left: 20px; /* Some padding for separation */
     width: 30%;
     margin-top: -10%;
     text-align: center;
@@ -365,7 +393,7 @@ h2, h3, p, ul, a, h1, .input,
 /*ParentContainer_________________________________________________________________*/
 
 .ParentContainer {
-    /*Används i InformationPresenter, InformationView
+    /*Is used in InformationPresenter, InformationView
     weatherView, moonView, newsView, allConstallationsView,
     profileView.*/
     display: flex;
@@ -415,7 +443,7 @@ h2, h3, p, ul, a, h1, .input,
 
 /*Button Design_______________________________________________________*/
 .buttonDesign {
-    /*Överallt*/
+    /*Overall button design*/
     transition-duration: 0.4s;
     padding: 5px 10px;
     cursor: pointer;
@@ -430,6 +458,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .buttonDesign:hover {
+    /* Making the button hover*/
     background-color: transparent;
     color: grey;
     border: 2px solid white;
@@ -437,6 +466,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .buttonDesign:active {
+    /* How the button looks when actively clicked */
     background-color: transparent;
     box-shadow: 0 2px;
     transform: translateY(4px);
@@ -444,6 +474,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .biggerButtonDesign{
+    /* A bigger button design */
     transition-duration: 0.4s;
     padding: 5px 10px;
     cursor: pointer;
@@ -459,6 +490,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .biggerButtonDesign:hover {
+    /* Making the button hover*/
     background-color: transparent;
     color: grey;
     border: 2px solid white;
@@ -466,6 +498,7 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .biggerButtonDesign:active {
+    /* How the button looks when actively clicked */
     background-color: transparent;
     box-shadow: 0 2px;
     transform: translateY(4px);
@@ -473,15 +506,18 @@ h2, h3, p, ul, a, h1, .input,
 }
 
 .biggerButtonDesign:first-child{
+    /* Margin from the right */
     margin-right: 10px;
 }
 
 .biggerButtonDesign:last-child{
+    /* Margin from the left*/
     margin-left: 10px;
 }
 .biggerButtonDesign.disabled:disabled{
+    /* Disable button*/
     cursor: not-allowed;
-    width: 150px; /* Set a fixed width for the disabled state */
+    width: 150px; /* fixed width for the disabled state */
     opacity: 0.5;
     transform: none; 
 }

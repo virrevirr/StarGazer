@@ -4,21 +4,23 @@ import {AccountOutlineIcon, LogoutIcon} from "/src/components.jsx";
 function SearchFormView(props){
     
     function userInputACB(event){
-         
-        console.log("searched for ", event.target.value);
-        return props.userInput(event.target.value); {/* return the user input from search bar */}
+        // Return the user input from search bar 
+        return props.userInput(event.target.value); 
     }
 
     function clickSearchACB(){
-        return props.clickSearch(); {/* return click of search button */}
+        // Return click of search button
+        return props.clickSearch();
     }
 
     function navigateToProfileACB(){ 
-        window.location.hash = '#/profile'; {/* navigating to the profile page */}
+        // Navigating to the profile page
+        window.location.hash = '#/profile'; 
     }
     
     function navigateToLoginACB(){
-        props.loginCB(); {/* navigation to the log in page */}
+        // Navigation to the log in page 
+        props.loginCB();
     };
 
     return(
