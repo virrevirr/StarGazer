@@ -64,7 +64,8 @@ function readFromFirebase(model){
 
 
 function connectToFirebase(model, watchFunction){
-    // JOLINE KOMMENTERA HÄR :)
+    // do nothing if model.user falsy if not,
+    // if truthy the path is set to user iud and it reads from firebase.
     function loginlogOut(user) {   
        console.log("on change")
         model.user = user;
@@ -76,6 +77,7 @@ function connectToFirebase(model, watchFunction){
     
         
     }
+    //onAuthStateChanged  keeps track of the user's authentication state and provides information about the user until they log out
     onAuthStateChanged(auth,loginlogOut);
     function checkACB(){return [model.wantToGo, model.haveVisited, model.currentLocation];}
     function sideEffectACB(){saveToFirebase(model);}
