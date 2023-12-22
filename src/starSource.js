@@ -1,4 +1,3 @@
-
 // Importing API keys for the APIs
 import {API_KEY} from "./apiConfig.js";
 import {API_KEY_MOON} from "./apiConfig.js";
@@ -33,8 +32,9 @@ export function searchPlaces(searchParams){
 }
 
 
-//API weather
 export function getWeatherDetails(location){
+    // Fetch API for weather forecast with the city location
+    // Gives us a 3 day weather forecast
     const queryPlace = new URLSearchParams({"q":location, "days":"3"}).toString();
     const source = "https://weatherapi-com.p.rapidapi.com/forecast.json?" + queryPlace;
     
@@ -45,9 +45,9 @@ export function getWeatherDetails(location){
 }
 
 
-//API news
 export function getNewsDetails(astronomy, languageCode, countryCode){
-    /*keyword: astronomy, lr: languageCode+'-'+countryCode*/
+    // Fetch API for google news with astronomy, language code and country code
+    // Gives us news in the local langugage
     const queryPlace = new URLSearchParams({keyword: astronomy, lr: languageCode+'-'+countryCode}).toString();
     const source = 'https://google-news13.p.rapidapi.com/search?' + queryPlace;
     
@@ -57,9 +57,8 @@ export function getNewsDetails(astronomy, languageCode, countryCode){
     }).then(getJsonACB).then(keepArrayACB);
 }
 
-//API moon
 export function getMoonDetails(){
-    // using budapest as a default because the moon phase is the same all over the world
+    // Fetch API for moon phase with budapest as a default because the moon phase is the same all over the world
     const queryPlace = new URLSearchParams({city:"budapest"}).toString();
     const source = 'https://moon-phase1.p.rapidapi.com/?' + queryPlace;
     
@@ -69,9 +68,10 @@ export function getMoonDetails(){
     }).then(getJsonACB).then(keepArrayACB);
 }
 
-//API constellation
+
 export function getConstellationDetails(chosenConstellation){
-    /*gives us all the stars that are included in the constellation we have chosen*/
+    // Fetch API for stars with constellation
+    // Gives us all the stars that are included in the constellation we have chosen
     const queryPlace = new URLSearchParams({constellation:chosenConstellation}).toString();
     const source = 'https://stars-by-api-ninjas.p.rapidapi.com/v1/stars?' + queryPlace;
     
