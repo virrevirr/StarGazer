@@ -1,25 +1,33 @@
 import {LogoutIcon} from "/src/components.jsx";
 
-function ProfileView(props){
-    console.log("haveVisitedPlaces from profileView", props.haveVisitedPlaces)
-    console.log("wantToGoPlaces from profileView", props.wantToGoPlaces)
-       
-    function navigateToLoginACB(){props.loginCB();}
+function ProfileView(props){       
+    function navigateToLoginACB(){
+        //Will log out the user if user presses log out button
+        props.loginCB();
+    }
 
-    function navigateToSearchACB(){window.location.hash = '#/search';}
+    function navigateToSearchACB(){
+        //Returns the user to the search page
+        window.location.hash = '#/search';
+    }
 
     function renderArrayACB(place){ 
+        //Renders the locations that have been added by the user to 
+        //the arrays haveVisited and WantToGo (in starModel)
 
         function onLocationClickACB(event){
+            //Returns the user to the information page and calls the function 
+            //onLocationClick that makes the API calls neccesary for the Information page
             props.onLocationClick(place);
             window.location.hash = '#/information';
         }
         
         function deleteClickACB(event){
+            //Will remove the chosen location form either haveVisited or WantToGo
             event.stopPropagation(); // Prevent the event from propagating to parent elements
-            
             props.deleteCityButton(place);
         };
+
         return <div>
                     <tr key={place}>
                         <td><button className="xButton" onClick={deleteClickACB}>X</button></td>
@@ -31,11 +39,15 @@ function ProfileView(props){
     } 
 
     function renderConstellationsACB(place){
+        //Renders the constellations that the users have saved, spaced with "|" 
+        //and padding to even out the results
+        
         function renderACB(constellation){
+            //Renders the constellation name and "|"
             return constellation+" | ";
         }
         return <div className="padding">
-                    <tr key={place}> {/* Lägg till class för att constellations inte ska ta upp så mycket plats alt. fixa en egen ruta åt constellations */}
+                    <tr key={place}>
                         <td>{place.city}: {place.constellations.map(renderACB)}</td>
                     </tr>
                 </div>;
@@ -43,13 +55,13 @@ function ProfileView(props){
 
     return (
         <div>
-            <div className="backToSearchButton"> {/* Lägg till class för att rendera knappen i vänstra hörnet och gör så att texten får plats i knappen*/}
+            <div className="backToSearchButton">
                 <button className="biggerButtonDesign" onClick={navigateToSearchACB}>Back to search</button>
             </div>
 
             <div>
-                <h1>{props.userName}</h1> {/* Lägg till en profil-ikon */}
-                
+                {/*Add the name of the user*/}
+                <h1>{props.userName}</h1> 
             </div>
 
             <div className="ParentContainer profileContainerParent">
