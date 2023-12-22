@@ -6,6 +6,7 @@ function InformationView(props){
         return props.addToGo(props.locationData);
     }
     function visitedACB(event){
+        console.log("Visited button clicked");
         return props.addToVisited(props.locationData);
     }
     function navigateToProfileACB(){
@@ -36,8 +37,8 @@ function InformationView(props){
                 <div className="location">{props.locationData.city +", "+ props.locationData.country}</div>
                 <div className="beenAndWantButtons">
                     <span> {/* Lägg till class för att rendera knapparna längst ner i högra hörnet*/}
-                        <button className="biggerButtonDesign" title="Add to Profile!" onClick={visitedACB}>I have been here</button>
-                        <button className="biggerButtonDesign" title="Add to Profile!" onClick={wantToGoACB} disabled={props.locVisited}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
+                        <button className="biggerButtonDesign disabled" title="Add to Profile!" onClick={visitedACB} disabled={props.locvisited}>I have been here</button>
+                        <button className="biggerButtonDesign disabled" title="Add to Profile!" onClick={wantToGoACB} disabled={props.locgo}>I want to go here</button> {/* Lägg till class för att göra knapparna snygga */}
                     </span>
                 </div>
 

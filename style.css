@@ -472,3 +472,9 @@ h2, h3, p, ul, a, h1, .input,
 .biggerButtonDesign:last-child{
     margin-left: 10px;
 }
+.biggerButtonDesign.disabled:disabled{
+    cursor: not-allowed;
+    width: 150px; /* Set a fixed width for the disabled state */
+    opacity: 0.5;
+    transform: none; 
+}
