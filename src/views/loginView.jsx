@@ -16,7 +16,7 @@ function LogInView(props) {
         ></img>
         <br />
         <div className="loginContainer">
-          {/* sentd the person to the search page if the login is succesful*/}
+          {/* send the person to the search page if the login is succesful*/}
           <button className="buttonDesign" onClick={handleLoginClick}>
             Sign in
           </button>

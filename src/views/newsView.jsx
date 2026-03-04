@@ -7,13 +7,13 @@ function NewsView(props) {
           <div key={i}>
             {/*The article title*/}
             <h3>{props.newsData.items[i].title}</h3>
-  
+
             {/*Image belonging to the article*/}
-            <img src={props.newsData.items[i].images.thumbnail} height={"100"} />
-  
+            <img src={props.newsData.items[i].images.thumbnailProxied} height={"100"} />
+
             {/*Text excerpt from the article*/}
             <p>{props.newsData.items[i].snippet}</p>
-  
+
             {/*Link to the actual article*/}
             <div className="moreInformation">
               <a href={props.newsData.items[i].newsUrl} target="_blank">

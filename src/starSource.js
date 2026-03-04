@@ -20,14 +20,34 @@ function keepArrayACB(searchInput){
 
 export function searchPlaces(searchParams){
     // Fetch API for cities with user input
+    // Using GeoDB Cities API (free tier: 500 requests/day)
 
-    const queryPlace = new URLSearchParams({"query":searchParams, "searchby":"city"}).toString();
-    const source = "https://andruxnet-world-cities-v1.p.rapidapi.com/?" + queryPlace;
-    
+    const queryPlace = new URLSearchParams({
+        "namePrefix": searchParams,
+        "limit": 10,
+        "offset": 0,
+        "sort": "-population"
+    }).toString();
+    const source = "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?" + queryPlace;
+
     return fetch(source, {
-        method:"GET", 
-        headers: {'X-Mashape-Key': API_KEY}
-    }).then(getJsonACB).then(keepArrayACB);
+        method:"GET",
+        headers: {
+            'X-RapidAPI-Key': API_KEY,
+            'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+        }
+    }).then(getJsonACB).then(function(response) {
+        // GeoDB returns cities in response.data array, need to transform to match your format
+        if (response.data && response.data.length > 0) {
+            return response.data.map(city => ({
+                city: city.name,
+                state: city.region || "",
+                country: city.country,
+                countryCode: city.countryCode
+            }));
+        }
+        return [];
+    });
 }
 
 

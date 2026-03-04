@@ -23,4 +23,4 @@ connectToFirebase(reactiveModel, watch);
 window.myModel = reactiveModel;
 
 // Shows some initial cities
-reactiveModel.startSearch("paris");
+reactiveModel.startSearch("stockholm");

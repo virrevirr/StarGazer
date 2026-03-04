@@ -60,7 +60,7 @@ function readFromFirebase(model) {
   // do nothing if model.user falsy
   // otherwise read from "path/"+model.user.uid
   // manage model.ready as usual
-  model.ready = false;
+  model.ready = true;
   if (model.user) {
     console.log("trying to read to firebase", model.user.uid, model.PATH);
     const rf = ref(db, model.PATH);

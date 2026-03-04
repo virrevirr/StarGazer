@@ -12,7 +12,7 @@ import {
     wantToGo: [], // Array with all location objects that the user want to visit
     haveVisited: [], // Array with all location objects that the user has visited
     currentLocation: null, // Keeping track of the most currently clicked location
-    ready: true, // Set till true när promise from firebase is resolved (model.ready)
+    ready: true, // Set to true when promise from firebase is resolved (model.ready)
     currentLocationPromiseState: {},
     PATH: null, // Used to see if user is logged in or not
     user: null, // Initiallized to null, set to auth.currentUser.uid when user is logged in
