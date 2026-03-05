@@ -1,44 +1,121 @@
+# StarGazer
 
-# StarGazer our project
-Short description of our project
+A web app for people who love nature and stargazing. Search any city to get weather forecasts, the current moon phase, local astronomy news, and constellation details — then save your favorite locations to your profile.
 
-Our project is for the people that love nature and love watching the stars.
-Our app tells you, given a city, what the weather, moon phase as well as when the sunrise and sunset is so you can enjoy stargazing as long as possible. Another fun fact! is that it also gives you some details about different natural events occurring in the location you are at.
-If it is that you lOOOVE the place you can also add it to your profile and save it there forever!
+## Features
 
+- **City search** — search for any city worldwide using the GeoDB Cities API
+- **Weather forecast** — 3-day weather forecast for the selected location
+- **Moon phase** — current moon phase (same worldwide)
+- **Astronomy news** — local-language news articles about astronomy for the selected country
+- **Constellations** — browse constellations and view the stars within them
+- **User profiles** — log in with Firebase Authentication to save locations to "Places I want to go" and "Places I have visited", including constellations seen at each location
 
-# What we have done!
-We have done the basic structure of each page for our website so it shows what the user will see when they go to it. Deployed the app as well as done some css to make it prettier. Connected the presenters to each other through root so that there is some kind of interaction. Connected one of the APIs, made the data searchable and displayed the data. 
+## Tech Stack
 
+- **Framework:** Vue 3 with JSX
+- **Build tool:** Vite
+- **Styling:** Bootstrap 5
+- **Backend/Auth:** Firebase (Authentication + Firestore)
+- **APIs (via RapidAPI):**
+  - [GeoDB Cities](https://rapidapi.com/wirefreethought/api/geodb-cities) — city search
+  - [WeatherAPI](https://rapidapi.com/weatherapi/api/weatherapi-com) — weather forecast
+  - [Google News](https://rapidapi.com/ubillarnet/api/google-news13) — astronomy news
+  - [Moon Phase](https://rapidapi.com/MoonAPIcom/api/moon-phase1) — moon phase data
+  - [Stars by API Ninjas](https://rapidapi.com/apininjas/api/stars-by-api-ninjas) — star/constellation data
 
-# What we still have left to do!
-We still need to style the website and make it more user-friendly. We would like to connect the rest of the APIs, so we are able to show news regarding moon phases, sunrise and sunset. In profileView, we would like to add hyperlinks to the place that we have saved as "places I have been" and "places I would like to go", that would lead to more information about each place. 
+## Project Structure
 
+```
+StarGazer/
+├── src/
+│   ├── presenter/
+│   │   ├── allConstellationsPresenter.jsx
+│   │   ├── constellationPresenter.jsx
+│   │   ├── informationPresenter.jsx
+│   │   ├── loginPresenter.jsx
+│   │   ├── profilePresenter.jsx
+│   │   └── searchPresenter.jsx
+│   ├── views/
+│   │   ├── allConstellationsView.jsx
+│   │   ├── constellationView.jsx
+│   │   ├── informationView.jsx
+│   │   ├── loginView.jsx
+│   │   ├── moonView.jsx
+│   │   ├── newsView.jsx
+│   │   ├── profileView.jsx
+│   │   ├── searchFormView.jsx
+│   │   ├── searchResultsView.jsx
+│   │   └── weatherView.jsx
+│   ├── starModel.js        — app state (locations, constellations, promise states)
+│   ├── starSource.js       — all API fetch calls
+│   ├── firebaseModel.js    — Firebase read/write
+│   ├── resolvePromise.js   — promise state handler
+│   ├── root.jsx            — Vue Router setup
+│   ├── components.jsx      — shared components
+│   ├── countries.jsx       — country code/language lookup table
+│   ├── apiConfig.js        — API keys (not committed)
+│   └── index.jsx           — app entry point
+├── public/
+├── index.html
+├── firebase.json
+├── vite.config.js
+└── package.json
+```
 
-# FILE STRUCTURE:
-Withshort description/purpose of each file
+## Getting Started
 
-STARGAZER [main repository file]
-|
-|---src---Presenter         [Where we keep the different presenters for the website]
-|    |       |-----Information      [Information about the place/location]         
-|    |       |-----Login            [We present the log in page here]
-|    |       |-----Profile          [Presenting the profile page, where we save different locations]
-|    |       |-----Search           [Presenting the search bar and the results of the search input]
-|    |-----View             [Where we keep the different views for the website]
-|    |       |-----Information      [View for the information]
-|    |       |-----Login            [View for the login]
-|    |       |-----SearchForm       [View for the search bar]
-|    |       |-----SearchResult     [View for the search results]
-|    |-----style.css        [What gives us this awesome look of our website]
-|    |-----index.jsx        [Deploying app, displaying the website]
-|    |-----firebaseModel.js [Save to Firebase]
-|    |-----root             [Connecting the presenters]
-|    |-----resolvePromise   [Promise handling]
-|    |-----starModel        [Saved locations, promiseState functions]
-|    |-----starSource       [API calls, reading the data]
-|
-|---index.html      
-|---firebase....    
-|---package...      
-|---Other....       
+### Prerequisites
+
+- Node.js and npm
+- A Firebase project with Authentication and Firestore enabled
+- RapidAPI keys for the APIs listed above
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+   cd StarGazer
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create `src/apiConfig.js` with your API keys:
+   ```js
+   export const API_KEY = "your-rapidapi-key";
+   export const API_KEY_MOON = "your-moon-api-key";
+   ```
+
+4. Add your Firebase config to `firebaseConfig.js`.
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open the local URL printed in the terminal (Ctrl+Click or Cmd+Click).
+
+### Deploy
+
+```bash
+firebase deploy
+```
+
+### Preview a single presenter (dev only)
+
+To isolate a specific presenter during development, edit `src/index.jsx` temporarily:
+
+```jsx
+import Information from "./presenter/informationPresenter.jsx";
+import { createApp } from "vue";
+function App() { return <div><Information /></div>; }
+const app = createApp(App);
+app.mount("#root");
+```
+
+Remember to revert before pushing to main.

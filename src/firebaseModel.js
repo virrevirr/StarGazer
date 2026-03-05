@@ -60,7 +60,7 @@ function readFromFirebase(model) {
   // do nothing if model.user falsy
   // otherwise read from "path/"+model.user.uid
   // manage model.ready as usual
-  model.ready = true;
+  model.ready = false;
   if (model.user) {
     console.log("trying to read to firebase", model.user.uid, model.PATH);
     const rf = ref(db, model.PATH);
@@ -71,7 +71,7 @@ function readFromFirebase(model) {
     function dataACB(data) {
       return persistenceToModel(data.val(), model);
     }
-    return get(rf).then(dataACB).then(modelReadyACB);
+    return get(rf).then(dataACB).then(modelReadyACB).catch(modelReadyACB);
   }
 }
 
